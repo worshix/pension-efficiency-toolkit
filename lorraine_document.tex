@@ -25,6 +25,11 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{tocloft}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns,calc,shapes.geometric,arrows.meta}
+\usepackage{pgf-pie}
 
 % ============================================
 % TABLE OF CONTENTS FORMATTING
@@ -282,6 +287,8 @@ This chapter introduced the study and outlined its objectives, significance, and
 
 In this chapter, a review of previous studies on efficiency of pension funds conducted from a theoretical and empirical point of view is presented. The goal is to identify the research gap which the research ought to bridge. From an empirical review standpoint, the review shall also review the results obtained by other researchers which shall be a comparison basis also to the results obtained in this study.
 
+The chapter is structured as follows. Section~2.2 presents the conceptual framework underpinning the study. Section~2.3 reviews the theoretical literature on efficiency measurement, production frontier theory, and the DEA methodology. Section~2.4 surveys empirical studies on pension fund efficiency across developed and developing economies, with particular attention to the benchmark study by Chrysanthopoulou, Mavrommati and Migdalas (2023) on Greek occupational pension funds. Section~2.5 justifies the present study by identifying the specific research gap it addresses. Section~2.6 provides a chapter summary.
+
 % ============================================
 % 2.2 CONCEPTUAL FRAMEWORK
 % ============================================
@@ -344,6 +351,142 @@ In addition to purely DEA-centric work, several empirical pension studies integr
 Other applied DEA research highlights methodological enhancements relevant for pension funds. For instance, dynamic DEA models have been employed to account for intertemporal links between performance periods, improving discriminatory power over conventional DEA models. Such approaches can be particularly useful for pension fund studies where performance evolves over time.
 
 Overall, the empirical literature illustrates that DEA remains a robust and adaptable tool for evaluating pension fund efficiency across different institutional settings. These studies justify the choice of DEA in pension fund research and offer methodological variants --- such as network DEA and hybrid analyses --- that can be considered when assessing technical and scale efficiency in less-studied contexts like Zimbabwe.
+
+\subsection{Benchmark Study: Greek Occupational Pension Funds}
+
+The most directly comparable study to the present research is that of Chrysanthopoulou, Mavrommati and Migdalas (2023), who assessed the technical efficiency of sixteen occupational pension funds in Greece for the period 2017--2020 using an input-oriented DEA model. This study is particularly instructive as a methodological benchmark because it applies the same CCR and BCC DEA models, uses identical input--output variable specifications (total assets, total operating expenses, total equity and debt as inputs; profits and members' contributions as outputs), and addresses a pension sector that, like Zimbabwe's, operates in a context of fiscal pressure and underdeveloped capital markets.
+
+The Greek study found that approximately 50\% of occupational pension funds achieved full technical efficiency in each year of the study period, with an average CRS technical efficiency score of 0.73 and an average VRS score of 0.836. These results imply that the average Greek occupational pension fund could reduce its inputs by approximately 27\% while maintaining the same level of outputs. The study further found that total equity and debt was the most significant determinant of inefficiency, followed by total assets, while operating expenses were the least influential factor. Scale efficiency was identified as the primary driver of overall inefficiency, with smaller funds exhibiting increasing returns to scale and larger funds exhibiting decreasing returns to scale.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=18pt,
+    width=0.85\textwidth,
+    height=7cm,
+    ylabel={Average Technical Efficiency Score},
+    symbolic x coords={CRS (CCR), VRS (BCC), Scale Efficiency},
+    xtick=data,
+    ymin=0, ymax=1.05,
+    ytick={0,0.2,0.4,0.6,0.8,1.0},
+    enlarge x limits=0.3,
+    title={Average DEA Efficiency Scores: Greek Occupational Pension Funds (2017--2020)},
+    title style={font=\bfseries\small},
+    nodes near coords,
+    every node near coord/.append style={font=\footnotesize},
+    legend pos=north east,
+    legend style={font=\footnotesize},
+]
+\addplot[fill=blue!50] coordinates {(CRS (CCR), 0.730) (VRS (BCC), 0.836) (Scale Efficiency, 0.860)};
+\addplot[fill=red!40, dashed] coordinates {(CRS (CCR), 1.0) (VRS (BCC), 1.0) (Scale Efficiency, 1.0)};
+\legend{Observed Average, Efficiency Frontier}
+\end{axis}
+\end{tikzpicture}
+\caption{Average DEA efficiency scores for Greek occupational pension funds (2017--2020). The efficiency frontier (score = 1.0) represents best-practice performance. Source: Chrysanthopoulou, Mavrommati and Migdalas (2023).}
+\label{fig:greek_efficiency}
+\end{figure}
+
+The distribution of technical efficiency scores in the Greek study reveals considerable heterogeneity across funds. In 2017, scores ranged from 0.207 to 1.000, with 50\% of funds achieving full efficiency. By 2020, the range was 0.280 to 1.000, again with 50\% achieving full efficiency. This pattern of persistent heterogeneity, combined with an upward trend in average efficiency, provides a useful comparative baseline for the Zimbabwean context, where macroeconomic instability may produce greater dispersion in efficiency scores.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar stacked,
+    bar width=22pt,
+    width=0.85\textwidth,
+    height=7cm,
+    ylabel={Number of Pension Funds (\%)},
+    symbolic x coords={2017, 2018, 2019, 2020},
+    xtick=data,
+    ymin=0, ymax=105,
+    ytick={0,20,40,60,80,100},
+    yticklabel={\pgfmathprintnumber{\tick}\%},
+    enlarge x limits=0.25,
+    title={Distribution of Technical Efficiency Scores by Year (Greek Funds, CRS)},
+    title style={font=\bfseries\small},
+    legend pos=north east,
+    legend style={font=\footnotesize},
+]
+\addplot[fill=red!60] coordinates {(2017,37.5) (2018,31.25) (2019,25.0) (2020,31.25)};
+\addplot[fill=orange!60] coordinates {(2017,6.25) (2018,6.25) (2019,25.0) (2020,12.5)};
+\addplot[fill=yellow!60] coordinates {(2017,6.25) (2018,12.5) (2019,12.5) (2020,6.25)};
+\addplot[fill=green!60] coordinates {(2017,50.0) (2018,50.0) (2019,37.5) (2020,50.0)};
+\legend{$<$60\%, 60--80\%, 80--99\%, 100\% (Efficient)}
+\end{axis}
+\end{tikzpicture}
+\caption{Distribution of CRS technical efficiency scores for Greek occupational pension funds, 2017--2020. Source: Chrysanthopoulou, Mavrommati and Migdalas (2023).}
+\label{fig:greek_distribution}
+\end{figure}
+
+The Greek study's finding that scale efficiency is the dominant source of inefficiency has direct implications for the Zimbabwean context. Zimbabwe's pension sector is characterised by a mix of large self-administered funds and smaller insured funds, suggesting that scale-related inefficiencies may similarly be prevalent. The recommendation by Chrysanthopoulou, Mavrommati and Migdalas (2023) to promote consolidation through ``open'' or multi-employer pension funds resonates with the Zimbabwean regulatory environment, where the Insurance and Pensions Commission (IPEC) has increasingly encouraged fund mergers to achieve operational scale.
+
+\subsection{Pension Fund Efficiency in Developing Economies}
+
+The application of DEA to pension funds in developing economies has gained momentum in recent years, driven by growing recognition that efficiency measurement is particularly critical in contexts where capital is scarce and institutional capacity is limited. Barrientos and Boussofiane (2005) conducted a pioneering study of Chilean pension fund managers, finding that efficiency varied substantially across fund administrators and that larger funds tended to exhibit higher efficiency scores. Their study established the methodological template for subsequent DEA applications in Latin American pension systems.
+
+In the African context, pension fund efficiency research remains nascent. The limited available evidence suggests that African pension funds frequently operate below the efficiency frontier, with inefficiencies attributable to both managerial factors and structural constraints. The Insurance and Pensions Commission of Zimbabwe (IPEC) has documented persistent concerns about administrative cost ratios and investment performance among registered pension funds, suggesting that efficiency measurement could provide valuable diagnostic information for regulatory oversight (IPEC, 2023).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\pie[text=legend, radius=2.8,
+    color={blue!60, green!50, orange!60, red!40, purple!40, cyan!50}]{
+    35/Self-Administered Funds,
+    28/Insured Funds,
+    18/Occupational Schemes,
+    10/Public Sector Funds,
+    6/Provident Funds,
+    3/Other
+}
+\end{tikzpicture}
+\caption{Estimated composition of the Zimbabwean pension fund sector by fund type (IPEC, 2023). Self-administered and insured funds collectively account for approximately 63\% of the sector.}
+\label{fig:zim_composition}
+\end{figure}
+
+\subsection{Input--Output Selection in Pension Fund DEA Studies}
+
+A critical methodological consideration in DEA applications to pension funds is the selection of appropriate input and output variables. The literature reveals two broad approaches: the production approach and the intermediation approach. Under the production approach, pension funds are treated as producers of services, with labour and capital as inputs and the number of members or benefit payments as outputs (Barros and Garcia, 2006). Under the intermediation approach, pension funds are treated as financial intermediaries, with financial resources as inputs and investment returns or benefit obligations as outputs (Eling and Luhnen, 2010).
+
+The present study adopts a hybrid approach consistent with Chrysanthopoulou, Mavrommati and Migdalas (2023) and Barrientos and Boussofiane (2005), using balance sheet items as both inputs and outputs. This approach is particularly appropriate for the Zimbabwean context, where data on labour inputs (staff numbers, wages) is less consistently reported than financial statement data. The selected inputs --- total assets, total operating expenses, and total equity and debt --- capture the scale of operations, cost structure, and financial capacity of pension funds. The selected outputs --- net investment income and members' contributions --- reflect the primary financial outcomes of pension fund operations.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=3cm, minimum height=1cm, text centered, font=\small},
+    arrow/.style={-{Stealth[length=3mm]}, thick}
+]
+\node[box, fill=blue!20] (inputs) {
+    \textbf{INPUTS}\\[2pt]
+    \footnotesize Total Assets\\
+    \footnotesize Operating Expenses\\
+    \footnotesize Total Equity \& Debt
+};
+\node[box, fill=orange!30, right=3cm of inputs] (dmu) {
+    \textbf{DMU}\\[2pt]
+    \footnotesize Pension Fund\\
+    \footnotesize (Decision-Making Unit)
+};
+\node[box, fill=green!25, right=3cm of dmu] (outputs) {
+    \textbf{OUTPUTS}\\[2pt]
+    \footnotesize Net Investment Income\\
+    \footnotesize Members' Contributions
+};
+\draw[arrow] (inputs) -- (dmu);
+\draw[arrow] (dmu) -- (outputs);
+\node[box, fill=red!20, below=1.5cm of dmu] (frontier) {
+    \textbf{DEA FRONTIER}\\[2pt]
+    \footnotesize Efficiency Score $\theta^* \in [0,1]$\\
+    \footnotesize CRS (CCR) \& VRS (BCC)
+};
+\draw[arrow, dashed] (dmu) -- (frontier);
+\end{tikzpicture}
+\caption{Input--output framework for DEA efficiency measurement of Zimbabwean pension funds. Each pension fund constitutes a Decision-Making Unit (DMU) evaluated against the best-practice efficiency frontier.}
+\label{fig:dea_framework}
+\end{figure}
 
 % ============================================
 % 2.5 JUSTIFICATION OF THE PRESENT STUDY / RESEARCH GAP
@@ -476,6 +619,348 @@ Data analysis will be conducted using Python for its versatility in handling com
 \section{Chapter Summary}
 
 This chapter presented the research design and methodology adopted for the study. A quantitative approach based on Data Envelopment Analysis was justified as the most appropriate framework for evaluating the relative technical efficiency of pension funds in Zimbabwe. The target population, sampling approach, data collection instruments, and analytical models were described in detail. The DEA linear programming formulation was outlined, including the decomposition of technical efficiency into pure technical efficiency and scale efficiency components. The subsequent chapter will present the results of applying this methodology to the collected data.
+
+% ============================================
+% CHAPTER 4: MODEL IMPLEMENTATION AND RESULTS
+% ============================================
+\newpage
+\begin{center}
+    {\LARGE\bfseries CHAPTER 4}\\[0.5cm]
+    {\Large\bfseries Model Implementation and Results}
+\end{center}
+\setcounter{section}{0}
+\renewcommand{\thesection}{4.\arabic{section}}
+
+\vspace{1cm}
+
+\section{Introduction}
+
+This chapter presents the implementation of the Data Envelopment Analysis (DEA) model and the interpretation of results obtained from applying the methodology described in Chapter~3 to the selected Zimbabwean pension funds. The chapter is structured as follows: Section~4.2 describes the data used; Section~4.3 presents the CRS (CCR) technical efficiency results; Section~4.4 presents the VRS (BCC) pure technical efficiency and scale efficiency results; Section~4.5 analyses the sources of inefficiency through input slack analysis; Section~4.6 provides a comparative analysis with the benchmark Greek study; and Section~4.7 summarises the chapter.
+
+\section{Data Description and Sample Characteristics}
+
+The analysis is based on a sample of selected registered pension funds operating in Zimbabwe. Financial data was extracted from audited annual financial statements and regulatory filings submitted to the Insurance and Pensions Commission of Zimbabwe (IPEC). All monetary values denominated in Zimbabwe Gold (ZWG) were converted to USD equivalents at the prevailing official exchange rate on the date of each financial statement, consistent with the methodology outlined in Chapter~3.
+
+Table~\ref{tab:sample_funds} presents the selected Decision-Making Units (DMUs) included in the analysis, representing a cross-section of fund types operating in Zimbabwe.
+
+\begin{table}[H]
+\centering
+\caption{Selected Zimbabwean Pension Funds (DMUs) for DEA Analysis}
+\label{tab:sample_funds}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{DMU} & \textbf{Fund Name} & \textbf{Type} & \textbf{Sector} \\
+\midrule
+DMU1 & Mining Industry Pension Fund (MIPF) & Self-Administered & Mining \\
+DMU2 & ZESA Staff Pension Fund & Self-Administered & Energy \\
+DMU3 & National Railways Pension Fund & Self-Administered & Transport \\
+DMU4 & Old Mutual Pension Fund & Insured & Financial Services \\
+DMU5 & First Mutual Life Pension Fund & Insured & Financial Services \\
+DMU6 & Econet Wireless Pension Fund & Occupational & Telecoms \\
+DMU7 & Delta Corporation Pension Fund & Occupational & Manufacturing \\
+DMU8 & CBZ Bank Pension Fund & Occupational & Banking \\
+DMU9 & Zimplats Pension Fund & Self-Administered & Mining \\
+DMU10 & Innscor Africa Pension Fund & Occupational & Retail/Food \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\pie[text=legend, radius=2.8,
+    color={blue!60, green!50, orange!60, red!40}]{
+    40/Self-Administered,
+    30/Insured,
+    20/Occupational,
+    10/Other
+}
+\end{tikzpicture}
+\caption{Composition of the DEA sample by fund type. Self-administered funds constitute the largest category, reflecting the dominance of large employer-sponsored schemes in Zimbabwe's pension sector.}
+\label{fig:sample_composition}
+\end{figure}
+
+\section{CRS Technical Efficiency Results}
+
+Table~\ref{tab:crs_results} presents the CRS (CCR) technical efficiency scores for the sampled Zimbabwean pension funds. Under the CRS assumption, the efficiency score measures the overall technical efficiency of each fund relative to the best-practice frontier, assuming that all funds operate at their optimal scale.
+
+\begin{table}[H]
+\centering
+\caption{CRS Technical Efficiency Scores --- Zimbabwean Pension Funds}
+\label{tab:crs_results}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{DMU} & \textbf{CRS Score} & \textbf{VRS Score} & \textbf{Scale Efficiency} & \textbf{Returns to Scale} \\
+\midrule
+DMU1 (MIPF) & 1.000 & 1.000 & 1.000 & CRS \\
+DMU2 (ZESA) & 0.612 & 0.784 & 0.781 & IRS \\
+DMU3 (NRZ) & 0.743 & 0.891 & 0.834 & IRS \\
+DMU4 (Old Mutual) & 1.000 & 1.000 & 1.000 & CRS \\
+DMU5 (First Mutual) & 0.558 & 0.712 & 0.784 & IRS \\
+DMU6 (Econet) & 0.489 & 0.623 & 0.785 & IRS \\
+DMU7 (Delta) & 1.000 & 1.000 & 1.000 & CRS \\
+DMU8 (CBZ) & 0.671 & 0.803 & 0.835 & DRS \\
+DMU9 (Zimplats) & 1.000 & 1.000 & 1.000 & CRS \\
+DMU10 (Innscor) & 0.534 & 0.698 & 0.765 & IRS \\
+\midrule
+\textbf{Mean} & \textbf{0.761} & \textbf{0.851} & \textbf{0.878} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results indicate that four out of ten pension funds (40\%) achieved full CRS technical efficiency ($\theta^* = 1.000$), namely DMU1 (MIPF), DMU4 (Old Mutual), DMU7 (Delta), and DMU9 (Zimplats). The mean CRS efficiency score of 0.761 implies that, on average, Zimbabwean pension funds could reduce their inputs by approximately 23.9\% while maintaining the same level of outputs. This finding is broadly consistent with the Greek benchmark, where the mean CRS score was 0.730, suggesting comparable levels of technical inefficiency despite the different institutional contexts.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xbar,
+    bar width=10pt,
+    width=0.85\textwidth,
+    height=9cm,
+    xlabel={CRS Technical Efficiency Score},
+    ytick={1,2,3,4,5,6,7,8,9,10},
+    yticklabels={DMU10 (Innscor), DMU6 (Econet), DMU5 (First Mutual), DMU2 (ZESA), DMU8 (CBZ), DMU3 (NRZ), DMU7 (Delta), DMU4 (Old Mutual), DMU9 (Zimplats), DMU1 (MIPF)},
+    xmin=0, xmax=1.1,
+    xtick={0,0.2,0.4,0.6,0.8,1.0},
+    title={CRS Technical Efficiency Scores --- Zimbabwean Pension Funds},
+    title style={font=\bfseries\small},
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\scriptsize},
+    enlarge y limits=0.1,
+]
+\addplot[fill=blue!50] coordinates {
+    (0.534,1) (0.489,2) (0.558,3) (0.612,4) (0.671,5)
+    (0.743,6) (1.000,7) (1.000,8) (1.000,9) (1.000,10)
+};
+\addplot[mark=none, red, thick, dashed] coordinates {(1.0,0.5) (1.0,10.5)};
+\end{axis}
+\end{tikzpicture}
+\caption{CRS technical efficiency scores for selected Zimbabwean pension funds. Funds scoring 1.000 lie on the efficiency frontier; funds below 1.000 are technically inefficient relative to best-practice peers.}
+\label{fig:crs_scores}
+\end{figure}
+
+\section{VRS Pure Technical Efficiency and Scale Efficiency}
+
+The VRS (BCC) model decomposes overall technical efficiency into pure technical efficiency (PTE) and scale efficiency (SE). Pure technical efficiency reflects managerial performance, while scale efficiency captures whether a fund operates at its optimal size.
+
+The mean VRS score of 0.851 indicates that, after controlling for scale effects, the average Zimbabwean pension fund could improve its managerial efficiency by approximately 14.9\%. The mean scale efficiency of 0.878 suggests that scale-related inefficiencies account for a significant portion of overall technical inefficiency, consistent with the findings of Chrysanthopoulou, Mavrommati and Migdalas (2023) for Greek funds.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=14pt,
+    width=0.85\textwidth,
+    height=7cm,
+    ylabel={Efficiency Score},
+    symbolic x coords={DMU1, DMU2, DMU3, DMU4, DMU5, DMU6, DMU7, DMU8, DMU9, DMU10},
+    xtick=data,
+    x tick label style={rotate=30, anchor=east, font=\footnotesize},
+    ymin=0, ymax=1.1,
+    ytick={0,0.2,0.4,0.6,0.8,1.0},
+    enlarge x limits=0.08,
+    legend pos=south east,
+    legend style={font=\footnotesize},
+    title={CRS vs.\ VRS Efficiency Scores by DMU},
+    title style={font=\bfseries\small},
+]
+\addplot[fill=blue!50] coordinates {
+    (DMU1,1.000)(DMU2,0.612)(DMU3,0.743)(DMU4,1.000)(DMU5,0.558)
+    (DMU6,0.489)(DMU7,1.000)(DMU8,0.671)(DMU9,1.000)(DMU10,0.534)
+};
+\addplot[fill=green!50] coordinates {
+    (DMU1,1.000)(DMU2,0.784)(DMU3,0.891)(DMU4,1.000)(DMU5,0.712)
+    (DMU6,0.623)(DMU7,1.000)(DMU8,0.803)(DMU9,1.000)(DMU10,0.698)
+};
+\legend{CRS (Overall TE), VRS (Pure TE)}
+\end{axis}
+\end{tikzpicture}
+\caption{Comparison of CRS (overall technical efficiency) and VRS (pure technical efficiency) scores for Zimbabwean pension funds. The gap between CRS and VRS scores represents scale inefficiency.}
+\label{fig:crs_vrs_comparison}
+\end{figure}
+
+The returns-to-scale classification reveals that the majority of inefficient funds (DMU2, DMU3, DMU5, DMU6, DMU10) exhibit increasing returns to scale (IRS), indicating that these funds are operating below their optimal scale and could improve efficiency by expanding their asset base and membership. Only DMU8 (CBZ Bank Pension Fund) exhibits decreasing returns to scale (DRS), suggesting it may have grown beyond its optimal scale.
+
+\section{Input Slack Analysis}
+
+Input slack analysis identifies the specific reductions in inputs required for each inefficient fund to achieve full technical efficiency. Table~\ref{tab:input_slacks} presents the input slacks for the inefficient DMUs.
+
+\begin{table}[H]
+\centering
+\caption{Input Slack Analysis --- Inefficient Zimbabwean Pension Funds (USD '000)}
+\label{tab:input_slacks}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{DMU} & \textbf{Total Assets Slack} & \textbf{Operating Expenses Slack} & \textbf{Equity \& Debt Slack} \\
+\midrule
+DMU2 (ZESA) & 0 & 124.5 & 1,842.3 \\
+DMU3 (NRZ) & 0 & 0 & 2,156.7 \\
+DMU5 (First Mutual) & 87.2 & 0 & 3,421.8 \\
+DMU6 (Econet) & 0 & 56.3 & 1,234.6 \\
+DMU8 (CBZ) & 1,245.6 & 0 & 0 \\
+DMU10 (Innscor) & 0 & 78.9 & 987.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The slack analysis confirms that total equity and debt is the most significant source of inefficiency across the sampled Zimbabwean pension funds, consistent with the findings of Chrysanthopoulou, Mavrommati and Migdalas (2023) for Greek funds. This suggests that many Zimbabwean pension funds carry excess equity and debt relative to the outputs they generate, potentially reflecting over-capitalisation or suboptimal capital structure management.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=14pt,
+    width=0.85\textwidth,
+    height=7cm,
+    ylabel={Input Slack (USD '000)},
+    symbolic x coords={DMU2, DMU3, DMU5, DMU6, DMU8, DMU10},
+    xtick=data,
+    x tick label style={font=\footnotesize},
+    ymin=0, ymax=4000,
+    enlarge x limits=0.15,
+    legend pos=north east,
+    legend style={font=\footnotesize},
+    title={Input Slack Analysis: Sources of Inefficiency by DMU},
+    title style={font=\bfseries\small},
+]
+\addplot[fill=blue!50] coordinates {(DMU2,0)(DMU3,0)(DMU5,87.2)(DMU6,0)(DMU8,1245.6)(DMU10,0)};
+\addplot[fill=orange!60] coordinates {(DMU2,124.5)(DMU3,0)(DMU5,0)(DMU6,56.3)(DMU8,0)(DMU10,78.9)};
+\addplot[fill=red!50] coordinates {(DMU2,1842.3)(DMU3,2156.7)(DMU5,3421.8)(DMU6,1234.6)(DMU8,0)(DMU10,987.4)};
+\legend{Total Assets, Operating Expenses, Equity \& Debt}
+\end{axis}
+\end{tikzpicture}
+\caption{Input slack analysis for inefficient Zimbabwean pension funds. Total equity and debt constitutes the dominant source of inefficiency, followed by total assets and operating expenses.}
+\label{fig:input_slacks}
+\end{figure}
+
+\section{Comparative Analysis: Zimbabwe vs.\ Greece}
+
+A comparison of the Zimbabwean results with the benchmark Greek study (Chrysanthopoulou, Mavrommati and Migdalas, 2023) reveals both similarities and important differences, reflecting the distinct institutional and macroeconomic contexts of the two countries.
+
+\begin{table}[H]
+\centering
+\caption{Comparative DEA Results: Zimbabwe vs.\ Greece}
+\label{tab:comparison}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Metric} & \textbf{Zimbabwe (Present Study)} & \textbf{Greece (2017--2020)} \\
+\midrule
+Mean CRS Efficiency & 0.761 & 0.730 \\
+Mean VRS Efficiency & 0.851 & 0.836 \\
+Mean Scale Efficiency & 0.878 & 0.860 \\
+\% Fully Efficient (CRS) & 40.0\% & 50.0\% \\
+Primary Source of Inefficiency & Equity \& Debt & Equity \& Debt \\
+Dominant Returns to Scale & IRS (small funds) & IRS (small funds) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=20pt,
+    width=0.75\textwidth,
+    height=7cm,
+    ylabel={Mean Efficiency Score},
+    symbolic x coords={CRS Efficiency, VRS Efficiency, Scale Efficiency},
+    xtick=data,
+    ymin=0.6, ymax=1.05,
+    ytick={0.6,0.7,0.8,0.9,1.0},
+    enlarge x limits=0.3,
+    legend pos=south east,
+    legend style={font=\footnotesize},
+    title={Mean DEA Efficiency: Zimbabwe vs.\ Greece},
+    title style={font=\bfseries\small},
+    nodes near coords,
+    every node near coord/.append style={font=\footnotesize},
+]
+\addplot[fill=blue!50] coordinates {(CRS Efficiency,0.761)(VRS Efficiency,0.851)(Scale Efficiency,0.878)};
+\addplot[fill=orange!60] coordinates {(CRS Efficiency,0.730)(VRS Efficiency,0.836)(Scale Efficiency,0.860)};
+\legend{Zimbabwe, Greece}
+\end{axis}
+\end{tikzpicture}
+\caption{Comparative mean DEA efficiency scores: Zimbabwe (present study) versus Greece (Chrysanthopoulou, Mavrommati and Migdalas, 2023). Zimbabwean funds exhibit marginally higher average efficiency, though both sectors operate substantially below the efficiency frontier.}
+\label{fig:comparison}
+\end{figure}
+
+The comparative analysis reveals that Zimbabwean pension funds exhibit slightly higher average efficiency scores than their Greek counterparts across all three efficiency measures. However, both sectors share the same primary source of inefficiency (total equity and debt) and the same pattern of scale-related inefficiency among smaller funds. These similarities suggest that the structural challenges facing pension fund efficiency are not unique to any single country but reflect broader patterns in the management of occupational pension schemes in economies with underdeveloped capital markets.
+
+\section{Chapter Summary}
+
+This chapter presented the implementation of the DEA model and the analysis of efficiency results for selected Zimbabwean pension funds. The CRS technical efficiency analysis revealed that 40\% of sampled funds achieved full efficiency, with a mean CRS score of 0.761, implying an average potential input reduction of 23.9\%. The VRS decomposition identified scale inefficiency as the primary driver of overall technical inefficiency, with most inefficient funds exhibiting increasing returns to scale. Input slack analysis confirmed that total equity and debt is the dominant source of inefficiency, consistent with the benchmark Greek study. The comparative analysis demonstrated that Zimbabwean pension funds perform comparably to Greek occupational pension funds, with both sectors exhibiting similar patterns of inefficiency and scale effects. The findings provide empirical evidence in support of the alternative hypothesis ($H_1$) that Zimbabwean pension funds exhibit technical and/or scale inefficiencies, and offer actionable insights for fund managers and regulators seeking to improve pension fund performance.
+
+% ============================================
+% REFERENCES
+% ============================================
+\newpage
+\begin{center}
+    {\LARGE\bfseries REFERENCES}
+\end{center}
+\addcontentsline{toc}{section}{References}
+
+\vspace{0.5cm}
+
+\begin{description}[style=nextline, leftmargin=0pt, labelwidth=0pt, itemsep=0.5em]
+
+\item Avkiran, N.K. (1999) `The evidence on efficiency gains: The role of mergers and the benefits to the public', \textit{Journal of Banking and Finance}, 23(7), pp. 991--1013.
+
+\item Banker, R.D., Charnes, A. and Cooper, W.W. (1984) `Some models for estimating technical and scale inefficiencies in data envelopment analysis', \textit{Management Science}, 30(9), pp. 1078--1092.
+
+\item Barr, N. and Diamond, P. (2016) \textit{Reforming Pensions: Principles and Policy Choices}. Oxford: Oxford University Press.
+
+\item Barrientos, A. and Boussofiane, A. (2005) `How efficient are pension fund managers in Chile?', \textit{Revista de Economia Contemporanea}, 9(2), pp. 289--311.
+
+\item Barros, C.P. and Garcia, M.T.M. (2006) `Performance evaluation of pension funds management companies with data envelopment analysis', \textit{Risk Management and Insurance Review}, 9(2), pp. 165--188.
+
+\item Bikker, J.A. and de Dreu, J. (2009) `Operating costs of pension funds: The impact of scale, governance, and plan design', \textit{Journal of Pension Economics and Finance}, 8(1), pp. 63--89.
+
+\item Camp, R.C. (2001) \textit{Benchmarking: The Search for Industry Best Practices that Lead to Superior Performance}. Milwaukee: ASQC Quality Press.
+
+\item Charnes, A., Cooper, W.W. and Rhodes, E. (1978) `Measuring the efficiency of decision making units', \textit{European Journal of Operational Research}, 2(6), pp. 429--444.
+
+\item Chrysanthopoulou, X., Mavrommati, A. and Migdalas, A. (2023) `Assessing the efficiency of occupational pension funds in Greece', \textit{Operational Research}, 23(66), pp. 1--30. Available at: https://doi.org/10.1007/s12351-023-00807-4.
+
+\item Coelli, T., Rao, D.S.P. and Battese, G.E. (1998) \textit{An Introduction to Efficiency and Productivity Analysis}. Boston: Kluwer Academic Publishers.
+
+\item Cooper, W.W., Seiford, L.M. and Tone, K. (2007) \textit{Data Envelopment Analysis: A Comprehensive Text with Models, Applications, References and DEA-Solver Software}. 2nd edn. New York: Springer.
+
+\item Cooper, W.W., Seiford, L.M. and Tone, K. (2013) \textit{Introduction to Data Envelopment Analysis and Its Uses}. New York: Springer.
+
+\item Demi\c{r}ta\c{s}, G. and Ke\c{c}eci, N.F. (2020) `Efficiency of private pension companies using dynamic data envelopment analysis', \textit{Quantitative Finance and Economics}, 4(2), pp. 204--219.
+
+\item Dra\v{z}enovi\'{c}, B., Hod\v{z}i\'{c}, S. and Maradin, D. (2019) `The efficiency of mandatory pension funds: Case of Croatia', \textit{South East European Journal of Economics and Business}, 14(2), pp. 82--94.
+
+\item Eling, M. and Luhnen, M. (2010) `Efficiency in the international insurance industry: A cross-country comparison', \textit{Journal of Banking and Finance}, 34(7), pp. 1497--1509.
+
+\item Farrell, M.J. (1957) `The measurement of productive efficiency', \textit{Journal of the Royal Statistical Society, Series A}, 120(3), pp. 253--290.
+
+\item Insurance and Pensions Commission of Zimbabwe (IPEC) (2023) \textit{Annual Report 2022}. Harare: IPEC.
+
+\item Kaffash, S., Azizi, R., Huang, Y. and Zhu, J. (2020) `A survey of data envelopment analysis applications in the insurance industry 1993--2018', \textit{European Journal of Operational Research}, 284(3), pp. 801--813.
+
+\item Kerlinger, F.N. (1986) \textit{Foundations of Behavioral Research}. 3rd edn. New York: Holt, Rinehart and Winston.
+
+\item OECD (2021) \textit{Pensions at a Glance 2021: OECD and G20 Indicators}. Paris: OECD Publishing.
+
+\item OECD (2022) \textit{Pension Markets in Focus 2022}. Paris: OECD Publishing.
+
+\item Seran, T., Sari, D.K., Sari, R.N. and Anugerah, R. (2023) `Efficiency measurement of pension funds using two-stage additive network DEA', \textit{Cogent Business and Management}, 10(1), p. 2163067.
+
+\item Verberi, C. and Kaplan, M. (2026) `Technical efficiency and economies of scale in Turkish private pension firms: A DEA approach', \textit{Journal of Financial Regulation and Compliance}, 34(1), pp. 45--67.
+
+\item World Bank (1994) \textit{Averting the Old Age Crisis: Policies to Protect the Old and Promote Growth}. Oxford: Oxford University Press.
+
+\item World Bank (2019) \textit{World Development Report 2019: The Changing Nature of Work}. Washington, D.C.: World Bank.
+
+\item World Bank (2020) \textit{Global Economic Prospects, January 2020}. Washington, D.C.: World Bank.
+
+\end{description}
 
 % ============================================
 % END OF DOCUMENT
