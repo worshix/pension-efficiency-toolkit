@@ -28,7 +28,7 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{patterns,calc,shapes.geometric,arrows.meta}
+\usetikzlibrary{patterns,calc,shapes.geometric,arrows.meta,positioning}
 \usepackage{pgf-pie}
 
 % ============================================
@@ -154,9 +154,23 @@
 
 A pension fund is a massive pool of capital specifically designed to provide people with an income after they stop working. These pension funds are among the most significant long-term institutional investors in modern financial systems, responsible for mobilizing savings and allocating capital across financial markets in support of retirement income security and economic development (OECD, 2022). By pooling contributions and investing on behalf of members, pension funds influence capital formation, financial market stability, and intergenerational welfare (World Bank, 2019). As key components of any social protection architecture, retirement arrangements work alongside state systems of support, and individual savings in order to provide an additional or primary income stream and provide financial security to those who are older or no longer in employment (World Bank, 2020). With the reality of demographic aging and changes in labour markets, pension funds have also increasingly been acting as guardians of longer-term savings, major institutional investors, and important providers of stability in national financial systems (OECD, 2022). The ability of funds to function with efficiency, build trust and ensure their members can access their rightful pensions in a timely and reliable manner is very much dependent on their operational effectiveness and successful management (Barr \& Diamond, 2016).
 
-In evaluating pension fund performance, traditional indicators such as nominal returns, funding ratios, and solvency measures have been widely applied. However, these indicators provide limited insight into how efficiently pension funds utilize their available financial and operational resources (Eling and Luhnen, 2020). As a result, frontier-based efficiency measurement techniques have gained prominence in the financial economics and operations research literature.
+\subsection*{Historical Development of Pension Funds}
 
-Data Envelopment Analysis (DEA) is a non-parametric optimization technique that has been extensively applied to evaluate the relative efficiency of financial institutions, including banks, insurance companies, and pension funds (Charnes, Cooper and Rhodes, 2023; Cooper, Seiford and Tone, 2013). DEA allows for the assessment of efficiency without imposing restrictive assumptions on the production technology, making it particularly suitable for financial institutions with complex input--output relationships.
+The origins of organised pension provision can be traced to the late nineteenth century, when Otto von Bismarck introduced Germany's Old Age and Disability Insurance Law in 1889 --- widely regarded as the first state-sponsored pension system in the world (World Bank, 1994). This foundational development established the principle of mandatory, contribution-linked retirement income and inspired similar reforms across Europe and North America during the early twentieth century. In the United States, the Social Security Act of 1935 formalised public pension provision as a response to the mass unemployment and elderly poverty of the Great Depression. The post-Second World War decades saw a rapid proliferation of occupational pension schemes as employers sought to attract and retain workers through deferred compensation arrangements, giving rise to the defined benefit (DB) model that dominated private-sector pension provision for much of the twentieth century (Barr and Diamond, 2016).
+
+From the 1980s onwards, a structural shift occurred in pension fund design as the fiscal unsustainability of defined benefit obligations became apparent in the context of population ageing and rising life expectancy. Defined contribution (DC) schemes, in which members bear investment risk directly, gained ascendancy across developed economies --- particularly following the United States Employee Retirement Income Security Act (ERISA) of 1974 and the subsequent growth of 401(k)-type arrangements. By the early 2000s, multi-pillar pension architectures --- combining mandatory public, mandatory private, and voluntary private pillars --- had been adopted or recommended across a wide range of economies (World Bank, 1994; OECD, 2021). This diversification of pension structure intensified the importance of performance and efficiency measurement, as fund assets under management grew to represent a significant proportion of national financial wealth.
+
+\subsection*{Pension Fund Development in Zimbabwe}
+
+Zimbabwe's pension fund sector has a history dating to the colonial era, when occupational pension schemes were established primarily to serve the white-collar workforce within parastatal and mining organisations. Following independence in 1980, successive governments expanded the regulatory framework for pension provision, and the Insurance and Pensions Commission (IPEC) was established under the Insurance Act to provide regulatory oversight of both the insurance and pension industries (IPEC, 2023). The sector grew to encompass a range of self-administered standalone funds, insured funds managed by insurance companies, and occupational provident funds across both public and private sectors.
+
+Zimbabwe's pension fund sector has, however, been severely disrupted by macroeconomic instability. The hyperinflationary crisis of 2007--2008, during which Zimbabwe recorded the highest peacetime inflation rate ever measured, effectively wiped out the real value of pension savings accumulated over decades. The subsequent adoption of a multi-currency regime in 2009 and the eventual re-introduction of a domestic currency under successive currency reform programmes created persistent challenges for fund valuation, asset pricing, and benefit adequacy. These structural disruptions rendered the Zimbabwean pension fund sector particularly vulnerable to managerial inefficiency, as funds struggled to preserve real asset values in an environment of currency volatility, illiquid capital markets, and constrained investment opportunities (IPEC, 2023). Against this backdrop, the operational efficiency of pension fund management assumes heightened significance: inefficient resource utilisation not only erodes returns for members but directly threatens the financial sustainability of the pension system itself.
+
+\subsection*{Efficiency Measurement in Financial Institutions}
+
+In evaluating pension fund performance, traditional indicators such as nominal returns, funding ratios, and solvency measures have been widely applied. However, these indicators provide limited insight into how efficiently pension funds utilize their available financial and operational resources (Eling and Luhnen, 2010). As a result, frontier-based efficiency measurement techniques have gained prominence in the financial economics and operations research literature. The seminal contribution of Farrell (1957) introduced the concept of technical efficiency as the ability of a production unit to maximise output from a given set of inputs, and laid the groundwork for the development of non-parametric efficiency frontier methods. Building on Farrell's framework, Charnes, Cooper and Rhodes (1978) developed Data Envelopment Analysis (DEA) --- a linear programming-based technique that constructs an empirical efficiency frontier from observed data without imposing a parametric functional form on the production technology.
+
+Data Envelopment Analysis (DEA) is a non-parametric optimization technique that has been extensively applied to evaluate the relative efficiency of financial institutions, including banks, insurance companies, and pension funds (Charnes, Cooper and Rhodes, 1978; Cooper, Seiford and Tone, 2013). DEA allows for the assessment of efficiency without imposing restrictive assumptions on the production technology, making it particularly suitable for financial institutions with complex input--output relationships. Subsequent extensions of the DEA framework, notably the BCC model introduced by Banker, Charnes and Cooper (1984), allowed for the decomposition of technical efficiency into pure technical efficiency and scale efficiency, enabling researchers to distinguish between inefficiencies arising from managerial decisions and those attributable to sub-optimal scale of operation. These methodological advancements have been widely applied to evaluate efficiency in banking, insurance, and pension fund management across both developed and emerging economies (Kaffash et al., 2020; Barros and Garcia, 2006).
 
 Despite the growing international literature on pension fund efficiency, empirical evidence from developing economies remains limited. This gap is especially pronounced in Zimbabwe, where pension funds operate under conditions of macroeconomic volatility, high inflation, currency instability, and constrained capital markets (OECD, 2021). These conditions have historically affected asset values, investment strategies, and the real purchasing power of retirement benefits.
 
@@ -185,10 +199,10 @@ To evaluate the technical efficiency of selected pension funds in Zimbabwe using
 \subsection*{Secondary Objectives}
 
 \begin{enumerate}[noitemsep]
-    \item To measure the technical efficiency of pension funds operating in Zimbabwe.
-    \item To decompose efficiency into pure technical efficiency and scale efficiency components.
+    \item To benchmark individual pension fund efficiency scores against best-practice peers and rank funds relative to the efficiency frontier.
+    \item To decompose overall technical efficiency into pure technical efficiency and scale efficiency components.
     \item To identify key financial and operational inputs contributing to inefficiency.
-    \item To provide empirical evidence to support improved pension fund management and regulation.
+    \item To provide empirical evidence to support improved pension fund management and regulation in Zimbabwe.
 \end{enumerate}
 
 % ============================================
@@ -228,7 +242,11 @@ From a policy perspective, the findings provide regulators with objective benchm
 % ============================================
 \section{Scope of the Study}
 
-The study focuses on selected registered pension funds operating in Zimbabwe over a defined study period. The analysis is limited to technical efficiency measurement using secondary financial data.
+The study focuses on selected registered and active pension funds operating in Zimbabwe, encompassing self-administered standalone funds, insured/underwritten funds, and occupational schemes registered under the regulatory oversight of the Insurance and Pensions Commission of Zimbabwe (IPEC). The analysis covers a study period of five financial years, spanning from 2018 to 2022, a period that includes both the currency reform transition and the post-hyperinflation stabilisation phase, thereby capturing meaningful variation in pension fund operating conditions.
+
+Geographically, the study is confined to Zimbabwean pension funds and does not extend to regional or cross-country comparisons, as the objective is to evaluate relative efficiency within the domestic institutional context. Only funds for which complete and audited financial statements are publicly available for the study period are included; funds with incomplete or non-comparable data are excluded from the sample. The analysis is further limited to technical efficiency measurement using secondary financial data sourced from annual financial statements, IPEC regulatory reports, and published disclosures. It does not extend to governance quality, member satisfaction, or qualitative dimensions of pension fund performance. Labour input data, such as staff numbers or wage bills, are excluded due to inconsistent reporting across funds; the selected inputs and outputs are therefore restricted to balance sheet and income statement items consistent with the intermediation approach applied in comparable DEA studies (Chrysanthopoulou, Mavrommati and Migdalas, 2023; Barrientos and Boussofiane, 2005).
+
+The study does not incorporate the National Social Security Authority (NSSA), which operates as a public statutory body under a distinct legislative mandate and is not directly comparable to privately managed occupational pension funds. Similarly, informal sector savings arrangements and individual retirement annuities are outside the scope of this analysis. The conclusions drawn from this study are therefore applicable to the formal, registered pension fund sector and should be interpreted within the specific macroeconomic and institutional context of Zimbabwe during the study period.
 
 % ============================================
 % 1.9 ASSUMPTIONS OF THE STUDY
@@ -248,23 +266,45 @@ The study is based on several key assumptions: that the pension fund data availa
 % ============================================
 \section{Limitations of the Study}
 
-Data availability and quality constraints may limit the sample size. Macroeconomic volatility may affect comparability across time periods.
+This study is subject to several limitations that should be considered when interpreting the findings.
+
+\textbf{Data Availability and Quality.} The primary limitation of this study is the availability and completeness of pension fund financial data in Zimbabwe. Unlike developed economies where pension fund disclosures are standardised and easily accessible, Zimbabwean pension funds vary significantly in their reporting practices. Some funds may not publish annual financial statements in the public domain, which constrains the achievable sample size. Furthermore, historical data quality may be affected by accounting restatements, currency conversions, and the use of different valuation bases across reporting periods, particularly during the hyperinflationary and currency-transition periods covered by the study.
+
+\textbf{Macroeconomic Instability and Comparability.} Zimbabwe's macroeconomic environment during the study period was characterised by severe currency volatility, including the reintroduction of the Zimbabwean dollar, rapid inflation, and multiple exchange rate regimes. The conversion of local currency (ZWG) figures to USD-equivalent values introduces exchange rate risk and may distort the comparability of efficiency scores across different years. The inherent instability of the operating environment may also mask genuine efficiency improvements or declines that are attributable to managerial decisions, as opposed to macroeconomic shocks beyond management's control.
+
+\textbf{DEA Methodological Limitations.} As a deterministic, non-parametric technique, DEA does not account for statistical noise or random error in the data. All deviations from the efficiency frontier are attributed to inefficiency, even if some variation is due to measurement error or random disturbances in the financial data. DEA efficiency scores are also sensitive to the choice of inputs and outputs, and the results may change if different variable specifications are adopted. Additionally, DEA efficiency is a relative measure: the efficiency scores are determined by the composition of the sample, meaning that the addition or removal of a fund from the dataset can alter the efficiency frontier and the scores of all other funds.
+
+\textbf{Absence of Environmental Variables.} The DEA model employed in this study does not directly incorporate environmental or contextual variables such as the regulatory regime, fund governance quality, investment strategy, or macroeconomic conditions as inputs or outputs. These factors may influence efficiency scores in ways that the model cannot fully capture. While this limitation is common to most DEA applications in financial institutions, it should be acknowledged that the efficiency scores reflect relative performance under a simplified input--output framework.
+
+\textbf{Generalisation of Findings.} The findings of this study are specific to the sample of Zimbabwean pension funds examined over the defined study period. Given the unique institutional and macroeconomic characteristics of Zimbabwe, the results may not be directly generalised to pension fund sectors in other countries or to the Zimbabwean sector under materially different economic conditions.
 
 % ============================================
 % 1.11 ORGANIZATION OF THE STUDY
 % ============================================
 \section{Organization of the Study}
 
-The study is divided into five chapters which tackle different aspects required for a proper research. These chapters are explained in the context of this research below.
+The study is divided into five chapters, each addressing a distinct aspect of the research process. The structure of the study is outlined below.
 
-Chapter One provides the research topic, which is introduced in general by means of definitions of the topic's key terms. The background of the study is also given in this chapter providing the grounds upon which the study's subject is operating and clarifying the various loopholes associated with pension funds. The statement of the problem is also highlighted as a summary of the issues addressed in the background of the study. The objectives and questions related to these are also highlighted in this chapter as well as the main hypothesis to the study. Chapter Two provides a thorough review of literature providing empirical findings from other researches in related subjects. The models applied by various authors are also reviewed as these provide a basis upon which the methodology used in this study is resident. Chapter Three is the Methodology chapter exploring the research design and methodology applied for this study. Issues to do with the data collection methods and the type and span of the data used are explained and justified as well. The analytical models used are also elaborated in this chapter highlighting, explicitly the various variables of the models. Chapter Four is the Data Analysis and Results chapter where the results of the various outcomes of the models explained in chapter three are interpreted. The answers to various questions asked in chapter one are also given. Chapter Five provides the conclusions obtained from the study. Recommendations and solutions are also proposed for the various stakeholders. More importantly the chapter acts as a gateway to the prototype design stage of this project where a tangible solution to the research problem is developed.
+\textbf{Chapter One: Introduction.} This chapter introduces the study by defining key concepts and contextualising the research within the broader literature on pension fund efficiency. It provides the background to the study, tracing the historical development of pension funds globally and in Zimbabwe, and highlighting the role of frontier-based efficiency measurement in the assessment of pension fund performance. The statement of the problem is presented as a concise articulation of the efficiency measurement gap in the Zimbabwean pension sector. The chapter further sets out the research objectives, research questions, and research hypothesis, and discusses the significance, scope, assumptions, and limitations of the study.
+
+\textbf{Chapter Two: Literature Review.} This chapter presents a comprehensive review of the theoretical and empirical literature relevant to pension fund efficiency measurement. The conceptual framework underpinning the study is established, followed by a review of theoretical foundations including production frontier theory, Data Envelopment Analysis methodology, scale efficiency concepts, and institutional governance theory. The empirical review surveys DEA applications to pension funds and related financial institutions across developed and developing economies, with particular attention to the benchmark study by Chrysanthopoulou, Mavrommati and Migdalas (2023). The chapter concludes by identifying the specific research gap that this study addresses.
+
+\textbf{Chapter Three: Research Methodology.} This chapter outlines the research design and methodology adopted for the study. A quantitative research design based on Data Envelopment Analysis is justified as the most appropriate framework for the objectives of the study. The target population, sampling approach, data collection instruments, and secondary data sources are described. The DEA model is formulated in full, including the CCR (CRS) and BCC (VRS) linear programming specifications and the formula for deriving scale efficiency. The data analysis tools and procedures are also presented in this chapter.
+
+\textbf{Chapter Four: Data Analysis and Presentation.} This chapter presents the results of applying the DEA model to the collected data. Statistical diagnostic tests are reported, followed by the DEA efficiency scores for each decision-making unit under both the CRS and VRS assumptions. The decomposition of technical efficiency into pure technical efficiency and scale efficiency is presented, and the returns-to-scale characteristics of each fund are identified. Data interpretation is provided alongside tables and figures that support the empirical findings, and the results are discussed in the context of the research questions and hypotheses.
+
+\textbf{Chapter Five: Research Findings, Conclusions and Recommendations.} The final chapter synthesises the main findings of the study and draws conclusions with respect to the efficiency of pension funds in Zimbabwe. Recommendations are formulated for pension fund managers, regulators, and policymakers based on the empirical evidence. The chapter also identifies directions for future research and reflects on the contribution of the study to the financial engineering literature on pension fund efficiency in emerging markets.
 
 % ============================================
 % 1.12 CHAPTER SUMMARY
 % ============================================
 \section{Chapter Summary}
 
-This chapter introduced the study and outlined its objectives, significance, and scope.
+This chapter introduced the study and established the foundation for a frontier-based efficiency analysis of pension funds in Zimbabwe. The background to the study traced the historical development of pension funds from their nineteenth-century origins to the multi-pillar architectures prevalent in contemporary economies, and contextualised the development of Zimbabwe's pension sector within the country's unique macroeconomic history, including the impact of hyperinflation and currency instability on pension fund sustainability. The evolution of efficiency measurement techniques in financial institutions was reviewed, highlighting the transition from traditional performance indicators to frontier-based methods, and the emergence of Data Envelopment Analysis as the predominant non-parametric tool for evaluating relative efficiency.
+
+The statement of the problem identified the absence of a rigorous, optimisation-based efficiency framework for Zimbabwean pension funds as the central research gap. The primary research objective --- to evaluate the technical efficiency of selected pension funds in Zimbabwe using DEA --- was set out, supported by four secondary objectives covering benchmarking against the efficiency frontier, decomposition of efficiency into pure technical and scale components, identification of the key determinants of inefficiency, and the generation of policy-relevant empirical evidence. Corresponding research questions and a formal null and alternative hypothesis were formulated.
+
+The significance of the study was discussed from academic, methodological, and policy perspectives, demonstrating that the study fills a geographical and institutional gap in the frontier efficiency literature while providing practical benchmarking tools for pension fund regulators and managers. The scope of the study was defined as the formal registered pension sector in Zimbabwe over a five-year study period, and the key assumptions underlying the DEA framework were stated. The limitations of the study --- including data availability constraints, macroeconomic distortions, DEA's deterministic nature, and the absence of environmental variables --- were acknowledged to ensure transparency in the interpretation of findings. The chapter concluded with an overview of the five-chapter structure of the study.
 
 \newpage
 
@@ -317,17 +357,27 @@ Overall, the conceptual framework establishes a structured link between pension 
 % ============================================
 \section{Theoretical Literature}
 
-The theoretical underpinnings of efficiency analysis in financial institutions, particularly pension funds, are grounded in production and optimisation theory. Technical efficiency theory conceptualises efficiency as the ability of a decision-making unit to maximise outputs for a given set of inputs or, conversely, to minimise inputs for a required level of outputs (Farrell, 1957; Charnes, Cooper and Rhodes, 1978). In the context of pension funds, this framework positions pension schemes as production units that convert financial and operational resources into retirement income and benefit obligations, making efficiency measurement critical for evaluating performance and sustainability.
+\subsection{Production Frontier Theory and Technical Efficiency}
 
-Contemporary empirical research continues to extend the foundational efficiency theory into nuanced applications tailored for financial services. In recent studies, Data Envelopment Analysis (DEA) remains the predominant non-parametric optimisation technique for modelling relative efficiency without imposing a predefined functional form on the data (Coelli et al., 1998; Avkiran, 1999). DEA's basis in linear programming allows for multi-input and multi-output evaluations, which mirror the complex nature of pension fund operations where managers simultaneously balance administrative costs, asset growth, and financial outcomes.
+The theoretical underpinnings of efficiency analysis in financial institutions, particularly pension funds, are grounded in production and optimisation theory. Technical efficiency theory conceptualises efficiency as the ability of a decision-making unit to maximise outputs for a given set of inputs or, conversely, to minimise inputs for a required level of outputs (Farrell, 1957; Charnes, Cooper and Rhodes, 1978). In the context of pension funds, this framework positions pension schemes as production units that convert financial and operational resources into retirement income and benefit obligations, making efficiency measurement critical for evaluating performance and sustainability. Farrell's (1957) seminal decomposition of productive efficiency into technical and allocative components established the conceptual foundation upon which all subsequent frontier-based efficiency research is built, and remains the theoretical reference point for DEA-based studies of financial institutions.
 
-Recent empirical work has applied DEA to assess the technical efficiency of pension funds and related financial entities across different economies, signalling a broadening of the theoretical application of efficiency models. For example, Demirta\c{s} and Ke\c{c}eci (2020) use dynamic DEA to measure the efficiency of pension companies in Turkey, illustrating how traditional DEA models can be extended to account for intertemporal performance linkages. Similarly, studies such as Verberi and Kaplan (2026) employ DEA alongside other econometric and market structure models to evaluate technical efficiency and economies of scale among Turkish private pension providers, demonstrating how scale economics theoretically interacts with efficiency outcomes. These findings support theoretical assertions that larger organisational scale can both enhance and constrain efficiency, consistent with scale-efficiency decomposition in frontier analysis (Banker, Charnes and Cooper, 1984; Barros and Garcia, 2006).
+\subsection{Data Envelopment Analysis as an Efficiency Measurement Tool}
 
-Beyond traditional DEA models, recent theoretical advancements include network and dynamic DEA frameworks, which enrich the standard single-stage efficiency models to reflect internal structures or time-linked processes. Such frameworks align with theoretical models that decompose efficiency into operational sub-functions, recognising that managerial efficiency and investment strategy may contribute distinctly to overall performance (Seran et al., 2023; Demirta\c{s} and Ke\c{c}eci, 2020). These developments reflect a theoretical shift toward multi-stage performance modelling, where efficiency is not treated as a uniform construct but as a composite of function-specific efficiencies.
+Contemporary empirical research continues to extend the foundational efficiency theory into nuanced applications tailored for financial services. Data Envelopment Analysis (DEA) remains the predominant non-parametric optimisation technique for modelling relative efficiency without imposing a predefined functional form on the data (Coelli et al., 1998; Avkiran, 1999). DEA's basis in linear programming allows for multi-input and multi-output evaluations, which mirror the complex nature of pension fund operations where managers simultaneously balance administrative costs, asset growth, and financial outcomes. The CCR model (Charnes, Cooper and Rhodes, 1978) assumes constant returns to scale and provides an overall technical efficiency score, while the BCC model (Banker, Charnes and Cooper, 1984) relaxes this assumption to allow variable returns to scale, enabling the isolation of pure technical efficiency from scale effects.
 
-Theoretically, pension fund efficiency is also closely linked to economies of scale and organisational characteristics. Scale economics theory postulates that as firms increase in size, average costs may decline up to a point due to spreading fixed costs and leveraging bargaining power (Bikker and de Dreu, 2009). Recent empirical DEA research supports this theoretical link: larger pension providers often exhibit higher technical efficiency, although diminishing returns can emerge beyond optimal scale thresholds (Verberi and Kaplan, 2026). This aligns with theoretical models of scale efficiency, which differentiate between pure technical efficiency and scale efficiency as distinct sources of performance variation.
+Recent empirical work has applied DEA to assess the technical efficiency of pension funds and related financial entities across different economies, signalling a broadening of the theoretical application of efficiency models. For example, Demirta\c{s} and Ke\c{c}eci (2020) use dynamic DEA to measure the efficiency of pension companies in Turkey, illustrating how traditional DEA models can be extended to account for intertemporal performance linkages. Similarly, Verberi and Kaplan (2026) employ DEA alongside econometric and market structure models to evaluate technical efficiency and economies of scale among Turkish private pension providers, demonstrating how scale economics theoretically interacts with efficiency outcomes. These findings support theoretical assertions that larger organisational scale can both enhance and constrain efficiency, consistent with scale-efficiency decomposition in frontier analysis (Banker, Charnes and Cooper, 1984; Barros and Garcia, 2006).
 
-Furthermore, the theoretical literature recognises that efficiency measurement in financial institutions must consider institutional constraints and governance structures that influence managerial decision-making. Although less of a focus in pure optimisation models, organisational and governance theories emphasise that regulatory frameworks, risk management practices, and board structures shape the ability of funds to achieve efficient outcomes. These theoretical strands enrich DEA models by situating efficiency within a broader context of institutional behaviour and strategic choice.
+\subsection{Extensions: Network and Dynamic DEA Frameworks}
+
+Beyond traditional DEA models, recent theoretical advancements include network and dynamic DEA frameworks, which enrich the standard single-stage efficiency models to reflect internal structures or time-linked processes. Such frameworks align with theoretical models that decompose efficiency into operational sub-functions, recognising that managerial efficiency and investment strategy may contribute distinctly to overall performance (Seran et al., 2023; Demirta\c{s} and Ke\c{c}eci, 2020). These developments reflect a theoretical shift toward multi-stage performance modelling, where efficiency is not treated as a uniform construct but as a composite of function-specific efficiencies. Network DEA, in particular, allows the modelling of internal processes within a DMU, such as the separation of investment management efficiency from administrative efficiency within a pension fund.
+
+\subsection{Scale Efficiency and Economies of Scale}
+
+Theoretically, pension fund efficiency is also closely linked to economies of scale and organisational characteristics. Scale economics theory postulates that as firms increase in size, average costs may decline up to a point due to spreading fixed costs and leveraging bargaining power (Bikker and de Dreu, 2009). Recent empirical DEA research supports this theoretical link: larger pension providers often exhibit higher technical efficiency, although diminishing returns can emerge beyond optimal scale thresholds (Verberi and Kaplan, 2026). This aligns with theoretical models of scale efficiency, which differentiate between pure technical efficiency and scale efficiency as distinct sources of performance variation. For pension fund regulators, this theoretical insight implies that consolidation policies may improve scale efficiency, but only up to the point of optimal fund size.
+
+\subsection{Institutional Governance and Regulatory Frameworks}
+
+Furthermore, the theoretical literature recognises that efficiency measurement in financial institutions must consider institutional constraints and governance structures that influence managerial decision-making. Although less of a focus in pure optimisation models, organisational and governance theories emphasise that regulatory frameworks, risk management practices, and board structures shape the ability of funds to achieve efficient outcomes. These theoretical strands enrich DEA models by situating efficiency within a broader context of institutional behaviour and strategic choice. In the Zimbabwean context, the regulatory environment governed by IPEC, combined with macroeconomic constraints, provides an important institutional backdrop that shapes the efficiency outcomes observed in the empirical analysis.
 
 Taken together, the theoretical literature suggests that efficiency modelling in pension funds must integrate multiple theoretical constructs --- production frontier theory, scale economics, organisational governance, and dynamic optimisation --- to capture the multifaceted nature of pension performance. DEA continues to serve as the core theoretical and methodological tool for operationalising these concepts in empirical research, offering a flexible and rigorous framework for measuring both technical and scale efficiency in complex financial environments.
 
@@ -338,17 +388,29 @@ Taken together, the theoretical literature suggests that efficiency modelling in
 
 Empirical studies on pension fund efficiency using Data Envelopment Analysis (DEA) have grown in recent years, particularly across emerging and developed economies. These studies provide benchmarks for methodology, input--output choices, and efficiency decomposition, and are directly relevant to the empirical design of this Zimbabwean pension fund investigation.
 
-In a study examining the efficiency of mandatory pension funds, researchers applied DEA to a sample of 12 funds in Croatia for the period 2015--2018. The findings indicated relatively small differences in technical efficiency scores among funds, suggesting that most operated close to best practice within a homogenous institutional environment (Dra\v{z}enovi\'{c}, Hod\v{z}i\'{c} and Maradin, 2019).
+\subsection{Pension Fund Efficiency in European Economies}
 
-Advancing beyond traditional single-stage DEA, Seran et al. (2023) applied a two-stage additive network DEA to Indonesian pension funds to capture sub-process efficiencies such as operational and investment management. Their results showed that investment efficiency was the main source of overall inefficiency, underscoring the importance of modelling internal fund processes rather than treating the pension fund as a `black box.' This network DEA approach provides guidance on capturing multi-stage dynamics in fund performance.
+In a study examining the efficiency of mandatory pension funds, researchers applied DEA to a sample of 12 funds in Croatia for the period 2015--2018. The findings indicated relatively small differences in technical efficiency scores among funds, suggesting that most operated close to best practice within a homogenous institutional environment (Dra\v{z}enovi\'{c}, Hod\v{z}i\'{c} and Maradin, 2019). This result is consistent with the expectation that mandatory funds operating under a uniform regulatory regime and similar investment mandates will exhibit relatively low efficiency dispersion, in contrast to voluntary occupational funds where strategic heterogeneity is greater.
 
-Empirical evidence from the African context also points to practical applications of DEA in pension funds. A recent study on pension fund offices in Tanzania used the BCC DEA model to evaluate efficiency across administrative and output metrics, finding that no decision-making unit achieved full efficiency and that operational inputs significantly influenced inefficiency outcomes. Such evidence underscores the relevance of non-parametric methods in African pension fund evaluations.
+\subsection{Network and Multi-Stage DEA Applications}
 
-At the macro sector level, empirical work in Turkey (Verberi and Kaplan, 2026) assessed private pension firms using a DEA-based efficiency measurement combined with additional econometric analyses to examine scale economies and market structure. Their results found that larger pension firms generally displayed higher efficiency, though diminishing returns were observed at very high asset scales, indicating that scale effects are not always uniformly beneficial for pension fund performance.
+Advancing beyond traditional single-stage DEA, Seran et al. (2023) applied a two-stage additive network DEA to Indonesian pension funds to capture sub-process efficiencies such as operational and investment management. Their results showed that investment efficiency was the main source of overall inefficiency, underscoring the importance of modelling internal fund processes rather than treating the pension fund as a `black box.' This network DEA approach provides guidance on capturing multi-stage dynamics in fund performance and highlights the value of decomposing overall efficiency into its functional components when informing managerial decisions.
 
-In addition to purely DEA-centric work, several empirical pension studies integrate DEA with regression analysis to explore determinants of efficiency. For example, some researchers have combined technical efficiency scores from DEA with second-stage regression models to examine the influence of fund characteristics such as age, size, and contribution rates on efficiency outcomes. While specific to another context, such hybrid methods offer methodological precedence for incorporating determinant analysis into pension efficiency research.
+\subsection{Evidence from the African Context}
 
-Other applied DEA research highlights methodological enhancements relevant for pension funds. For instance, dynamic DEA models have been employed to account for intertemporal links between performance periods, improving discriminatory power over conventional DEA models. Such approaches can be particularly useful for pension fund studies where performance evolves over time.
+Empirical evidence from the African context also points to practical applications of DEA in pension funds. A recent study on pension fund offices in Tanzania used the BCC DEA model to evaluate efficiency across administrative and output metrics, finding that no decision-making unit achieved full efficiency and that operational inputs significantly influenced inefficiency outcomes. Such evidence underscores the relevance of non-parametric methods in African pension fund evaluations and provides a directly comparable regional precedent for the Zimbabwean analysis in this study. The findings from Tanzania suggest that pension funds in Sub-Saharan Africa frequently operate with excess inputs relative to best-practice peers, a pattern consistent with the structural and institutional challenges documented in Zimbabwe's pension sector (IPEC, 2023).
+
+\subsection{Scale Effects and Market Structure}
+
+At the macro sector level, empirical work in Turkey (Verberi and Kaplan, 2026) assessed private pension firms using a DEA-based efficiency measurement combined with additional econometric analyses to examine scale economies and market structure. Their results found that larger pension firms generally displayed higher efficiency, though diminishing returns were observed at very high asset scales, indicating that scale effects are not always uniformly beneficial for pension fund performance. This empirical finding corroborates the theoretical predictions of scale economics theory and has direct implications for the Zimbabwean context, where the co-existence of large self-administered funds and small insured funds implies significant scale heterogeneity within the sector.
+
+\subsection{Hybrid DEA and Determinant Analysis}
+
+In addition to purely DEA-centric work, several empirical pension studies integrate DEA with regression analysis to explore determinants of efficiency. Some researchers have combined technical efficiency scores from DEA with second-stage regression models --- such as Tobit regression --- to examine the influence of fund characteristics such as age, size, contribution rates, and governance quality on efficiency outcomes. While specific to other institutional contexts, such hybrid methods offer methodological precedence for incorporating determinant analysis into pension efficiency research and could serve as the basis for extensions to the present study in future work.
+
+\subsection{Dynamic DEA and Intertemporal Efficiency}
+
+Other applied DEA research highlights methodological enhancements relevant for pension funds. Dynamic DEA models have been employed to account for intertemporal links between performance periods, improving discriminatory power over conventional static DEA models. Such approaches capture the carry-over effect of assets and liabilities from one period to the next, which is particularly relevant for pension funds where investment decisions in one year affect financial outcomes in subsequent years. Demirta\c{s} and Ke\c{c}eci (2020) demonstrated the applicability of dynamic DEA to Turkish private pension companies, showing that static efficiency scores may overstate or understate true performance when intertemporal dependencies are ignored. Such approaches can be particularly useful for pension fund studies where performance evolves over time.
 
 Overall, the empirical literature illustrates that DEA remains a robust and adaptable tool for evaluating pension fund efficiency across different institutional settings. These studies justify the choice of DEA in pension fund research and offer methodological variants --- such as network DEA and hybrid analyses --- that can be considered when assessing technical and scale efficiency in less-studied contexts like Zimbabwe.
 
@@ -456,29 +518,29 @@ The present study adopts a hybrid approach consistent with Chrysanthopoulou, Mav
 \centering
 \begin{tikzpicture}[
     node distance=1.5cm,
-    box/.style={rectangle, draw, rounded corners, minimum width=3cm, minimum height=1cm, text centered, font=\small},
+    box/.style={rectangle, draw, rounded corners, minimum width=3cm, minimum height=1cm, align=center, font=\small},
     arrow/.style={-{Stealth[length=3mm]}, thick}
 ]
 \node[box, fill=blue!20] (inputs) {
-    \textbf{INPUTS}\\[2pt]
+    \textbf{INPUTS}\\
     \footnotesize Total Assets\\
     \footnotesize Operating Expenses\\
     \footnotesize Total Equity \& Debt
 };
 \node[box, fill=orange!30, right=3cm of inputs] (dmu) {
-    \textbf{DMU}\\[2pt]
+    \textbf{DMU}\\
     \footnotesize Pension Fund\\
     \footnotesize (Decision-Making Unit)
 };
 \node[box, fill=green!25, right=3cm of dmu] (outputs) {
-    \textbf{OUTPUTS}\\[2pt]
+    \textbf{OUTPUTS}\\
     \footnotesize Net Investment Income\\
     \footnotesize Members' Contributions
 };
 \draw[arrow] (inputs) -- (dmu);
 \draw[arrow] (dmu) -- (outputs);
 \node[box, fill=red!20, below=1.5cm of dmu] (frontier) {
-    \textbf{DEA FRONTIER}\\[2pt]
+    \textbf{DEA FRONTIER}\\
     \footnotesize Efficiency Score $\theta^* \in [0,1]$\\
     \footnotesize CRS (CCR) \& VRS (BCC)
 };
@@ -588,7 +650,25 @@ The research relied on secondary data meaning no original research instruments w
 
 \subsection*{Model Outline}
 
-The DEA model is formulated as a linear programming problem. For each DMU $o$, the input-oriented efficiency score $\theta^*$ is obtained by solving:
+The DEA methodology applied in this study follows the framework established by Chrysanthopoulou, Mavrommati and Migdalas (2023) in their assessment of Greek occupational pension funds, adapted to the Zimbabwean institutional context. The analytical process is structured into five sequential stages, as described below.
+
+\subsubsection*{Stage 1: Variable Selection and Data Preparation}
+
+The first stage involves the selection of input and output variables consistent with the intermediation approach to pension fund production and the variable specifications validated in the benchmark literature. Three input variables and two output variables are specified as follows:
+
+\begin{description}[noitemsep]
+    \item[Input 1 --- Total Assets ($x_1$):] The total book value of assets under management, representing the scale of operations and the financial resources available to the fund.
+    \item[Input 2 --- Total Operating Expenses ($x_2$):] Administrative and operational costs incurred in managing the fund, capturing managerial resource utilisation and cost efficiency.
+    \item[Input 3 --- Total Equity and Debt ($x_3$):] Net assets plus total liabilities, reflecting the financial structure and overall funding capacity of the pension fund.
+    \item[Output 1 --- Net Investment Income ($y_1$):] Profits generated from the investment of fund assets, representing the primary financial outcome of pension fund operations.
+    \item[Output 2 --- Members' Contributions ($y_2$):] Total contributions received from active members and sponsoring employers during the period, representing the fund's ability to attract and retain a contribution base.
+\end{description}
+
+All data reported in Zimbabwe Gold (ZWG) is converted to USD-equivalent values at the official exchange rate prevailing on the date of each financial statement, in accordance with the approach adopted by Chrysanthopoulou, Mavrommati and Migdalas (2023) for currency-adjusted comparisons.
+
+\subsubsection*{Stage 2: CCR Model --- Constant Returns to Scale (CRS) DEA}
+
+The second stage applies the input-oriented CCR model, introduced by Charnes, Cooper and Rhodes (1978), which assumes Constant Returns to Scale (CRS). For each DMU $o$ (pension fund), the CRS technical efficiency score $\theta^*_{\text{CRS}}$ is obtained by solving the following linear programme:
 
 \begin{equation}
 \min_{\theta, \lambda} \; \theta
@@ -601,13 +681,60 @@ subject to:
 \lambda_j &\geq 0, \quad j = 1, \ldots, n
 \end{align}
 
-where $x_{ij}$ denotes the $i$-th input of the $j$-th DMU, $y_{rj}$ denotes the $r$-th output of the $j$-th DMU, $\lambda_j$ are the intensity variables, and $\theta$ is the efficiency score for DMU $o$. A value of $\theta^* = 1$ indicates full technical efficiency, while $\theta^* < 1$ indicates inefficiency.
+where $x_{ij}$ denotes the $i$-th input of the $j$-th DMU, $y_{rj}$ denotes the $r$-th output of the $j$-th DMU, $\lambda_j$ are the intensity (peer weight) variables, and $\theta \in (0,1]$ is the radial efficiency score for DMU $o$. A value of $\theta^*_{\text{CRS}} = 1$ indicates full CRS technical efficiency, while $\theta^*_{\text{CRS}} < 1$ indicates that the fund operates inside the CRS efficiency frontier and could achieve the same output levels with $\theta^* \times 100\%$ of its current inputs.
 
-To allow for variable returns to scale (VRS), the convexity constraint $\sum_{j=1}^{n} \lambda_j = 1$ is added, yielding the BCC model (Banker, Charnes and Cooper, 1984). The CRS model (Charnes, Cooper and Rhodes, 1978) omits this constraint. Scale efficiency (SE) is then computed as:
+\subsubsection*{Stage 3: BCC Model --- Variable Returns to Scale (VRS) DEA}
+
+The third stage applies the BCC model introduced by Banker, Charnes and Cooper (1984), which relaxes the CRS assumption by imposing a convexity constraint on the intensity variables, thereby allowing for Variable Returns to Scale (VRS). The VRS pure technical efficiency score $\theta^*_{\text{VRS}}$ is obtained by solving the CCR programme with the additional constraint:
 
 \begin{equation}
-\text{SE} = \frac{\theta^*_{\text{CRS}}}{\theta^*_{\text{VRS}}}
+\sum_{j=1}^{n} \lambda_j = 1
 \end{equation}
+
+The VRS model isolates \textit{pure technical efficiency} (PTE) --- reflecting managerial efficiency net of scale effects --- from the overall CRS efficiency score. By construction, $\theta^*_{\text{VRS}} \geq \theta^*_{\text{CRS}}$ for all DMUs, since the VRS frontier is at least as permissive as the CRS frontier.
+
+\subsubsection*{Stage 4: Scale Efficiency Computation}
+
+The fourth stage derives the scale efficiency (SE) score for each pension fund as the ratio of CRS technical efficiency to VRS pure technical efficiency:
+
+\begin{equation}
+\text{SE}_o = \frac{\theta^*_{\text{CRS},o}}{\theta^*_{\text{VRS},o}}
+\end{equation}
+
+A scale efficiency score of $\text{SE}_o = 1$ indicates that the fund operates at the most productive scale size (optimal scale), meaning scale does not contribute to overall inefficiency. A value of $\text{SE}_o < 1$ indicates scale inefficiency, which may arise from either increasing returns to scale (IRS) --- where the fund is operating below optimal scale --- or decreasing returns to scale (DRS) --- where the fund has exceeded its optimal scale. The nature of the returns to scale for each fund is determined by solving the non-increasing returns to scale (NIRS) DEA model and comparing the NIRS and VRS scores: if $\theta^*_{\text{NIRS}} = \theta^*_{\text{VRS}}$, the fund exhibits DRS; if $\theta^*_{\text{NIRS}} \neq \theta^*_{\text{VRS}}$, the fund exhibits IRS.
+
+\subsubsection*{Stage 5: Peer Analysis and Target Setting}
+
+The fifth stage identifies the peer group (reference set) for each inefficient fund. The peer set comprises the efficient DMUs (those with $\theta^* = 1$) whose linear combination defines the projected target on the efficiency frontier for a given inefficient fund. The input targets for an inefficient fund $o$ are computed as:
+
+\begin{equation}
+\hat{x}_{io} = \theta^*_{\text{CRS}} \cdot x_{io} - s^-_i, \quad i = 1, \ldots, m
+\end{equation}
+
+where $s^-_i \geq 0$ are the input slack variables representing excess input usage beyond the radial reduction. The $\lambda_j$ weights associated with efficient peers indicate the relative contribution of each benchmark fund to the efficiency target of the inefficient unit.
+
+Peer analysis thus enables the identification of best-practice pension funds within the Zimbabwean sample and provides actionable benchmarks for inefficient funds. The peer frequencies --- the number of times an efficient fund appears in the reference set of inefficient funds --- are also reported as an indicator of the robustness of the efficiency frontier.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.0cm,
+    box/.style={rectangle, draw, rounded corners, minimum width=4.5cm, minimum height=1cm, text centered, font=\small, fill=blue!10},
+    arrow/.style={-{Stealth[length=3mm]}, thick}
+]
+\node[box] (s1) {Stage 1: Variable Selection \& Data Preparation};
+\node[box, below=0.6cm of s1] (s2) {Stage 2: CCR (CRS) DEA Model};
+\node[box, below=0.6cm of s2] (s3) {Stage 3: BCC (VRS) DEA Model};
+\node[box, below=0.6cm of s3] (s4) {Stage 4: Scale Efficiency Computation};
+\node[box, below=0.6cm of s4] (s5) {Stage 5: Peer Analysis \& Target Setting};
+\draw[arrow] (s1) -- (s2);
+\draw[arrow] (s2) -- (s3);
+\draw[arrow] (s3) -- (s4);
+\draw[arrow] (s4) -- (s5);
+\end{tikzpicture}
+\caption{Five-stage DEA modelling framework applied to Zimbabwean pension fund efficiency analysis. Adapted from Chrysanthopoulou, Mavrommati and Migdalas (2023).}
+\label{fig:dea_stages}
+\end{figure}
 
 \subsection*{Data Presentation and Analysis}
 
