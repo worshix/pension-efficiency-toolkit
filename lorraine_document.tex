@@ -753,11 +753,169 @@ Peer analysis thus enables the identification of best-practice pension funds wit
 Data analysis will be conducted using Python for its versatility in handling complex datasets, MATLAB for advanced computations and simulations, and Pine Script for testing trading strategies on TradingView. Microsoft Excel will be used for data management, processing, and visualization.
 
 % ============================================
-% 3.7 CHAPTER SUMMARY
+% 3.7 MACHINE LEARNING ENHANCEMENTS TO THE DEA MODEL
+% ============================================
+\section{Machine Learning Enhancements to the DEA Framework}
+
+While the two-stage DEA framework described in the preceding sections provides a robust and well-validated methodology for evaluating pension fund efficiency, the standard DEA approach carries inherent limitations: it is deterministic, sensitive to small sample sizes, and assumes that all deviations from the efficiency frontier are attributable to inefficiency rather than statistical noise (Simar and Wilson, 2007). In the Zimbabwean context, these limitations are amplified by the small number of registered pension funds available for analysis and the presence of macroeconomic volatility that introduces noise into financial statements. To address these methodological constraints, this study incorporates targeted machine learning enhancements that complement the core DEA framework without displacing it as the primary analytical tool.
+
+The integration of machine learning with DEA has gained increasing attention in the operations research and financial economics literature, with several studies demonstrating that hybrid DEA--ML frameworks can improve the statistical robustness of efficiency scores, enable non-linear analysis of efficiency determinants, and provide richer managerial insights than standard DEA alone (Emrouznejad and Shale, 2009; Kaffash et al., 2020). The enhancement strategy adopted in this study is structured as a three-stage hybrid framework, detailed in the sections that follow.
+
+\subsection{Rationale for Machine Learning Integration}
+
+The standard DEA model applied in Stages 2 through 5 of the analytical framework is a linear programming-based technique that is highly sensitive to finite-sample bias. With a limited number of Zimbabwean pension funds in the sample, raw DEA efficiency scores may overstate true efficiency because the frontier is constructed from a small number of observations, leaving limited room for outliers to define the boundary without distortion. This is a well-documented challenge in DEA applications to small populations (Simar and Wilson, 2007; Banker et al., 1993).
+
+Furthermore, the operating environment of Zimbabwean pension funds is characterised by complex, non-linear interactions among macroeconomic variables such as inflation, exchange rates, and interest rates, which influence efficiency outcomes in ways that simple Tobit regression --- the traditional second-stage determinant analysis tool --- cannot adequately capture (Simar and Wilson, 2007). Machine learning methods, by contrast, are designed to model non-linear relationships and can identify complex interaction effects among efficiency determinants without requiring the imposition of a parametric functional form.
+
+The machine learning enhancements adopted in this study serve three distinct purposes:
+
+\begin{enumerate}[noitemsep]
+    \item To validate input variable independence and address multicollinearity in the DEA specification through Principal Component Analysis (PCA);
+    \item To correct for finite-sample bias in DEA efficiency scores through bootstrap resampling using the Simar--Wilson procedure; and
+    \item To replace Tobit regression with a Random Forest model for second-stage determinant analysis, capturing non-linear macroeconomic and structural influences on efficiency scores.
+\end{enumerate}
+
+\subsection{Bootstrap DEA and the Simar--Wilson Bias Correction Procedure}
+
+The first machine learning enhancement is the application of the Simar and Wilson (2007) bootstrap procedure to correct for finite-sample bias in the raw DEA efficiency scores. Without this correction, efficiency scores derived from small samples are statistically biased upward: because the empirical frontier is constructed from observed data points, scores mechanically concentrate near the frontier in small samples even when true efficiency levels are lower (Simar and Wilson, 2007).
+
+The bootstrapping procedure generates $B = 2{,}000$ pseudo-samples by resampling with replacement from the observed pension fund data, re-estimating the DEA efficiency frontier for each bootstrap sample, and computing bias-corrected efficiency scores together with confidence intervals. The bias-corrected efficiency score $\hat{\theta}^*_{\text{BIAS}}$ for each DMU $o$ is computed as:
+
+\begin{equation}
+    \hat{\theta}^*_{\text{BIAS},o} = \hat{\theta}^*_o - \widehat{\text{BIAS}}_B\!\left(\hat{\theta}^*_o\right)
+\end{equation}
+
+where the bootstrap bias estimate is:
+
+\begin{equation}
+    \widehat{\text{BIAS}}_B\!\left(\hat{\theta}^*_o\right) = \frac{1}{B} \sum_{b=1}^{B} \hat{\theta}^{*,b}_o - \hat{\theta}^*_o
+\end{equation}
+
+Here, $\hat{\theta}^*_o$ is the original DEA efficiency score for fund $o$, $\hat{\theta}^{*,b}_o$ is the efficiency score estimated from the $b$-th bootstrap pseudo-sample, and $B$ is the total number of bootstrap replications. The resulting bias-corrected scores provide a statistically rigorous alternative to the raw DEA scores, and the associated 95\% confidence intervals allow inference about whether observed efficiency differences between funds are statistically meaningful.
+
+This procedure directly addresses the limitation acknowledged in Section~1.10 of this study, namely, that standard DEA is a deterministic method that assigns all deviations from the frontier to inefficiency, including variation attributable to statistical noise. By explicitly quantifying sampling uncertainty, the Simar--Wilson procedure yields efficiency estimates that are more reliable for policy inference and cross-fund benchmarking.
+
+\subsection{Random Forest Model for Second-Stage Determinant Analysis}
+
+\subsubsection{Motivation and Model Selection}
+
+The second and primary machine learning enhancement is the application of a Random Forest regression model in the second stage of the analysis, replacing the conventional Tobit regression approach. Random Forest was selected as the approved ML method for this study based on its demonstrated advantages over parametric regression models in contexts characterised by small sample sizes, non-linear relationships, and multiple interacting predictors (Breiman, 2001).
+
+In the Zimbabwean pension fund context, the determinants of efficiency are unlikely to exert purely linear, additive effects on efficiency scores. Inflation, for instance, may have a differential impact depending on fund size: small insured funds may be disproportionately affected by inflation-driven erosion of real asset values, while large self-administered funds may have greater capacity to hedge through diversified asset allocation and direct property investment. Such interaction effects are naturally captured by tree-based ensemble methods but are obscured within standard linear regression frameworks. Furthermore, with a small number of DMUs and potentially more candidate environmental variables than observations, the parametric constraints of Tobit regression create a risk of over-fitting; Random Forest's use of bootstrap aggregation and random feature subsampling provides inherent regularisation that mitigates this risk.
+
+\subsubsection{Random Forest Model Specification}
+
+The Random Forest is an ensemble learning method that constructs $T$ independently trained decision trees, each fitted on a bootstrap resample of the training data, and aggregates their predictions to yield a final regression estimate (Breiman, 2001). For second-stage efficiency determinant analysis, the Random Forest is specified as:
+
+\begin{equation}
+    \hat{\theta}_{\text{BIAS},i} = f(\mathbf{z}_i) + \varepsilon_i
+\end{equation}
+
+where $\hat{\theta}_{\text{BIAS},i}$ is the bias-corrected DEA efficiency score for pension fund $i$ (the response variable), $\mathbf{z}_i = (z_{i1}, z_{i2}, \ldots, z_{ip})^{\top}$ is a vector of environmental and structural determinant variables, $f(\cdot)$ is the non-parametric Random Forest function approximator, and $\varepsilon_i$ is a residual error term. The final prediction for fund $i$ is the average of predictions across all $T$ trees:
+
+\begin{equation}
+    \hat{f}(\mathbf{z}_i) = \frac{1}{T} \sum_{t=1}^{T} f_t(\mathbf{z}_i)
+\end{equation}
+
+where $f_t(\mathbf{z}_i)$ is the prediction from the $t$-th decision tree. At each node of each tree, a random subset of $m_{\text{try}} = \lfloor p/3 \rfloor$ predictor variables is considered for splitting, reducing correlation among trees and improving ensemble generalisation. For this study, $T = 500$ trees are specified, consistent with standard practice in Random Forest applications to small financial datasets. Hyperparameters including tree depth, minimum leaf node size, and $m_{\text{try}}$ are tuned using $k$-fold cross-validation with $k = 5$, adapted to the constraints of the small sample, with out-of-bag (OOB) error serving as an additional in-sample diagnostic.
+
+\subsubsection{Candidate Determinant Variables}
+
+The environmental and structural variables included as candidate predictors in the Random Forest model are drawn from the macroeconomic and institutional literature on pension fund efficiency determinants. These variables are not incorporated directly into the DEA linear programme --- consistent with the standard two-stage approach --- but are used in the second stage to explain variation in bias-corrected efficiency scores:
+
+\begin{description}[noitemsep]
+    \item[Fund Size (log Total Assets):] Larger funds may exhibit higher efficiency due to economies of scale, consistent with the theoretical and empirical literature reviewed in Chapter~2. The natural logarithm is applied to reduce the influence of extreme size differences.
+    \item[Annual Inflation Rate (CPI Growth):] Zimbabwe's persistently high inflation directly erodes real asset values and may reduce measured efficiency by distorting input--output ratios. This variable captures aggregate macroeconomic pressure on fund operations.
+    \item[Exchange Rate Volatility:] Measured as the annualised standard deviation of the ZWG/USD exchange rate over each study year, capturing the extent of currency risk exposure and valuation uncertainty faced by funds.
+    \item[Fund Age:] Older, more established funds may have mature investment processes and governance structures that contribute to higher efficiency relative to newer entrants.
+    \item[Fund Type (Binary Indicator):] A categorical variable distinguishing self-administered standalone funds from insured or underwritten funds, capturing structural differences in operational mandates, investment discretion, and governance arrangements.
+    \item[Expense Ratio:] Total operating expenses expressed as a proportion of total assets, measuring the administrative cost burden relative to fund scale and reflecting managerial cost discipline.
+    \item[Returns-to-Scale Classification:] A binary indicator recording whether a fund exhibits increasing or decreasing returns to scale in the DEA analysis, allowing the Random Forest to detect whether scale-type moderates the relationship between environmental variables and efficiency.
+\end{description}
+
+\subsubsection{Variable Importance and Interpretability}
+
+A key advantage of Random Forest over parametric regression methods is its capacity to produce variable importance rankings, identifying which efficiency determinants exert the greatest aggregate influence on efficiency scores. This is particularly valuable for the policy objectives of this study, as it enables pension fund regulators and managers to prioritise interventions. Two complementary measures of variable importance are reported.
+
+The first is the mean decrease in impurity (MDI), which sums the total reduction in node variance attributable to each predictor variable across all trees and all nodes:
+
+\begin{equation}
+    \text{VI}_{\text{MDI}}(z_j) = \frac{1}{T} \sum_{t=1}^{T} \sum_{\substack{k \in \text{nodes}(t) \\ z_j \text{ used at } k}} \Delta\,\text{Var}(k)
+\end{equation}
+
+The second is the permutation-based mean decrease in accuracy (MDA), which measures the increase in OOB prediction error when the values of predictor $z_j$ are randomly permuted, thereby breaking the association between $z_j$ and the response:
+
+\begin{equation}
+    \text{VI}_{\text{MDA}}(z_j) = \frac{1}{T} \sum_{t=1}^{T} \left[\,\text{OOB Error}_{t}^{(\text{permuted})} - \text{OOB Error}_{t}^{(\text{original})}\,\right]
+\end{equation}
+
+A large MDA value for a predictor confirms that the variable provides genuine predictive signal for efficiency outcomes and is not merely correlated with the response through spurious associations. By combining MDI and MDA rankings, the study provides a robust picture of which macroeconomic and structural factors most significantly constrain or enable efficiency improvements among Zimbabwean pension funds.
+
+\subsection{Principal Component Analysis for Input Validation}
+
+Prior to the DEA estimation, Principal Component Analysis (PCA) is applied to validate the independence of the selected input variables. The three DEA inputs --- Total Assets ($x_1$), Total Operating Expenses ($x_2$), and Total Equity and Debt ($x_3$) --- are potentially correlated, as all three are financial statement items that tend to scale with fund size. High multicollinearity among DEA inputs can distort the efficiency frontier and inflate efficiency scores by introducing redundant information into the linear programme (Banker et al., 1993).
+
+PCA decomposes the standardised input matrix $\mathbf{X}$ into its principal components via eigendecomposition of the input covariance matrix $\boldsymbol{\Sigma}_X$:
+
+\begin{equation}
+    \mathbf{Z} = \mathbf{X}\,\mathbf{W}
+\end{equation}
+
+where $\mathbf{W}$ is the matrix of eigenvectors (loadings) of $\boldsymbol{\Sigma}_X$ ordered by descending eigenvalue, and $\mathbf{Z}$ contains the orthogonal principal component scores. The proportion of total variance explained by each component is reported. If the first two principal components account for more than 90\% of total input variance, this indicates that the three inputs effectively reduce to fewer independent dimensions, and a composite input specification is tested as a robustness check against the baseline DEA results.
+
+The PCA analysis is conducted in Python using the \texttt{scikit-learn} implementation, with inputs standardised to zero mean and unit variance prior to decomposition to ensure that scale differences between monetary variables do not dominate the component structure.
+
+\subsection{Three-Stage Machine Learning Enhanced Hybrid Framework}
+
+The machine learning enhancements described in Sections~3.7.2 through 3.7.4 are integrated with the core DEA model in a coherent three-stage hybrid analytical architecture that extends the five-stage DEA framework outlined in Section~3.6. The overall structure of the hybrid framework is illustrated in Figure~\ref{fig:ml_hybrid} below.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.5cm,
+    stage/.style={rectangle, draw, rounded corners, minimum width=6cm, minimum height=1.0cm, text centered, font=\small\bfseries, fill=blue!15},
+    substage/.style={rectangle, draw, rounded corners, minimum width=5.8cm, minimum height=0.7cm, text centered, font=\footnotesize, fill=gray!10},
+    arrow/.style={-{Stealth[length=3mm]}, thick},
+    bracket/.style={draw, thick, decorate}
+]
+\node[stage] (ml1) {ML Stage 1: PCA Input Validation};
+\node[substage, below=0.35cm of ml1] (ml1a) {Validate independence of $x_1$, $x_2$, $x_3$; test composite inputs};
+
+\node[stage, below=0.5cm of ml1a] (dea) {DEA Core: CCR (CRS) + BCC (VRS) Models};
+\node[substage, below=0.35cm of dea] (deaa) {Compute raw $\theta^*_{\text{CRS}}$, $\theta^*_{\text{VRS}}$, SE and peer sets};
+
+\node[stage, below=0.5cm of deaa] (ml2) {ML Stage 2: Simar--Wilson Bootstrap ($B = 2{,}000$)};
+\node[substage, below=0.35cm of ml2] (ml2a) {Bias-corrected scores $\hat{\theta}^*_{\text{BIAS}}$ with 95\% confidence intervals};
+
+\node[stage, below=0.5cm of ml2a] (ml3) {ML Stage 3: Random Forest Determinant Analysis};
+\node[substage, below=0.35cm of ml3] (ml3a) {MDI + MDA variable importance; non-linear determinants identified};
+
+\draw[arrow] (ml1) -- (ml1a);
+\draw[arrow] (ml1a) -- (dea);
+\draw[arrow] (dea) -- (deaa);
+\draw[arrow] (deaa) -- (ml2);
+\draw[arrow] (ml2) -- (ml2a);
+\draw[arrow] (ml2a) -- (ml3);
+\draw[arrow] (ml3) -- (ml3a);
+\end{tikzpicture}
+\caption{Three-stage machine learning enhanced DEA hybrid framework. PCA validates input independence prior to DEA estimation; Simar--Wilson bootstrapping corrects for finite-sample bias; the Random Forest model identifies non-linear macroeconomic and structural determinants of efficiency in the second stage. This framework extends the five-stage DEA model presented in Figure~\ref{fig:dea_stages}.}
+\label{fig:ml_hybrid}
+\end{figure}
+
+This hybrid architecture maintains DEA as the core analytical contribution --- consistent with the study's title, objectives, and alignment with the Chrysanthopoulou, Mavrommati and Migdalas (2023) benchmark --- while leveraging machine learning to address the principal methodological limitations of standard DEA in a small-sample, volatile-environment context. The structure responds directly to the limitations identified in Section~1.10, particularly the deterministic nature of DEA, sensitivity to input specification, and the absence of environmental variables in the core model. It is well-supported in recent methodological literature on hybrid DEA--ML approaches (Emrouznejad and Shale, 2009; Kaffash et al., 2020) and represents a methodological contribution that advances the pension fund efficiency literature beyond conventional two-stage DEA applications.
+
+\subsection{Implementation Tools}
+
+The machine learning enhancements are implemented in Python. The Random Forest model and PCA are executed using the \texttt{scikit-learn} library (version $\geq$1.3), leveraging the \texttt{RandomForestRegressor} and \texttt{PCA} modules respectively. The Simar--Wilson bootstrap procedure is implemented using custom resampling routines consistent with the algorithmic description in Simar and Wilson (2007), with $B = 2{,}000$ bootstrap replications sufficient to achieve stable bias and confidence interval estimates. All random operations are seeded for reproducibility. The DEA linear programmes for each bootstrap resample are solved using \texttt{scipy.optimize.linprog} with the revised simplex method. Model outputs, including bias-corrected efficiency scores, confidence intervals, and Random Forest variable importance rankings, are exported to structured data files and visualised using \texttt{matplotlib} and \texttt{seaborn}, with final tables formatted for inclusion in the research report.
+
+% ============================================
+% 3.8 CHAPTER SUMMARY
 % ============================================
 \section{Chapter Summary}
 
-This chapter presented the research design and methodology adopted for the study. A quantitative approach based on Data Envelopment Analysis was justified as the most appropriate framework for evaluating the relative technical efficiency of pension funds in Zimbabwe. The target population, sampling approach, data collection instruments, and analytical models were described in detail. The DEA linear programming formulation was outlined, including the decomposition of technical efficiency into pure technical efficiency and scale efficiency components. The subsequent chapter will present the results of applying this methodology to the collected data.
+This chapter presented the research design and methodology adopted for the study. A quantitative approach based on Data Envelopment Analysis was justified as the most appropriate framework for evaluating the relative technical efficiency of pension funds in Zimbabwe. The target population, sampling approach, data collection instruments, and analytical models were described in detail. The DEA linear programming formulation was outlined, including the decomposition of technical efficiency into pure technical efficiency and scale efficiency components.
+
+The chapter further introduced a three-stage machine learning enhancement framework designed to address the principal methodological limitations of standard DEA in a small-sample, volatile macroeconomic context. The framework comprises: Principal Component Analysis for validating the independence of the selected input variables prior to DEA estimation; the Simar--Wilson bootstrap bias correction procedure for producing statistically reliable, bias-adjusted efficiency scores with confidence intervals; and a Random Forest regression model for second-stage determinant analysis, which replaces conventional Tobit regression to capture non-linear and interaction effects among macroeconomic and structural determinants of pension fund efficiency. Together, these enhancements strengthen the analytical rigour of the study and expand its methodological contribution to the pension fund efficiency literature. The subsequent chapter will present the results of applying this hybrid methodology to the collected data.
 
 % ============================================
 % REFERENCES
@@ -773,6 +931,8 @@ This chapter presented the research design and methodology adopted for the study
 \begin{description}[style=nextline, leftmargin=0pt, labelwidth=0pt, itemsep=0.5em]
 
 \item Avkiran, N.K. (1999) `The evidence on efficiency gains: The role of mergers and the benefits to the public', \textit{Journal of Banking and Finance}, 23(7), pp. 991--1013.
+
+\item Breiman, L. (2001) `Random forests', \textit{Machine Learning}, 45(1), pp. 5--32.
 
 \item Banker, R.D., Charnes, A. and Cooper, W.W. (1984) `Some models for estimating technical and scale inefficiencies in data envelopment analysis', \textit{Management Science}, 30(9), pp. 1078--1092.
 
@@ -802,6 +962,8 @@ This chapter presented the research design and methodology adopted for the study
 
 \item Eling, M. and Luhnen, M. (2010) `Efficiency in the international insurance industry: A cross-country comparison', \textit{Journal of Banking and Finance}, 34(7), pp. 1497--1509.
 
+\item Emrouznejad, A. and Shale, E. (2009) `A combined neural network and DEA for measuring efficiency of large scale datasets', \textit{Computers and Industrial Engineering}, 56(1), pp. 249--254.
+
 \item Farrell, M.J. (1957) `The measurement of productive efficiency', \textit{Journal of the Royal Statistical Society, Series A}, 120(3), pp. 253--290.
 
 \item Insurance and Pensions Commission of Zimbabwe (IPEC) (2023) \textit{Annual Report 2022}. Harare: IPEC.
@@ -815,6 +977,8 @@ This chapter presented the research design and methodology adopted for the study
 \item OECD (2022) \textit{Pension Markets in Focus 2022}. Paris: OECD Publishing.
 
 \item Seran, T., Sari, D.K., Sari, R.N. and Anugerah, R. (2023) `Efficiency measurement of pension funds using two-stage additive network DEA', \textit{Cogent Business and Management}, 10(1), p. 2163067.
+
+\item Simar, L. and Wilson, P.W. (2007) `Estimation and inference in two-stage, semi-parametric models of production processes', \textit{Journal of Econometrics}, 136(1), pp. 31--64.
 
 \item Verberi, C. and Kaplan, M. (2026) `Technical efficiency and economies of scale in Turkish private pension firms: A DEA approach', \textit{Journal of Financial Regulation and Compliance}, 34(1), pp. 45--67.
 
