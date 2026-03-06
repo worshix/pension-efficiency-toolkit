@@ -62,4 +62,25 @@
 \contentsline {subsection}{\numberline {3.6.5}Three-Stage Machine Learning Enhanced Hybrid Framework}{39}{subsection.6.5}%
 \contentsline {subsection}{\numberline {3.6.6}Implementation Tools}{40}{subsection.6.6}%
 \contentsline {section}{\numberline {3.7}Chapter Summary}{41}{section.7}%
-\contentsline {section}{References}{42}{section.7}%
+\contentsline {section}{\textbf {CHAPTER 4: DATA ANALYSIS AND PRESENTATION}}{41}{section*.10}%
+\contentsline {section}{\numberline {4.1}Introduction}{42}{section.1}%
+\contentsline {section}{\numberline {4.2}Data Preparation and Descriptive Statistics}{42}{section.2}%
+\contentsline {subsection}{\numberline {4.2.1}Sample Selection and Data Collection}{42}{subsection.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Descriptive Statistics}{43}{subsection.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Correlation Analysis}{44}{subsection.2.3}%
+\contentsline {section}{\numberline {4.3}ML Stage 1: Principal Component Analysis for Input Validation}{45}{section.3}%
+\contentsline {section}{\numberline {4.4}CRS Technical Efficiency Results: CCR Model}{46}{section.4}%
+\contentsline {subsection}{\numberline {4.4.1}Annual Frequency Distribution of CRS Efficiency Scores}{46}{subsection.4.1}%
+\contentsline {section}{\numberline {4.5}VRS Technical Efficiency Results: BCC Model}{48}{section.5}%
+\contentsline {section}{\numberline {4.6}Scale Efficiency and Returns-to-Scale Analysis}{49}{section.6}%
+\contentsline {section}{\numberline {4.7}Peer Analysis and Target Setting}{50}{section.7}%
+\contentsline {subsection}{\numberline {4.7.1}Reference Sets for Inefficient Funds}{50}{subsection.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Input Slacks and Efficiency Targets}{51}{subsection.7.2}%
+\contentsline {section}{\numberline {4.8}ML Stage 2: Bootstrap Bias-Corrected Efficiency Scores}{52}{section.8}%
+\contentsline {section}{\numberline {4.9}ML Stage 3: Random Forest Determinant Analysis}{53}{section.9}%
+\contentsline {subsection}{\numberline {4.9.1}Model Performance}{53}{subsection.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Variable Importance Rankings}{53}{subsection.9.2}%
+\contentsline {subsection}{\numberline {4.9.3}Interpretation of Results}{54}{subsection.9.3}%
+\contentsline {section}{\numberline {4.10}Research Hypothesis Testing}{55}{section.10}%
+\contentsline {section}{\numberline {4.11}Chapter Summary}{56}{section.11}%
+\contentsline {section}{References}{58}{section.11}%
