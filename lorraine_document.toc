@@ -85,24 +85,24 @@
 \contentsline {section}{\numberline {4.11}Chapter Summary}{57}{section.11}%
 \contentsline {section}{\textbf {CHAPTER 5: RESEARCH FINDINGS, CONCLUSIONS AND RECOMMENDATIONS}}{58}{section*.25}%
 \contentsline {section}{\numberline {5.1}Introduction}{58}{section.1}%
-\contentsline {section}{\numberline {5.2}Summary of Findings}{59}{section.2}%
-\contentsline {subsection}{\numberline {5.2.1}Descriptive Analysis and Input Validation}{59}{subsection.2.1}%
+\contentsline {section}{\numberline {5.2}Summary of Findings}{58}{section.2}%
+\contentsline {subsection}{\numberline {5.2.1}Descriptive Analysis and Input Validation}{58}{subsection.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Technical Efficiency under Constant Returns to Scale}{59}{subsection.2.2}%
 \contentsline {subsection}{\numberline {5.2.3}Technical Efficiency under Variable Returns to Scale}{60}{subsection.2.3}%
 \contentsline {subsection}{\numberline {5.2.4}Scale Efficiency Decomposition}{60}{subsection.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Peer Analysis and Input Target Setting}{61}{subsection.2.5}%
+\contentsline {subsection}{\numberline {5.2.5}Peer Analysis and Input Target Setting}{60}{subsection.2.5}%
 \contentsline {subsection}{\numberline {5.2.6}Bootstrap Bias Correction}{61}{subsection.2.6}%
 \contentsline {subsection}{\numberline {5.2.7}Macroeconomic Determinants of Efficiency}{61}{subsection.2.7}%
 \contentsline {section}{\numberline {5.3}Conclusions}{62}{section.3}%
 \contentsline {subsection}{\numberline {5.3.1}Conclusion on Research Question 1: Technical Efficiency of Zimbabwean Pension Funds}{62}{subsection.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Conclusion on Research Question 2: The Role of Scale Effects}{63}{subsection.3.2}%
+\contentsline {subsection}{\numberline {5.3.2}Conclusion on Research Question 2: The Role of Scale Effects}{62}{subsection.3.2}%
 \contentsline {subsection}{\numberline {5.3.3}Conclusion on Research Question 3: Key Input Factors Contributing to Inefficiency}{63}{subsection.3.3}%
-\contentsline {section}{\numberline {5.4}Recommendations}{64}{section.4}%
+\contentsline {section}{\numberline {5.4}Recommendations}{63}{section.4}%
 \contentsline {subsection}{\numberline {5.4.1}Recommendations for Pension Fund Managers and Trustees}{64}{subsection.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Recommendations for the Insurance and Pensions Commission of Zimbabwe}{65}{subsection.4.2}%
+\contentsline {subsection}{\numberline {5.4.2}Recommendations for the Insurance and Pensions Commission of Zimbabwe}{64}{subsection.4.2}%
 \contentsline {subsection}{\numberline {5.4.3}Recommendations for National Policymakers}{65}{subsection.4.3}%
 \contentsline {section}{\numberline {5.5}Contribution to Knowledge}{66}{section.5}%
 \contentsline {section}{\numberline {5.6}Limitations of the Study}{67}{section.6}%
 \contentsline {section}{\numberline {5.7}Directions for Future Research}{68}{section.7}%
-\contentsline {section}{\numberline {5.8}Chapter Summary}{70}{section.8}%
+\contentsline {section}{\numberline {5.8}Chapter Summary}{69}{section.8}%
 \contentsline {section}{References}{71}{section.8}%

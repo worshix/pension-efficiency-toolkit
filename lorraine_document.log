@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  6 MAR 2026 13:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  6 MAR 2026 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1768,16 +1768,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [51]
-Overfull \hbox (80.2489pt too wide) in paragraph at lines 1270--1284
- [][] 
- []
-
-
 pdfTeX warning (ext4): destination with the same identifier (name{section.8}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1291 ...tstrap Bias-Corrected Efficiency Scores}
+l.1292 ...tstrap Bias-Corrected Efficiency Scores}
                                                   
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1788,7 +1783,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [52]
-Overfull \hbox (49.80534pt too wide) in paragraph at lines 1299--1320
+Overfull \hbox (49.80534pt too wide) in paragraph at lines 1300--1321
  [][] 
  []
 
@@ -1805,10 +1800,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.9}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1329 ...e 3: Random Forest Determinant Analysis}
+l.1330 ...e 3: Random Forest Determinant Analysis}
                                                   
-Overfull \hbox (9.02856pt too wide) in paragraph at lines 1329--1329
+Overfull \hbox (9.02856pt too wide) in paragraph at lines 1330--1330
 |[]\T1/cmr/bx/n/17.28 ML Stage 3: Ran-dom For-est De-ter-mi-nant Anal-
+ []
+
+Package pgfplots info on input line 1387: Using 'lua backend=false' for axis: x
+ coord trafo unsupported.
+
+Overfull \hbox (53.21875pt too wide) in paragraph at lines 1398--1399
+ [][] 
  []
 
 
@@ -1820,13 +1822,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [54]
-Package pgfplots info on input line 1386: Using 'lua backend=false' for axis: x
- coord trafo unsupported.
-
-Overfull \hbox (53.21875pt too wide) in paragraph at lines 1397--1398
- [][] 
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1840,7 +1835,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.10})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1413 \section{Research Hypothesis Testing}
+l.1414 \section{Research Hypothesis Testing}
                                             
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1855,7 +1850,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.11})
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1431 \section{Chapter Summary}
+l.1432 \section{Chapter Summary}
                                 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1870,19 +1865,19 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.1}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1456 \section{Introduction}
+l.1457 \section{Introduction}
                              
 pdfTeX warning (ext4): destination with the same identifier (name{section.2}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1463 \section{Summary of Findings}
+l.1464 \section{Summary of Findings}
                                     
 pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1465 ...scriptive Analysis and Input Validation}
+l.1466 ...scriptive Analysis and Input Validation}
                                                   
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1897,7 +1892,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.
 2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1471 ...iciency under Constant Returns to Scale}
+l.1472 ...iciency under Constant Returns to Scale}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.
+3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1478 ...iciency under Variable Returns to Scale}
                                                   
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1908,12 +1909,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [59]
-pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.
-3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1477 ...iciency under Variable Returns to Scale}
-                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1936,19 +1931,26 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.3}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1504 \section{Conclusions}
+l.1505 \section{Conclusions}
                             
 pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1508 ... Efficiency of Zimbabwean Pension Funds}
+l.1509 ... Efficiency of Zimbabwean Pension Funds}
                                                   
-Overfull \hbox (3.7949pt too wide) in paragraph at lines 1514--1515
+Overfull \hbox (3.7949pt too wide) in paragraph at lines 1515--1516
 []\T1/cmr/m/n/12 The com-par-i-son with the bench-mark Greek pen-sion fund stud
 y (Chrysan-thopoulou,
  []
 
+
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.
+2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1517 ...h Question 2: The Role of Scale Effects}
+                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1959,16 +1961,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [62]
 pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.
-2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1516 ...h Question 2: The Role of Scale Effects}
-                                                  
-pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.
 3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1522 ...ut Factors Contributing to Inefficiency}
+l.1523 ...ut Factors Contributing to Inefficiency}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{section.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1532 \section{Recommendations}
+                                
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.
+1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1536 ... for Pension Fund Managers and Trustees}
                                                   
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1979,25 +1987,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [63]
-pdfTeX warning (ext4): destination with the same identifier (name{section.4}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1531 \section{Recommendations}
-                                
-pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.
-1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1535 ... for Pension Fund Managers and Trustees}
-                                                  
 pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.
 2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1543 ...nce and Pensions Commission of Zimbabwe}
+l.1544 ...nce and Pensions Commission of Zimbabwe}
                                                   
-Overfull \hbox (10.94896pt too wide) in paragraph at lines 1543--1543
+Overfull \hbox (10.94896pt too wide) in paragraph at lines 1544--1544
 |[]\T1/cmr/bx/n/14.4 Recommendations for the In-sur-ance and Pen-sions Com-
  []
 
@@ -2014,7 +2010,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.
 3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1551 ...commendations for National Policymakers}
+l.1552 ...commendations for National Policymakers}
                                                   
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2029,9 +2025,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.5}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1562 \section{Contribution to Knowledge}
+l.1563 \section{Contribution to Knowledge}
                                           
-Overfull \hbox (3.73091pt too wide) in paragraph at lines 1568--1569
+Overfull \hbox (3.73091pt too wide) in paragraph at lines 1569--1570
 []\T1/cmr/bx/n/12 Methodological con-tri-bu-tion: hy-brid DEA--machine learn-in
 g frame-work.
  []
@@ -2049,7 +2045,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.6}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1577 \section{Limitations of the Study}
+l.1578 \section{Limitations of the Study}
                                          
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2064,7 +2060,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.7}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1592 \section{Directions for Future Research}
+l.1593 \section{Directions for Future Research}
                                                
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2079,7 +2075,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.8}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1609 \section{Chapter Summary}
+l.1610 \section{Chapter Summary}
                                 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2165,7 +2161,7 @@ public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/p
 ublic/cm-super/sftt1200.pfb>
-Output written on lorraine_document.pdf (73 pages, 808317 bytes).
+Output written on lorraine_document.pdf (73 pages, 808327 bytes).
 PDF statistics:
  1073 PDF objects out of 1200 (max. 8388607)
  929 compressed objects within 10 object streams
