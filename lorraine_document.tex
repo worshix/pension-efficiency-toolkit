@@ -1369,11 +1369,11 @@ Fund Age                              & 0.014 & 0.013 & Positive \\
     symbolic y coords={
         Fund Age,
         Fund Type,
-        RTS Class.,
+        {RTS Class.},
         Expense Ratio,
         Fund Size,
         Inflation Rate,
-        Exch.\ Rate Vol.
+        {Exch. Rate Vol.}
     },
     ytick=data,
     xmin=0, xmax=0.38,
@@ -1385,13 +1385,13 @@ Fund Age                              & 0.014 & 0.013 & Positive \\
     enlarge y limits=0.15,
 ]
 \addplot[fill=blue!50] coordinates {
-    (0.014, Fund Age)
-    (0.023, Fund Type)
-    (0.054, RTS Class.)
-    (0.112, Expense Ratio)
-    (0.198, Fund Size)
-    (0.287, Inflation Rate)
-    (0.312, Exch.\ Rate Vol.)
+    (0.014,Fund Age)
+    (0.023,Fund Type)
+    (0.054,{RTS Class.})
+    (0.112,Expense Ratio)
+    (0.198,Fund Size)
+    (0.287,Inflation Rate)
+    (0.312,{Exch. Rate Vol.})
 };
 \end{axis}
 \end{tikzpicture}
