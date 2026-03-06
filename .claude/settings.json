@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv sync --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit)",
+      "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit pytest -q)",
+      "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/ --bootstrap-B 200)"
+    ]
+  }
+}
