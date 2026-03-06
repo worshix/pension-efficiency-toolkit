@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  6 MAR 2026 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  6 MAR 2026 13:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -797,29 +797,24 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 92.
-(./lorraine_document.out) (./lorraine_document.out)
 \@outlinefile=\write4
 \openout4 = `lorraine_document.out'.
 
-
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-<hit_logo.png, id=323, 727.96968pt x 406.51875pt>
+<hit_logo.png, id=7, 727.96968pt x 406.51875pt>
 File: hit_logo.png Graphic file (type png)
 <use hit_logo.png>
 Package pdftex.def Info: hit_logo.png  used on input line 100.
 (pdftex.def)             Requested size: 208.41644pt x 116.38629pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./hit_logo.png>] (./lorraine_document.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./hit_logo.png>]
+No file lorraine_document.toc.
+\tf@toc=\write5
+\openout5 = `lorraine_document.toc'.
+
+[2]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -827,11 +822,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3])
-\tf@toc=\write5
-\openout5 = `lorraine_document.toc'.
-
-
+[3]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -856,6 +847,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 229.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 229.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -879,7 +878,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]
+[9{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -888,22 +887,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[11{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[12]
 Overfull \hbox (11.80678pt too wide) in paragraph at lines 305--306
 \T1/cmr/m/n/12 century ori-gins to the multi-pillar ar-chi-tec-tures preva-lent in con-tem-po-rary economies,
  []
@@ -915,7 +898,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13]
+[11]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -923,7 +906,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14]
+[12]
 pdfTeX warning (ext4): destination with the same identifier (name{section.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -941,7 +924,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15]
+[13]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -949,7 +932,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[16]
+[14]
 pdfTeX warning (ext4): destination with the same identifier (name{section.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -972,7 +955,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17]
+[15]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -980,7 +963,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18]
+[16]
 pdfTeX warning (ext4): destination with the same identifier (name{section.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -993,7 +976,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19]
+[17]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1001,7 +984,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
+[18]
 Overfull \hbox (3.3647pt too wide) in paragraph at lines 421--421
 |[]\T1/cmr/bx/n/14.4 Benchmark Study: Greek Oc-cu-pa-tional Pen-sion Funds| 
  []
@@ -1013,7 +996,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[21]
+[19]
 Package pgfplots info on input line 447: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 Overfull \hbox (32.41284pt too wide) in paragraph at lines 452--453
@@ -1029,7 +1012,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
+[20]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1037,7 +1020,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[23]
+[21]
 Overfull \hbox (23.06842pt too wide) in paragraph at lines 552--553
  [][] 
  []
@@ -1049,7 +1032,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24]
+[22]
 pdfTeX warning (ext4): destination with the same identifier (name{section.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1066,7 +1049,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25]
+[23]
 pdfTeX warning (ext4): destination with the same identifier (name{section.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1079,7 +1062,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26]
+[24]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1087,7 +1070,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27]
+[25]
 pdfTeX warning (ext4): destination with the same identifier (name{section.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1115,7 +1098,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28]
+[26]
 pdfTeX warning (ext4): destination with the same identifier (name{section.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1133,7 +1116,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29]
+[27]
 Overfull \hbox (2.1923pt too wide) in paragraph at lines 669--670
 []\T1/cmr/m/n/12 Profits gen-er-ated from the in-vest-
  []
@@ -1150,7 +1133,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[28]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[29]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [30]
+pdfTeX warning (ext4): destination with the same identifier (name{section.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.758 ...arning Enhancements to the DEA Framework}
+                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1167,11 +1171,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [32]
-pdfTeX warning (ext4): destination with the same identifier (name{section.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.758 ...arning Enhancements to the DEA Framework}
-                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1188,6 +1187,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [34]
+Overfull \hbox (2.16463pt too wide) in paragraph at lines 828--829
+[]\T1/cmr/m/n/12 Zimbabwe's per-sis-tently high in-fla-tion
+ []
+
+
+Overfull \hbox (42.75612pt too wide) in paragraph at lines 831--832
+[]\T1/cmr/m/n/12 A cat-e-gor-i-cal vari-able dis-tin-guish-ing self-administered
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1204,14 +1212,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [36]
-Overfull \hbox (2.16463pt too wide) in paragraph at lines 828--829
-[]\T1/cmr/m/n/12 Zimbabwe's per-sis-tently high in-fla-tion
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 866.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Overfull \hbox (18.31573pt too wide) in paragraph at lines 868--868
+|[]\T1/cmr/bx/n/14.4 Three-Stage Ma-chine Learn-ing En-hanced Hy-brid Frame-
  []
 
 
-Overfull \hbox (42.75612pt too wide) in paragraph at lines 831--832
-[]\T1/cmr/m/n/12 A cat-e-gor-i-cal vari-able dis-tin-guish-ing self-administered
- []
+LaTeX Warning: Reference `fig:ml_hybrid' on page 37 undefined on input line 870.
+
+
+LaTeX Warning: Reference `fig:dea_stages' on page 37 undefined on input line 901.
+
+
+LaTeX Warning: Reference `fig:dea_stages' on page 37 undefined on input line 901.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1229,30 +1245,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [38]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 866.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-Overfull \hbox (18.31573pt too wide) in paragraph at lines 868--868
-|[]\T1/cmr/bx/n/14.4 Three-Stage Ma-chine Learn-ing En-hanced Hy-brid Frame-
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[39]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[40]
 pdfTeX warning (ext4): destination with the same identifier (name{section.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1275,7 +1267,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[41]
+[39]
 pdfTeX warning (ext4): destination with the same identifier (name{section.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1288,10 +1280,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[42]
+[40]
 Overfull \hbox (12.68896pt too wide) in paragraph at lines 956--975
  [][] 
  []
+
+
+LaTeX Warning: Reference `tab:descriptive_stats' on page 41 undefined on input line 979.
 
 
 Overfull \hbox (41.61366pt too wide) in paragraph at lines 985--1000
@@ -1305,7 +1300,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[43]
+[41]
+
+LaTeX Warning: Reference `tab:correlation' on page 42 undefined on input line 1008.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1313,12 +1311,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[44]
+[42]
 pdfTeX warning (ext4): destination with the same identifier (name{section.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1031 ...Component Analysis for Input Validation}
                                                   
+
+LaTeX Warning: Reference `tab:pca_variance' on page 43 undefined on input line 1035.
+
+
 Overfull \hbox (55.18849pt too wide) in paragraph at lines 1041--1051
  [][] 
  []
@@ -1331,7 +1333,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[45]
+[43]
 pdfTeX warning (ext4): destination with the same identifier (name{section.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1347,13 +1349,16 @@ Overfull \hbox (13.14952pt too wide) in paragraph at lines 1088--1088
  []
 
 
+LaTeX Warning: Reference `tab:crs_frequency' on page 44 undefined on input line 1090.
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[46]
+[44]
 Package pgfplots info on input line 1134: Using 'lua backend=false' for axis: stacked plots unsupported (yet).
 Package pgfplots info on input line 1134: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
@@ -1363,25 +1368,31 @@ pdfTeX warning (ext4): destination with the same identifier (name{section.5}) ha
 l.1149 ...Technical Efficiency Results: BCC Model}
                                                   
 
+LaTeX Warning: Reference `tab:vrs_scores' on page 45 undefined on input line 1151.
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[47]
+[45]
 Overfull \hbox (69.13472pt too wide) in paragraph at lines 1157--1178
  [][] 
  []
 
 
+LaTeX Warning: Reference `tab:vrs_scores' on page 46 undefined on input line 1180.
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[48]
+[46]
 Overfull \hbox (14.76704pt too wide) in paragraph at lines 1216--1217
  [][] 
  []
@@ -1399,12 +1410,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[49]
+[47]
 pdfTeX warning (ext4): destination with the same identifier (name{section.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1233 \section{Peer Analysis and Target Setting}
                                                  
+
+LaTeX Warning: Reference `tab:peers' on page 48 undefined on input line 1237.
+
+
 Overfull \hbox (54.94374pt too wide) in paragraph at lines 1243--1258
  [][] 
  []
@@ -1416,7 +1431,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[50]
+[48]
+
+LaTeX Warning: Reference `tab:slacks' on page 49 undefined on input line 1264.
+
+
 Overfull \hbox (80.2489pt too wide) in paragraph at lines 1270--1284
  [][] 
  []
@@ -1434,7 +1453,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[51]
+[49]
+
+LaTeX Warning: Reference `tab:bootstrap_scores' on page 50 undefined on input line 1293.
+
+
 Overfull \hbox (49.80534pt too wide) in paragraph at lines 1299--1320
  [][] 
  []
@@ -1446,7 +1469,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[52]
+[50]
 pdfTeX warning (ext4): destination with the same identifier (name{section.9}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1457,13 +1480,16 @@ Overfull \hbox (9.02856pt too wide) in paragraph at lines 1329--1329
  []
 
 
+LaTeX Warning: Reference `tab:rf_importance' on page 51 undefined on input line 1337.
+
+
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[53]
+[51]
 Package pgfplots info on input line 1386: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
@@ -1562,7 +1588,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[54]
+[52]
 pdfTeX warning (ext4): destination with the same identifier (name{section.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1575,7 +1601,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[55]
+[53]
 pdfTeX warning (ext4): destination with the same identifier (name{section.11}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1588,7 +1614,48 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[54]
+pdfTeX warning (ext4): destination with the same identifier (name{section.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1456 \section{Introduction}
+                             
+pdfTeX warning (ext4): destination with the same identifier (name{section.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1463 \section{Summary of Findings}
+                                    
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1465 ...scriptive Analysis and Input Validation}
+                                                  
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[55]
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1471 ...iciency under Constant Returns to Scale}
+                                                  
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [56]
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1477 ...iciency under Variable Returns to Scale}
+                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1605,6 +1672,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [58]
+pdfTeX warning (ext4): destination with the same identifier (name{section.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1504 \section{Conclusions}
+                            
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1508 ... Efficiency of Zimbabwean Pension Funds}
+                                                  
+Overfull \hbox (3.7949pt too wide) in paragraph at lines 1514--1515
+[]\T1/cmr/m/n/12 The com-par-i-son with the bench-mark Greek pen-sion fund study (Chrysan-thopoulou,
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1613,6 +1694,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [59]
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1516 ...h Question 2: The Role of Scale Effects}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.3.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1522 ...ut Factors Contributing to Inefficiency}
+                                                  
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1620,31 +1711,168 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[60] (./lorraine_document.aux)
+[60]
+pdfTeX warning (ext4): destination with the same identifier (name{section.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1531 \section{Recommendations}
+                                
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1535 ... for Pension Fund Managers and Trustees}
+                                                  
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1543 ...nce and Pensions Commission of Zimbabwe}
+                                                  
+Overfull \hbox (10.94896pt too wide) in paragraph at lines 1543--1543
+|[]\T1/cmr/bx/n/14.4 Recommendations for the In-sur-ance and Pen-sions Com-
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[61]
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1551 ...commendations for National Policymakers}
+                                                  
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[62]
+pdfTeX warning (ext4): destination with the same identifier (name{section.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1562 \section{Contribution to Knowledge}
+                                          
+Overfull \hbox (3.73091pt too wide) in paragraph at lines 1568--1569
+[]\T1/cmr/bx/n/12 Methodological con-tri-bu-tion: hy-brid DEA--machine learn-ing frame-work.
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[63]
+pdfTeX warning (ext4): destination with the same identifier (name{section.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1577 \section{Limitations of the Study}
+                                         
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[64]
+pdfTeX warning (ext4): destination with the same identifier (name{section.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1592 \section{Directions for Future Research}
+                                               
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[65]
+pdfTeX warning (ext4): destination with the same identifier (name{section.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1609 \section{Chapter Summary}
+                                
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[66]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[67]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[68]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[69]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[70] (./lorraine_document.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `lorraine_document.out' has not changed.
-(rerunfilecheck)             Checksum: E40D09B0F5B03132C3DFD1AC34A04D0D;19682.
+
+Package rerunfilecheck Warning: File `lorraine_document.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `lorraine_document.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  684A3B7CD54401FBF95B49DF5B11CEF2;25505.
  ) 
 Here is how much of TeX's memory you used:
- 38393 strings out of 474222
- 878558 string characters out of 5748732
+ 38341 strings out of 474222
+ 877592 string characters out of 5748732
  1948975 words of memory out of 5000000
- 59884 multiletter control sequences out of 15000+600000
+ 59823 multiletter control sequences out of 15000+600000
  583169 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,101p,1556b,2344s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on lorraine_document.pdf (60 pages, 770037 bytes).
+Output written on lorraine_document.pdf (70 pages, 789444 bytes).
 PDF statistics:
- 914 PDF objects out of 1000 (max. 8388607)
- 785 compressed objects within 8 object streams
- 164 named destinations out of 1000 (max. 500000)
- 706 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 599 PDF objects out of 1000 (max. 8388607)
+ 464 compressed objects within 5 object streams
+ 179 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

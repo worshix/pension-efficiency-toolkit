@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1772796800.57031 "/home/worshix/school-projects/lorraine_doc/lorraine_document.tex" "lorraine_document.pdf" "lorraine_document" 1772796804.02796 2
+["pdflatex"] 1772797041.39863 "/home/worshix/school-projects/lorraine_doc/lorraine_document.tex" "lorraine_document.pdf" "lorraine_document" 1772797044.4755 2
   "/etc/texmf/web2c/texmf.cnf" 1763803635.1071 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/worshix/school-projects/lorraine_doc/lorraine_document.tex" 1772796799.81813 144765 b26c7928ee299a8ebe80229ed2615285 ""
+  "/home/worshix/school-projects/lorraine_doc/lorraine_document.tex" 1772797037.0574 178457 f3f0fe450bfbd3e1d3cf9569b6171d9a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -281,10 +281,10 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1763803678.85973 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1763803791 8213357 d33d41fe8cf9e9ce27b2ac87fd9af8ca ""
   "hit_logo.png" 1771977255.14648 180107 f266d0e74803c9abc63dea4bf979ed1c ""
-  "lorraine_document.aux" 1772796803.69873 23461 fa3f6dc422fa1bc5919e2902426d5f09 "pdflatex"
-  "lorraine_document.out" 1772796803.70273 19682 e40d09b0f5b03132c3dfd1ac34a04d0d "pdflatex"
-  "lorraine_document.tex" 1772796799.81813 144765 b26c7928ee299a8ebe80229ed2615285 ""
-  "lorraine_document.toc" 1772796803.70273 8438 a7c67e2c53c50c60fe26ac04cd5d0813 "pdflatex"
+  "lorraine_document.aux" 1772797044.22575 26662 8aac7ef8a76e18a35cd0f5775da9746e "pdflatex"
+  "lorraine_document.out" 1772797044.22875 25505 684a3b7cd54401fbf95b49df5b11cef2 "pdflatex"
+  "lorraine_document.tex" 1772797037.0574 178457 f3f0fe450bfbd3e1d3cf9569b6171d9a ""
+  "lorraine_document.toc" 1772797044.22948 10736 ff0b629a26660abb31a9d82936a724d8 "pdflatex"
   (generated)
   "lorraine_document.aux"
   "lorraine_document.log"

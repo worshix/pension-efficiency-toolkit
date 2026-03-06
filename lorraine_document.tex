@@ -1436,6 +1436,184 @@ The descriptive statistics confirmed substantial heterogeneity in fund size and 
 
 The BCC model yielded a mean VRS efficiency of 0.691, and scale efficiency decomposition identified increasing returns to scale as the dominant condition for six of the eight inefficient funds, supporting the policy case for pension fund consolidation. Peer analysis identified DMU7 (Econet Wireless) as the most frequently referenced benchmark, while input slack analysis confirmed that total equity and debt is the primary source of excess input utilisation, followed by total assets. Bootstrap bias correction confirmed an average upward bias of approximately 0.031 efficiency units in raw DEA scores, and the bias-corrected confidence intervals established that efficiency differences between fund groups are statistically robust. The Random Forest determinant analysis identified exchange rate volatility and annual inflation as the dominant constraints on efficiency, followed by fund size. The null hypothesis of optimal efficiency was rejected on the basis of these findings. The subsequent chapter synthesises these empirical results into conclusions and policy recommendations for pension fund managers, regulators, and policymakers in Zimbabwe.
 
+% ============================================
+% CHAPTER 5: RESEARCH FINDINGS, CONCLUSIONS AND RECOMMENDATIONS
+% ============================================
+\begin{center}
+    {\LARGE\bfseries CHAPTER 5}\\[0.5cm]
+    {\Large\bfseries Research Findings, Conclusions and Recommendations}
+\end{center}
+\setcounter{section}{0}
+\renewcommand{\thesection}{5.\arabic{section}}
+\phantomsection
+\addcontentsline{toc}{section}{\textbf{CHAPTER 5: RESEARCH FINDINGS, CONCLUSIONS AND RECOMMENDATIONS}}
+
+\vspace{1cm}
+
+% ============================================
+% 5.1 INTRODUCTION
+% ============================================
+\section{Introduction}
+
+This chapter synthesises the empirical evidence generated in Chapter~4 into a coherent set of research conclusions, policy recommendations, and scholarly contributions. The chapter is structured to directly address each of the research objectives and research questions stated in Section~1.4 and Section~1.5 respectively, and to reflect formally on the research hypothesis tested in Section~4.10. Section~5.2 presents a structured summary of the principal findings from each stage of the hybrid DEA--machine learning analytical framework. Section~5.3 states the formal research conclusions derived from those findings in relation to each research question. Section~5.4 formulates targeted recommendations for pension fund managers, the Insurance and Pensions Commission of Zimbabwe (IPEC), and national policymakers. Section~5.5 reflects on the contribution of the study to the financial engineering and pension economics literature. Section~5.6 revisits the limitations of the study acknowledged in Chapter~1 in light of the empirical experience gained during the analysis. Section~5.7 proposes directions for future research. Section~5.8 provides a brief chapter summary.
+
+% ============================================
+% 5.2 SUMMARY OF FINDINGS
+% ============================================
+\section{Summary of Findings}
+
+\subsection{Descriptive Analysis and Input Validation}
+
+The study analysed a panel of twelve registered Zimbabwean pension funds --- referred to as DMU1 through DMU12 --- over the five-year period from 2018 to 2022, yielding a balanced panel of sixty fund-year observations. The sample encompassed self-administered standalone funds, insured or underwritten funds, and occupational schemes, reflecting the structural heterogeneity of the formal Zimbabwean pension sector as regulated by IPEC. Descriptive statistics confirmed substantial variation in fund size, with total assets ranging from USD~0.81 million to USD~78.24 million and a high coefficient of variation for all five DEA variables, indicating that efficiency measurement in a heterogeneous sector requires a non-parametric framework capable of accommodating scale differences without imposing a common production function.
+
+Principal Component Analysis applied to the three DEA input variables --- total assets, operating expenses, and total equity and debt --- confirmed that these variables are highly collinear, with the first two principal components explaining approximately 93 per cent of total input variance. While this collinearity was noted as a data-quality finding, a robustness check in which a single composite input score replaced the original three variables yielded a rank-order correlation of $r = 0.923$ with the baseline DEA results, confirming that the core efficiency rankings are not an artefact of input specification. This finding is consistent with the wider DEA literature, which acknowledges that financial variables drawn from the same balance sheet tend to share a common structural factor.
+
+\subsection{Technical Efficiency under Constant Returns to Scale}
+
+The CCR model results revealed that the Zimbabwean pension sector operates well below its efficiency potential. Four funds --- DMU1 (Mining Industry Pension Fund), DMU3 (CBZ Staff Pension Fund), DMU7 (Econet Wireless Pension Fund), and DMU11 (Innscor Staff Pension Fund) --- achieved full CRS technical efficiency scores of 1.000 in every year of the study period, constituting the efficiency frontier against which the remaining eight funds were benchmarked. The mean pooled CRS efficiency score across all twelve funds was 0.639, implying that the average fund could theoretically produce the same level of outputs with approximately 36.1 per cent fewer inputs if it operated on the best-practice frontier.
+
+The annual frequency distribution of CRS efficiency scores documented a marked deterioration in sector-wide efficiency in 2020, consistent with the operational and financial disruptions attributable to the COVID-19 pandemic, during which six of the twelve funds fell below a CRS efficiency score of 0.600. A partial recovery was recorded in 2021, with more sustained improvement in 2022, suggesting that sector resilience improved as macroeconomic conditions stabilised and funds adapted to the post-pandemic environment. The mean CRS efficiency of 0.639 compares unfavourably with the average of 0.730 reported for a comparable sample of Greek occupational pension funds by Chrysanthopoulou, Mavrommati and Migdalas (2023), a differential attributable in large part to the more severe macroeconomic constraints --- particularly exchange rate volatility and inflationary pressure --- operating in the Zimbabwean context.
+
+\subsection{Technical Efficiency under Variable Returns to Scale}
+
+The BCC model, which relaxes the CRS assumption by allowing for variable returns to scale, yielded a mean VRS (pure technical) efficiency score of 0.691 across the sample. The four frontier funds retained their efficiency status under the VRS model, confirming that their efficiency is not dependent on operating at a particular scale. The remaining eight funds recorded mean VRS scores ranging from 0.312 (DMU6, Air Zimbabwe Pension Fund) to 0.817 (DMU8, Delta Beverages Pension Fund), with substantial cross-sectional variation persisting after controlling for scale differences.
+
+The consistently higher VRS scores relative to CRS scores across all inefficient funds confirmed that a portion of total technical inefficiency for every fund in the sample is attributable to scale effects rather than managerial or operational practices alone. This decomposition has direct policy relevance: it implies that efficiency improvement strategies must address both internal management practices and the structural scale at which individual funds operate.
+
+\subsection{Scale Efficiency Decomposition}
+
+Scale efficiency scores, computed as the ratio of CRS to VRS efficiency, ranged from 0.771 to 1.000 across the sample, with a mean of 0.913. While this is the highest of the three efficiency measures, indicating that scale-related inefficiency is a secondary rather than primary source of total inefficiency, the returns-to-scale analysis revealed an important structural pattern. Six of the eight inefficient funds were classified as operating under increasing returns to scale (IRS), indicating that these funds are operating at a sub-optimal scale and could achieve proportional efficiency gains through consolidation or asset growth. Only two funds --- DMU2 (ZESA Staff Pension Fund) and DMU9 (NRZ Pension Fund) --- were classified as exhibiting decreasing returns to scale (DRS), suggesting these funds may benefit from rationalisation or downsizing of some operations.
+
+\subsection{Peer Analysis and Input Target Setting}
+
+Peer analysis identified DMU7 (Econet Wireless Pension Fund) as the most frequently referenced benchmark, appearing as a peer for seven of the eight inefficient funds, followed by DMU1 (Mining Industry Pension Fund) and DMU3 (CBZ Staff Pension Fund). DMU11 (Innscor Staff Pension Fund) functioned as a peer for four funds. This distribution suggests that the efficiency frontier in the Zimbabwean pension sector is primarily defined by a small cluster of well-managed, adequately scaled self-administered standalone funds, and that these funds provide the most operationally relevant benchmarks for inefficient peers.
+
+Input slack analysis quantified the specific excess input usage of each inefficient fund beyond the radial efficiency improvement required to reach the frontier. Total equity and debt was identified as the primary source of excess input utilisation across the sample, followed by total assets. Operating expenses generated comparatively smaller slack values, suggesting that the principal source of inefficiency is structural over-capitalisation relative to the investment income and contribution outputs generated, rather than administrative cost excess per se.
+
+\subsection{Bootstrap Bias Correction}
+
+The Simar--Wilson bootstrap procedure with $B = 2{,}000$ replications confirmed an average upward bias of approximately 0.031 efficiency units in the raw DEA scores, yielding bias-corrected mean CRS efficiency of 0.608. The correction was larger for funds with scores closer to but not at the frontier, consistent with the theoretical prediction that small-sample DEA scores are systematically optimistic. The 95 per cent bias-corrected confidence intervals confirmed that the efficiency differences between the four frontier funds and the eight inefficient funds are statistically robust, and that the ranking of inefficient funds is sufficiently precise to support targeted policy prescriptions. This finding addresses one of the principal methodological limitations acknowledged in Section~1.10, namely the deterministic nature of standard DEA and its sensitivity to finite-sample bias.
+
+\subsection{Macroeconomic Determinants of Efficiency}
+
+The Random Forest regression model fitted to the Simar--Wilson bias-corrected efficiency scores as the dependent variable achieved an out-of-bag $R^2$ of 0.714, confirming that the selected macroeconomic and structural covariates explain approximately 71.4 per cent of the cross-sectional and temporal variation in pension fund efficiency across the study period. Exchange rate volatility emerged as the dominant determinant of efficiency, with Mean Decrease in Impurity (MDI) of 0.312, reflecting the severe negative impact of Zimbabwe's multiple currency transitions and the instability of the official exchange rate on fund-level investment planning and asset valuation. Annual inflation ranked second (MDI = 0.243), consistent with the empirical literature on emerging market financial institutions, which documents a strongly negative relationship between inflation and financial sector efficiency. Fund size (log total assets) was the third most important variable (MDI = 0.198), corroborating the scale efficiency findings and suggesting that smaller funds face a structural disadvantage in the Zimbabwean operating environment. Market return and regulatory compliance cost ranked fourth and fifth, with more modest but non-negligible importance scores.
+
+% ============================================
+% 5.3 CONCLUSIONS
+% ============================================
+\section{Conclusions}
+
+The empirical findings presented in Chapter~4 and summarised in Section~5.2 support the following conclusions with respect to the research questions and objectives of this study.
+
+\subsection{Conclusion on Research Question 1: Technical Efficiency of Zimbabwean Pension Funds}
+
+\textit{Are pension funds in Zimbabwe technically efficient in utilizing their resources?}
+
+The evidence unambiguously establishes that the majority of pension funds in Zimbabwe are not technically efficient. With a mean CRS efficiency of 0.639 and a bias-corrected mean of 0.608, the sector collectively operates at substantially below its theoretical production frontier. Only four of the twelve funds in the sample achieved full technical efficiency consistently throughout the study period, while the remaining eight exhibited persistent and measurable efficiency deficits. The efficiency deficit is not trivially small: funds in the lowest efficiency quartile could theoretically deliver the same pension outputs with fewer than two-thirds of the inputs they currently employ. This conclusion directly supports the rejection of the null hypothesis $H_0$ and the acceptance of $H_1$: pension funds in Zimbabwe exhibit significant technical and scale inefficiencies.
+
+The comparison with the benchmark Greek pension fund study (Chrysanthopoulou, Mavrommati and Migdalas, 2023) places Zimbabwe's pension sector among the lower-efficiency cases in the international DEA literature on pension fund efficiency, which is broadly consistent with the macroeconomic challenges documented in the background to this study. Nevertheless, the existence of frontier-efficient funds operating within the same regulatory and macroeconomic environment as their inefficient peers confirms that efficiency improvement is achievable within the current institutional framework.
+
+\subsection{Conclusion on Research Question 2: The Role of Scale Effects}
+
+\textit{To what extent do scale effects influence pension fund efficiency?}
+
+Scale effects account for a secondary but non-trivial portion of total technical inefficiency in the Zimbabwean pension sector. The mean scale efficiency of 0.913 indicates that scale-related losses are, on average, less severe than pure technical efficiency losses (mean VRS = 0.691). However, the dominance of increasing returns to scale among inefficient funds --- six of the eight exhibiting IRS --- carries a clear implication: the majority of sub-frontier funds are operating at a sub-optimal scale and would benefit from consolidation or structural growth. The co-existence of IRS and DRS conditions within the sector confirms that no single scale prescription is universally appropriate; rather, scale-efficiency interventions must be tailored to the specific returns-to-scale classification of each fund. The finding that the four frontier funds include both large self-administered funds and relatively smaller well-managed funds confirms that operational efficiency at any given scale is achievable, and that fund size is a necessary but not sufficient condition for frontier performance.
+
+\subsection{Conclusion on Research Question 3: Key Input Factors Contributing to Inefficiency}
+
+\textit{Which input factors contribute most significantly to observed inefficiencies?}
+
+The combined evidence from input slack analysis and Random Forest variable importance analysis identifies two distinct dimensions of inefficiency drivers. At the internal, fund-level dimension, total equity and debt is the primary source of excess input utilisation, followed by total assets, indicating that the structural capitalisation of inefficient funds is misaligned with their output capacity. At the macroeconomic, external dimension, exchange rate volatility and annual inflation are the dominant constraints on efficiency, together accounting for more than 55 per cent of explained efficiency variation in the Random Forest model. These external constraints are largely beyond the direct control of individual fund managers, underscoring the importance of macroeconomic stabilisation as a necessary precondition for sustained pension sector efficiency improvement in Zimbabwe.
+
+% ============================================
+% 5.4 RECOMMENDATIONS
+% ============================================
+\section{Recommendations}
+
+The empirical findings support a differentiated set of recommendations directed at three stakeholder groups: pension fund managers and trustees, the regulatory authority (IPEC), and national-level policymakers.
+
+\subsection{Recommendations for Pension Fund Managers and Trustees}
+
+\textbf{Adopt peer benchmarking as a systematic management practice.} The DEA peer analysis identified DMU7 (Econet Wireless Pension Fund) and DMU1 (Mining Industry Pension Fund) as the most operationally relevant efficiency benchmarks for inefficient funds in the sector. Fund managers and trustees should conduct systematic comparisons of their asset allocation, cost structures, and contribution collection processes against these peer funds, with a view to identifying specific operational adjustments that can close the efficiency gap. The input target values derived from the slack analysis in Section~4.7 provide fund-specific quantitative targets for this benchmarking process.
+
+\textbf{Rationalise asset and capital structures.} The dominance of total equity and debt as the primary input slack variable suggests that a number of funds maintain capital structures that are over-leveraged or over-capitalised relative to the investment income and membership contribution outputs they generate. Trustees should commission periodic reviews of the fund's capital structure and asset allocation strategy, with particular attention to the alignment between asset base size and the fund's demonstrated capacity to generate member-relevant outputs.
+
+\textbf{Invest in administrative and operational efficiency.} While operating expenses were not the primary source of slack in this study, the efficiency gap between frontier and sub-frontier funds suggests that improvements in administrative systems, actuarial management, and governance practices are likely to yield efficiency dividends. Funds operating under IRS conditions should specifically evaluate whether administrative economies of scale are being fully exploited, and whether incremental investments in technology-mediated administration --- such as digital member record systems and automated compliance reporting --- could reduce per-member administrative costs.
+
+\subsection{Recommendations for the Insurance and Pensions Commission of Zimbabwe}
+
+\textbf{Institutionalise DEA-based efficiency benchmarking in the regulatory framework.} This study demonstrates that DEA provides a transparent, replicable, and policy-relevant methodology for assessing the relative efficiency of pension funds operating under heterogeneous conditions. IPEC should consider incorporating a frontier-based efficiency assessment into its annual supervisory reporting cycle, supplementing the existing compliance-oriented metrics with a relative efficiency indicator. This would enable the regulator to identify persistently inefficient funds at an early stage and to focus supervisory attention on funds whose operational practices are most divergent from best-practice peers.
+
+\textbf{Facilitate voluntary consolidation of small IRS-classified funds.} Six of the eight inefficient funds exhibit increasing returns to scale, indicating structural sub-optimality of scale. IPEC should develop a policy framework for voluntary fund consolidation that creates incentives --- such as reduced compliance burdens, shared administrative infrastructure, and expedited regulatory approval processes --- for small IRS-classified funds to merge or pool resources with comparable peers. Such a framework should be accompanied by member protection provisions to ensure that consolidation does not compromise benefit security.
+
+\textbf{Strengthen data collection and reporting standards.} A persistent challenge identified in the conduct of this study was the limited availability of standardised, audited financial data for the full population of registered pension funds. IPEC should enforce consistent annual reporting templates that require funds to report the DEA input and output variables used in this study --- total assets, operating expenses, total equity and debt, net investment income, and members' contributions --- in a format that facilitates longitudinal analysis. Improved data quality would strengthen the statistical reliability of future frontier-based efficiency assessments.
+
+\subsection{Recommendations for National Policymakers}
+
+\textbf{Prioritise macroeconomic stabilisation as a pension sector efficiency prerequisite.} The Random Forest analysis established exchange rate volatility and inflation as the two dominant macroeconomic determinants of pension fund efficiency in Zimbabwe, together explaining more than 55 per cent of efficiency variation. This finding underscores that pension sector efficiency cannot be fully addressed through fund-level governance reforms alone; macroeconomic stability is a structural prerequisite for sustained improvement. National economic policymakers should give explicit attention to the pension sector implications of exchange rate policy and monetary policy, recognising that currency instability systematically undermines the capacity of pension funds to generate real investment returns and to plan long-term asset-liability matching strategies.
+
+\textbf{Develop a multi-pillar pension architecture that reduces sector concentration risk.} The current Zimbabwean pension sector is characterised by heavy reliance on a small number of large self-administered funds, creating concentration risk. Policymakers should consider reforms that promote the diversification of pension provision across multiple pillars --- including contributory social security, occupational schemes, and voluntary savings vehicles --- in line with the World Bank multi-pillar framework. A more diversified sector structure would reduce the systemic sensitivity of retirement income security to the performance of any single fund or fund type.
+
+\textbf{Align pension regulation with regional best practices.} Zimbabwe's pension efficiency deficit relative to comparable middle-income economies, as evidenced by the comparison with the Greek benchmark, suggests that regulatory and governance frameworks in the sector may benefit from alignment with regional and international best practices. Policymakers should engage with regional bodies such as the Southern African Development Community (SADC) pension regulation working groups and the International Organisation of Pension Supervisors (IOPS) to identify regulatory reforms that have demonstrably improved pension fund efficiency in comparable emerging market contexts.
+
+% ============================================
+% 5.5 CONTRIBUTION TO KNOWLEDGE
+% ============================================
+\section{Contribution to Knowledge}
+
+This study makes several distinct contributions to the academic and applied literature on pension fund efficiency.
+
+\textbf{First empirical DEA study of Zimbabwean pension funds.} To the best of the author's knowledge, this study constitutes the first application of Data Envelopment Analysis to the efficiency measurement of pension funds in Zimbabwe. Prior literature has focused on financial institution efficiency in the banking sector (Mlambo and Ncube, 2011) and on broader financial sector performance, but no frontier-based study of the pension sector has been identified in the reviewed literature. The study therefore fills a documented geographical and institutional gap in the DEA efficiency literature and establishes a baseline dataset against which future efficiency assessments can be compared.
+
+\textbf{Methodological contribution: hybrid DEA--machine learning framework.} The study introduces a structured hybrid analytical framework that integrates standard DEA with three complementary machine learning techniques: Principal Component Analysis for input validation, the Simar--Wilson bootstrap for bias correction, and Random Forest regression for determinant analysis. This framework addresses the three principal methodological limitations of standard DEA --- input multicollinearity, finite-sample bias, and the restriction to linear second-stage regression --- in a single coherent analytical architecture. The framework is transferable to other pension fund efficiency studies in emerging market contexts where small sample sizes and volatile macroeconomic environments impose similar methodological challenges.
+
+\textbf{Policy-relevant empirical evidence for a data-scarce regulatory environment.} The study demonstrates that rigorous frontier-based efficiency analysis is feasible using secondary data from IPEC regulatory reports, even in a context where individually audited fund-level data is not publicly available. The methodology and data collection approach developed in this study provide a replicable template that IPEC and academic researchers can apply in future periods, supporting evidence-based pension regulation without requiring access to confidential fund records.
+
+\textbf{Contribution to the emerging market pension efficiency literature.} By establishing that the mean CRS efficiency of Zimbabwean pension funds (0.639) falls below the benchmark of 0.730 for Greek occupational funds, and by quantifying the relative contributions of macroeconomic and structural factors to that efficiency gap, the study expands the comparative evidence base for pension fund efficiency in low- and middle-income countries. The findings corroborate the theoretical expectation --- derived from institutional economics and financial intermediation theory --- that macroeconomic instability imposes a structural efficiency penalty on financial institutions in developing economies, and quantify this effect with greater precision than qualitative assessments allow.
+
+% ============================================
+% 5.6 LIMITATIONS OF THE STUDY
+% ============================================
+\section{Limitations of the Study}
+
+The limitations of the study, originally acknowledged in Section~1.10, are revisited here in light of the empirical experience gained during the analysis.
+
+The reliance on secondary data obtained from IPEC regulatory publications introduced an inherent constraint on variable granularity. Certain fund-level characteristics --- including fund governance quality scores, actuarial assumptions, and the composition of investment portfolios by asset class --- that might have enriched the DEA input--output specification or the Random Forest covariate set were not consistently available across all twelve funds for all five years of the study period. Future studies would benefit from access to primary fund-level data collected through structured data requests to fund administrators.
+
+The sample of twelve funds, while satisfying the Raab and Lichty (2002) minimum ratio criterion at the panel level, remains small in absolute terms, particularly for the bootstrap and Random Forest estimation stages. Small samples limit the power of statistical tests and increase the variance of machine learning model estimates. The bootstrap procedure partially mitigated this limitation by constructing empirical confidence intervals rather than relying on asymptotic approximations, but the confidence intervals remain relatively wide for funds in the middle efficiency range. As IPEC data availability improves, extending the sample to include all registered active funds would materially strengthen the statistical precision of future analyses.
+
+The DEA model is non-parametric and therefore cannot formally decompose the efficiency gap between funds into components attributable to managerial decisions versus uncontrollable environmental factors, beyond the second-stage Random Forest analysis. The two-stage approach adopted in this study approximates the environmental adjustment by incorporating macroeconomic covariates in the Random Forest model, but does not achieve the formal environmental correction of a contextual DEA model such as the Banker and Natarajan (2008) specification. This is identified as an area for methodological refinement in future work.
+
+Finally, the study period (2018--2022) encompasses the exceptional disruption of the COVID-19 pandemic, which introduced a structural break in efficiency patterns in 2020. While the panel specification captures this as a temporal variation, the pandemic-period observations may reduce the generalisability of the findings to the pre- and post-pandemic efficiency dynamics of the sector. Future studies extending the panel through 2024 and beyond will be better positioned to distinguish permanent structural efficiency characteristics from pandemic-induced transitory effects.
+
+% ============================================
+% 5.7 DIRECTIONS FOR FUTURE RESEARCH
+% ============================================
+\section{Directions for Future Research}
+
+Several directions for future research are identified on the basis of the findings and limitations of this study.
+
+\textbf{Longitudinal extension of the panel.} The five-year study window, while appropriate for the purposes of this study, is insufficient to capture full business and regulatory cycles in the pension sector. Extending the panel to cover ten or more years --- ideally including the pre-hyperinflation period prior to 2008 as a historical baseline if data can be reconstructed --- would enable more robust identification of structural efficiency trends and cyclical patterns.
+
+\textbf{Environmental DEA models.} Future research should explore the application of contextual DEA models, such as the Banker and Natarajan (2008) one-stage DEA with environmental variables, which integrates macroeconomic covariates directly into the linear programme rather than as a second-stage regression input. This specification produces formally consistent efficiency scores that are pre-adjusted for environmental heterogeneity, avoiding the potential econometric inconsistency of the two-stage approach identified by Simar and Wilson (2007).
+
+\textbf{Network DEA for sub-process efficiency analysis.} Standard DEA treats the pension fund as a single production unit transforming inputs into outputs. Network DEA models (Tone and Tsutsui, 2009) decompose the production process into multiple sub-processes --- for example, separating the investment management subprocess from the member administration subprocess --- and compute sub-process-level efficiency scores. Applying a network DEA specification to Zimbabwean pension funds, if sub-process data can be obtained, would provide more granular insights into where within the fund value chain the efficiency losses are concentrated.
+
+\textbf{Cross-country comparative studies in the SADC region.} The findings of this study would be substantially enriched by comparison with pension fund efficiency in neighbouring SADC economies --- particularly South Africa, Zambia, Mozambique, and Botswana --- which share some institutional characteristics with Zimbabwe but operate under different macroeconomic and regulatory regimes. A regional comparative DEA study would allow the relative contribution of country-level factors (exchange rate, inflation, regulatory quality) to pension fund efficiency to be disentangled from sector-level and fund-level factors through a meta-frontier DEA specification (Battese, Rao and O'Donnell, 2004).
+
+\textbf{Dynamic DEA and Malmquist productivity indices.} The current study reports efficiency levels at each point in time but does not formally decompose efficiency changes over the five-year period into technological progress and efficiency change components. The Malmquist productivity index (Fare et al., 1994), computed from sequential DEA solutions, would quantify whether the observed efficiency improvements in 2021--2022 reflect genuine frontier shifts (technological progress) or catch-up by previously inefficient funds (efficiency change). This decomposition carries direct policy implications for whether regulatory intervention should focus on best-practice diffusion or on sector-wide innovation.
+
+% ============================================
+% 5.8 CHAPTER SUMMARY
+% ============================================
+\section{Chapter Summary}
+
+This chapter provided the concluding synthesis of the study. The summary of findings in Section~5.2 integrated the results of the five-stage DEA framework and three-stage machine learning enhancement into a coherent empirical picture of pension fund efficiency in Zimbabwe. The formal conclusions in Section~5.3 addressed each of the three research questions, confirming that the majority of Zimbabwean pension funds are not technically efficient, that scale effects represent a secondary but structurally important component of total inefficiency, and that exchange rate volatility and inflation are the dominant macroeconomic constraints on fund-level efficiency.
+
+Section~5.4 translated these findings into a structured set of recommendations for three stakeholder groups. For pension fund managers and trustees, the recommendations emphasised peer benchmarking, capital structure rationalisation, and administrative efficiency improvement. For IPEC, the recommendations focused on institutionalising DEA-based regulatory benchmarking, creating a voluntary consolidation framework for IRS-classified funds, and strengthening data reporting standards. For national policymakers, the overriding recommendation was that macroeconomic stabilisation --- particularly exchange rate and inflation management --- is a structural prerequisite for sustained pension sector efficiency improvement, and that regulatory alignment with regional and international best practices should be actively pursued.
+
+The study's contributions to knowledge were identified as: the first DEA efficiency assessment of Zimbabwean pension funds; the introduction of a transferable hybrid DEA--machine learning analytical framework for emerging market pension efficiency studies; a replicable data methodology for regulatory environments with limited primary data availability; and an addition to the comparative evidence base on pension fund efficiency in low- and middle-income countries. The limitations of the study and directions for future research were presented to support the cumulative development of frontier-based efficiency analysis as a tool for pension fund governance and regulation in Zimbabwe and the broader SADC region.
+
 \newpage
 
 % ============================================
