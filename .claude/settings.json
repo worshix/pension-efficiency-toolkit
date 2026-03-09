@@ -7,7 +7,9 @@
       "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit python -c \"import pension_toolkit; print\\(pension_toolkit.__file__\\)\")",
       "Bash(uv sync)",
       "Bash(uv run python -c \"import pension_toolkit; print\\(pension_toolkit.__file__\\)\")",
-      "Bash(uv run python -c \"from pension_toolkit.data_io import load_csv; from pension_toolkit.dea_core import dea_ccr_input_oriented; from pension_toolkit.bootstrap import simar_wilson; print\\(''All imports OK''\\)\")"
+      "Bash(uv run python -c \"from pension_toolkit.data_io import load_csv; from pension_toolkit.dea_core import dea_ccr_input_oriented; from pension_toolkit.bootstrap import simar_wilson; print\\(''All imports OK''\\)\")",
+      "Bash(uv run python -m pension_toolkit.cli analyze --input tests/dataset.csv --out out/ --bootstrap-B 200 --seed 42)",
+      "Bash(uv run python explanation/test_process.py)"
     ]
   }
 }
