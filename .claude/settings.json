@@ -3,7 +3,11 @@
     "allow": [
       "Bash(uv sync --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit)",
       "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit pytest -q)",
-      "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/ --bootstrap-B 200)"
+      "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/ --bootstrap-B 200)",
+      "Bash(uv run --project /home/worshix/school-projects/pension-efficiency-toolkit/prototype/pension_efficiency_toolkit python -c \"import pension_toolkit; print\\(pension_toolkit.__file__\\)\")",
+      "Bash(uv sync)",
+      "Bash(uv run python -c \"import pension_toolkit; print\\(pension_toolkit.__file__\\)\")",
+      "Bash(uv run python -c \"from pension_toolkit.data_io import load_csv; from pension_toolkit.dea_core import dea_ccr_input_oriented; from pension_toolkit.bootstrap import simar_wilson; print\\(''All imports OK''\\)\")"
     ]
   }
 }

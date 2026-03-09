@@ -25,8 +25,11 @@ curl -Ls https://astral.sh/uv/install.sh | sh
 ### Install dependencies
 
 ```bash
+cd prototype/pension_efficiency_toolkit
 uv sync
 ```
+
+> All commands below must be run from inside the `pension_efficiency_toolkit/` directory.
 
 ---
 
@@ -117,17 +120,6 @@ The input CSV must have these columns:
 
 ---
 
-## Docker
-
-```bash
-docker build -t pension-toolkit .
-docker run -p 8501:8501 pension-toolkit
-```
-
-Then open http://localhost:8501
-
----
-
 ## Project Structure
 
 ```
@@ -152,7 +144,6 @@ pension_efficiency_toolkit/
 │   └── test_bootstrap.py
 ├── scripts/
 │   └── run_local.sh
-├── Dockerfile
 ├── .github/workflows/ci.yml
 ├── pyproject.toml
 └── README.md

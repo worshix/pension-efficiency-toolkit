@@ -3,8 +3,15 @@
 from __future__ import annotations
 
 import io
+import sys
 import tempfile
 from pathlib import Path
+
+# Ensure the project root is on sys.path so pension_toolkit is importable
+# when Streamlit runs this file as a top-level script.
+_project_root = Path(__file__).resolve().parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
 import numpy as np
 import pandas as pd
