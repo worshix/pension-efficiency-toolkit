@@ -1,0 +1,350 @@
+You are an expert full-stack Python developer and data scientist. Build a staged, production-quality prototype called **pension_efficiency_toolkit** that implements a DEA + ML pipeline described below. Deliver the project as a sequence of commits (one commit per stage) with clear commit messages, and include tests and instructions to run everything locally. Produce code, configuration files, tests, sample data, and a README in each stage. Do not ask clarifying questions — make reasonable choices and document them.
+
+HIGH-LEVEL GOAL
+Build a Python prototype that ingests a CSV of pension fund financials, computes input-oriented DEA efficiency (CCR/CRS & BCC/VRS), computes scale efficiency, performs PCA input validation, applies a Simar–Wilson bootstrap bias correction, and runs a RandomForest second stage on bias-corrected scores. Provide a Streamlit UI + a CLI and the ability to export a PDF report.
+
+TECHNICAL REQUIREMENTS
+
+* Python 3.11+
+* Use typed Python (type hints), modular structure, docstrings
+* Testing using pytest
+* Use these libraries: pandas, numpy, scikit-learn, pulp (or scipy.optimize.linprog), joblib, streamlit, matplotlib or plotly, reportlab or pdfkit, pytest
+* Use uv for dependency management and virtual environments
+* Use deterministic RNG seeds for reproducibility
+* Provide Dockerfile and GitHub Actions CI workflow that runs tests
+
+ENVIRONMENT MANAGEMENT (USING UV)
+
+* Initialize project with:
+  uv init pension_efficiency_toolkit
+* Add dependencies with:
+  uv add pandas numpy scikit-learn pulp joblib streamlit matplotlib reportlab pytest
+* Dev dependencies:
+  uv add --dev pytest black ruff
+* Run commands with:
+  uv run python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/
+  uv run streamlit run pension_toolkit/ui_streamlit.py
+* Run tests with:
+  uv run pytest
+
+PROJECT STRUCTURE (must produce)
+
+pension_efficiency_toolkit/
+├─ README.md
+├─ pyproject.toml
+├─ uv.lock
+├─ Dockerfile
+├─ .github/workflows/ci.yml
+├─ pension_toolkit/
+│  ├─ **init**.py
+│  ├─ cli.py
+│  ├─ data_io.py
+│  ├─ dea_core.py
+│  ├─ scale.py
+│  ├─ pca_utils.py
+│  ├─ bootstrap.py
+│  ├─ ml_stage.py
+│  ├─ reporting.py
+│  ├─ ui_streamlit.py
+│  └─ utils.py
+├─ tests/
+│  ├─ test_data_io.py
+│  ├─ test_dea_core.py
+│  ├─ test_pca.py
+│  ├─ test_bootstrap.py
+│  └─ sample_data.csv
+└─ scripts/
+└─ run_local.sh
+
+STAGES (each stage is a commit)
+
+STAGE 0 — Project scaffold
+Commit message:
+"chore: project scaffold + uv setup + sample data"
+
+Tasks:
+
+* Initialize uv project
+* Configure pyproject.toml
+* Add dependencies using uv
+* Create directory structure
+* Add sample_data.csv with at least 5 synthetic funds
+
+CSV schema:
+
+fund_id,year,fund_name,fund_type,total_assets_usd,operating_expenses_usd,equity_debt_usd,net_investment_income_usd,member_contributions_usd,inflation,exchange_volatility,fund_age
+
+README must include setup instructions:
+
+Install uv if needed:
+
+curl -Ls https://astral.sh/uv/install.sh | sh
+
+Then:
+
+uv sync
+
+Run analysis:
+
+uv run python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/
+
+Run UI:
+
+uv run streamlit run pension_toolkit/ui_streamlit.py
+
+Run tests:
+
+uv run pytest -q
+
+Acceptance:
+project installs using `uv sync` and tests run.
+
+STAGE 1 — Data IO + PCA
+Commit message:
+"feat(data): CSV loader + PCA input validation"
+
+Implement:
+
+data_io.load_csv(path)
+
+Validation:
+
+* schema check
+* numeric conversion
+* missing value detection
+
+Implement:
+
+pca_utils.run_pca(X, n_components=3)
+
+Return:
+
+* PCA object
+* explained variance
+* transformed components
+
+Add pytest unit tests.
+
+Acceptance:
+tests pass and PCA prints explained variance.
+
+STAGE 2 — DEA core CCR
+Commit message:
+
+"feat(dea): input-oriented CCR DEA implementation"
+
+Implement:
+
+dea_core.dea_ccr_input_oriented(X_in, Y_out)
+
+Use LP formulation solved with pulp or scipy.
+
+Return:
+
+* theta values
+* lambda weights
+* slack variables
+* peer indices
+
+CLI command must output:
+
+out/efficiency_ccr.csv
+
+Columns:
+
+fund_id
+theta_ccr
+slack_total_assets
+slack_operating_expenses
+slack_equity_debt
+peer_ids
+
+Acceptance:
+CLI runs successfully via uv.
+
+STAGE 3 — BCC + Scale Efficiency
+Commit message:
+
+"feat(dea): BCC model + scale efficiency"
+
+Implement:
+
+dea_core.dea_bcc_input_oriented
+
+scale.compute_scale_efficiency
+
+Output:
+
+out/efficiency_vrs.csv
+out/scale.csv
+
+Include classification:
+
+IRS
+DRS
+CRS
+
+Add tests verifying calculations.
+
+STAGE 4 — Peer analysis
+Commit message:
+
+"feat(analysis): peer targets and input reduction recommendations"
+
+Compute:
+
+target inputs
+absolute reductions
+percentage reductions
+
+Output file:
+
+out/targets.csv
+
+Acceptance:
+adjusted inputs should move inefficient DMU to frontier.
+
+STAGE 5 — Simar-Wilson bootstrap
+Commit message:
+
+"feat(bootstrap): simar-wilson bias correction"
+
+Implement:
+
+bootstrap.simar_wilson(dea_func, X, Y, B=2000)
+
+Use resampling.
+
+Return:
+
+bias corrected scores
+95% confidence intervals
+
+For CI/test runs default:
+
+B=200
+
+Output:
+
+out/bias_corrected_scores.csv
+
+Columns:
+
+fund_id
+theta_raw
+theta_bias_corrected
+ci_lower
+ci_upper
+
+STAGE 6 — Random Forest second stage
+Commit message:
+
+"feat(ml): RandomForest determinant analysis"
+
+Implement:
+
+ml_stage.fit_rf(target_scores, env_features)
+
+Settings:
+
+n_estimators=500
+max_features="sqrt"
+
+Return:
+
+feature importance
+permutation importance
+partial dependence plots
+
+Output:
+
+out/rf_importance.csv
+out/pdp_top3.png
+
+STAGE 7 — Streamlit dashboard
+Commit message:
+
+"feat(ui): streamlit dashboard + PDF export"
+
+Features:
+
+CSV upload
+analysis execution
+tables and charts
+
+Tabs:
+
+Overview
+Efficiency
+Drivers
+Recommendations
+
+Include button:
+
+"Export PDF Report"
+
+Run with:
+
+uv run streamlit run pension_toolkit/ui_streamlit.py
+
+STAGE 8 — CLI polish + Docker + CI
+Commit message:
+
+"chore: CLI polish + Docker + CI"
+
+Implement CLI flags:
+
+--input
+--out
+--bootstrap-B
+--use-pca-composite
+--seed
+
+Dockerfile must support:
+
+uv sync
+uv run streamlit run pension_toolkit/ui_streamlit.py
+
+CI workflow:
+
+install uv
+run `uv sync`
+run `uv run pytest`
+
+EXTRA GUIDELINES
+
+Use joblib to parallelize bootstrap.
+
+Ensure deterministic results with:
+
+np.random.default_rng(seed)
+
+Handle edge cases:
+
+* identical DMUs
+* invalid numeric values
+* insufficient observations
+
+Write clear docstrings.
+
+Format code using black.
+
+Lint with ruff.
+
+Provide example run command:
+
+uv run python -m pension_toolkit.cli analyze --input tests/sample_data.csv --out out/ --bootstrap-B 200
+
+DELIVERABLES PER STAGE
+
+Each stage must include:
+
+source code
+tests
+updated README
+example output files
+PR_DESCRIPTION.md summarizing the change
+
+End each stage with:
+
+"STAGE COMPLETE: <stage number>"
