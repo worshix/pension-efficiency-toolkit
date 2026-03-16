@@ -1,49 +1,45 @@
 \contentsline {section}{\numberline {1}Overview: What We Are Doing and Why}{3}{section.1}%
 \contentsline {section}{\numberline {2}Dataset: Column-by-Column Reference}{3}{section.2}%
-\contentsline {section}{\numberline {3}Stage 1A: PCA Input Validation}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Purpose}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Calculation}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Scree plot interpretation}{6}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Stage 1B: CCR (CRS) DEA Model}{6}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Background}{6}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Notation}{6}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Two-Phase LP Formulation}{7}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Why two phases?}{7}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Output file: \texttt {out/efficiency\_ccr.csv}}{7}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Stage 1C: BCC (VRS) DEA Model}{8}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Background}{8}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Modification to Phase I}{8}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Output file: \texttt {out/efficiency\_vrs.csv}}{8}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Stage 1D: Scale Efficiency and Returns to Scale}{8}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Scale efficiency}{8}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Returns to Scale classification}{8}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Output file: \texttt {out/scale.csv}}{9}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Stage 1E: Peer Analysis and Input Reduction Targets}{9}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Target inputs}{9}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Reduction metrics}{9}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Output file: \texttt {out/targets.csv}}{9}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Stage 2A: Simar--Wilson Bootstrap Bias Correction}{9}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Why bias correction is needed}{9}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Algorithm}{9}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Output file: \texttt {out/bias\_corrected\_scores.csv}}{10}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Stage 2B: Random Forest Second Stage}{10}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Purpose}{10}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Model}{10}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Feature importance measures}{11}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Partial Dependence Plots}{11}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}Output files}{11}{subsection.9.5}%
-\contentsline {section}{\numberline {10}Graph Descriptions}{11}{section.10}%
-\contentsline {subsection}{\numberline {10.1}PCA Scree Plot}{11}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}CCR vs.\ BCC Efficiency Bar Chart}{11}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Partial Dependence Plots}{11}{subsection.10.3}%
-\contentsline {section}{\numberline {11}Process Verification: Python Test Snippets}{12}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Stage 0: Data loading and schema}{12}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Stage 1: PCA variance explained}{12}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Stage 2: CCR DEA correctness}{13}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Stage 3: BCC $\geq $ CCR and Scale Efficiency in (0, 1]}{14}{subsection.11.4}%
-\contentsline {subsection}{\numberline {11.5}Stage 4: Input reduction targets are valid}{15}{subsection.11.5}%
-\contentsline {subsection}{\numberline {11.6}Stage 5: Bootstrap bias correction properties}{16}{subsection.11.6}%
-\contentsline {subsection}{\numberline {11.7}Stage 6: Random Forest second stage}{17}{subsection.11.7}%
-\contentsline {subsection}{\numberline {11.8}Stage 7: End-to-end pipeline sanity check}{18}{subsection.11.8}%
-\contentsline {section}{\numberline {12}Running the Full Pipeline}{19}{section.12}%
-\contentsline {section}{\numberline {13}Key References}{20}{section.13}%
+\contentsline {section}{\numberline {3}Stage 1: CCR (CRS) DEA Model}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Background}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Notation}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Two-Phase LP Formulation}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Why two phases?}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Output file: \texttt {out/efficiency\_ccr.csv}}{7}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Stage 2: BCC (VRS) DEA Model}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Background}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Modification to Phase I}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Output file: \texttt {out/efficiency\_vrs.csv}}{7}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Stage 3: Scale Efficiency and Returns to Scale}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Scale efficiency}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Returns to Scale classification}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Output file: \texttt {out/scale.csv}}{8}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Stage 4: Peer Analysis and Input Reduction Targets}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Target inputs}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Reduction metrics}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Output file: \texttt {out/targets.csv}}{8}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Stage 5: Simar--Wilson Bootstrap Bias Correction}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Why bias correction is needed}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Algorithm}{9}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Output file: \texttt {out/bias\_corrected\_scores.csv}}{9}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Stage 6: Random Forest Second Stage}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Purpose}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Model}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Derived feature construction (in \texttt {cli.py}, Stage 7 block)}{10}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Feature importance measures}{10}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Partial Dependence Plots}{11}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Output files}{11}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Graph Descriptions}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}CCR vs.\ BCC Efficiency Bar Chart}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Scale Efficiency Chart}{11}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Partial Dependence Plots}{11}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Process Verification: Python Test Snippets}{11}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Stage 0: Data loading and schema}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Stage 1: CCR DEA correctness}{12}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Stage 2: BCC $\geq $ CCR and Scale Efficiency in (0, 1]}{13}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Stage 3: Input reduction targets are valid}{14}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Stage 4: Bootstrap bias correction properties}{15}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Stage 5: Derived features and Random Forest second stage}{16}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Stage 6: End-to-end pipeline output files}{17}{subsection.10.7}%
+\contentsline {section}{\numberline {11}Running the Full Pipeline}{18}{section.11}%
+\contentsline {section}{\numberline {12}Key References}{19}{section.12}%

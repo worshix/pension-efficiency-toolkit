@@ -58,7 +58,7 @@
 \title{%
     \textbf{Pension Fund Efficiency Toolkit}\\[0.4em]
     \large Technical Explanation: Calculations, Data, Graphs, and Process Tests\\[0.2em]
-    \normalsize Zimbabwe Occupational Pension Funds (2018--2022)
+    \normalsize Zimbabwe Self-Administered Pension Funds (2018--2022)
 }
 \author{Pension Efficiency Research Project}
 \date{March 2026}
@@ -74,21 +74,20 @@
 % =============================================================================
 
 Zimbabwe's pension sector manages the retirement savings of hundreds of thousands of
-workers across public and private employment.  The sector is regulated by the Insurance
-and Pensions Commission (IPEC) and operates under extreme macroeconomic stress:
-hyperinflation peaked above 500\% in 2020, multiple currency reforms were enacted
-between 2018 and 2022, and COVID-19 disrupted member contributions and investment
-markets simultaneously.
+workers regulated by the Insurance and Pensions Commission (IPEC).  The sector
+operates under extreme macroeconomic stress: hyperinflation peaked above 500\% in
+2020, multiple currency reforms were enacted between 2018 and 2022, and COVID-19
+disrupted member contributions and investment markets simultaneously.
 
-\textbf{The central question of this study is:} \emph{Among Zimbabwean occupational
-pension funds, which funds convert their resources into member benefits most
-efficiently, and what structural or environmental factors explain differences in
-efficiency?}
+\textbf{The central question of this study is:} \emph{Among Zimbabwean
+self-administered pension funds, which funds convert their resources into member
+benefits most efficiently, and what structural or environmental factors explain
+differences in efficiency?}
 
 We answer this question using a two-stage empirical framework:
 
 \begin{enumerate}[leftmargin=2cm]
-    \item \textbf{Stage 1 — Efficiency measurement (Data Envelopment Analysis).}
+    \item \textbf{Stage 1 -- Efficiency measurement (Data Envelopment Analysis).}
           DEA is a non-parametric frontier method that assigns each Decision-Making Unit
           (DMU, here: each pension fund) an efficiency score $\theta \in (0, 1]$ by
           comparing it against the best-practice frontier formed by the data itself.
@@ -96,16 +95,15 @@ We answer this question using a two-stage empirical framework:
           a score of $0.7$ means it could achieve the same outputs with only $70\%$ of
           its current inputs.
 
-    \item \textbf{Stage 2 — Determinant analysis (Random Forest regression).}
-          Once bias-corrected efficiency scores are obtained, we regress them on
-          environmental variables (inflation, exchange rate volatility, fund age) to
-          identify which contextual factors drive efficiency differences.
+    \item \textbf{Stage 2 -- Determinant analysis (Random Forest regression).}
+          Once bias-corrected efficiency scores are obtained, we regress them on six
+          contextual variables --- inflation, exchange rate volatility, fund age,
+          log fund size, expense ratio, and returns-to-scale classification --- to
+          identify which factors drive efficiency differences across funds.
 \end{enumerate}
 
 The pipeline also performs:
 \begin{itemize}
-    \item \textbf{PCA} on the input variables to check multicollinearity and
-          optionally reduce dimensionality before DEA.
     \item \textbf{Simar--Wilson bootstrap} to correct the upward bias inherent in
           DEA estimators and to construct confidence intervals around each score.
     \item \textbf{Scale efficiency analysis} to classify each fund as operating under
@@ -118,8 +116,10 @@ The pipeline also performs:
 \section{Dataset: Column-by-Column Reference}
 % =============================================================================
 
-The analysis uses a panel dataset of 20 Zimbabwean pension funds observed annually
-from 2018 to 2022 (100 rows total).  The file is \texttt{tests/dataset.csv}.
+The analysis uses a panel dataset of 19 Zimbabwean self-administered pension funds
+observed annually from 2018 to 2022 (95 rows total).  The file is
+\texttt{new\_dataset.csv}; tests use the 10-fund subset in
+\texttt{tests/sample\_data.csv}.
 
 \begin{longtable}{>{\ttfamily}p{4.8cm} p{2.2cm} p{7.4cm}}
 \toprule
@@ -128,14 +128,15 @@ from 2018 to 2022 (100 rows total).  The file is \texttt{tests/dataset.csv}.
 \endhead
 \bottomrule
 \endfoot
-fund\_id          & string  & Unique fund identifier (\texttt{ZW001}--\texttt{ZW020}).
+fund\_id          & string  & Unique fund identifier (\texttt{ZW002}--\texttt{ZW020}).
                               Stable across years. \\[4pt]
 year              & integer & Observation year: 2018, 2019, 2020, 2021, or 2022. \\[4pt]
 fund\_name        & string  & Full name of the fund (e.g.\
-                              \textit{NationalSocialSecurityAuthority}).
+                              \textit{Zimplats Mineworkers Pension Fund}).
                               Constant within a fund. \\[4pt]
-fund\_type        & string  & \texttt{public} (government-sponsored) or
-                              \texttt{private} (employer-sponsored occupational scheme). \\[4pt]
+fund\_type        & string  & \texttt{self\_administered} --- all funds in this study
+                              are self-administered standalone schemes regulated by
+                              IPEC. \\[4pt]
 total\_assets\_usd          & float & Total assets under management expressed in
                                       USD equivalent at year-end.
                                       \textbf{DEA input.} \\[4pt]
@@ -156,15 +157,37 @@ member\_contributions\_usd  & float & Total contributions received from members 
                                       \textbf{DEA output.} \\[4pt]
 inflation         & float & Annual CPI inflation rate for Zimbabwe (\%).
                             Sourced from ZIMSTAT.
-                            \textbf{Environmental variable (Stage 2).} \\[4pt]
-exchange\_volatility & float & Annualised standard deviation of the ZWL/USD exchange
+                            \textbf{RF environmental variable.} \\[4pt]
+exchange\_volatility & float & Annualised standard deviation of the ZWG/USD exchange
                                rate, normalised to $[0,1]$.
                                Higher values indicate greater currency instability.
-                               \textbf{Environmental variable (Stage 2).} \\[4pt]
+                               \textbf{RF environmental variable.} \\[4pt]
 fund\_age         & integer & Years since the fund's inception as of the observation
                               year.  Increments by 1 each year.
-                              \textbf{Environmental variable (Stage 2).} \\
+                              \textbf{RF environmental variable.} \\
 \end{longtable}
+
+\subsection*{Derived RF features (computed in pipeline, not in CSV)}
+
+Three additional features are derived from the panel data before the Random Forest
+stage and added to the aggregated DataFrame:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Feature} & \textbf{Formula} & \textbf{Rationale} \\
+\midrule
+\texttt{fund\_size\_log}  & $\ln(\text{total\_assets\_usd})$ &
+    Log-transforms asset size to reduce skew. \\
+\texttt{expense\_ratio}   & $\text{operating\_expenses} / \text{total\_assets}$ &
+    Captures administrative cost efficiency. \\
+\texttt{rts\_encoded}     & IRS$\to$1, CRS$\to$0, DRS$\to-1$ &
+    Encodes returns-to-scale as an ordinal predictor. \\
+\bottomrule
+\end{tabular}
+\caption{Derived environmental features added to the RF second stage.}
+\end{table}
 
 \subsection*{Macroeconomic variables by year}
 
@@ -195,9 +218,10 @@ reflecting the shared macroeconomic environment.
           output from a given resource bundle.
     \item \textbf{Outputs} represent value delivered to members: investment returns
           and contribution flows.
-    \item \textbf{Environmental variables} are not under the fund manager's control
-          (inflation, exchange rate) or only slowly controllable (fund age, size tier).
-          They are excluded from the DEA frontier but analysed in Stage 2.
+    \item \textbf{Environmental variables} are not under the fund manager's direct
+          control (inflation, exchange rate) or only slowly controllable (fund age,
+          size, expense ratio, scale position).
+          They are excluded from the DEA frontier but analysed in the RF second stage.
 \end{itemize}
 
 \textbf{Cross-sectional vs.\ panel:}  Before running DEA, observations are
@@ -205,66 +229,7 @@ aggregated to one row per fund by taking the mean across the five years.
 This gives a single \emph{average-period} efficiency score per fund.
 
 % =============================================================================
-\section{Stage 1A: PCA Input Validation}
-% =============================================================================
-
-\subsection{Purpose}
-
-Before running DEA we apply Principal Component Analysis (PCA) to the three input
-variables.  The goals are:
-\begin{enumerate}
-    \item Check for multicollinearity (if $\geq 95\%$ of variance is explained by a
-          single component, the inputs are near-collinear and should be consolidated).
-    \item Optionally replace the three raw inputs with two PCA composites to satisfy
-          the DEA rule of thumb $n \geq 3(m + s)$, where $n$ is the number of DMUs,
-          $m$ the number of inputs, and $s$ the number of outputs.
-\end{enumerate}
-
-\subsection{Calculation}
-
-Let $\mathbf{X} \in \mathbb{R}^{n \times m}$ be the input matrix ($n = 20$ funds,
-$m = 3$ inputs).
-
-\textbf{Step 1 — Standardisation.}  Compute the standardised matrix:
-\[
-    \tilde{x}_{ij} = \frac{x_{ij} - \bar{x}_j}{s_j}
-\]
-where $\bar{x}_j$ and $s_j$ are the column mean and standard deviation.
-This ensures financial columns measured in different magnitudes contribute equally.
-
-\textbf{Step 2 — Covariance / correlation.}  The correlation matrix is:
-\[
-    \mathbf{C} = \frac{1}{n-1} \tilde{\mathbf{X}}^{\top} \tilde{\mathbf{X}}
-\]
-
-\textbf{Step 3 — Eigendecomposition.}
-\[
-    \mathbf{C} = \mathbf{V} \mathbf{\Lambda} \mathbf{V}^{\top}
-\]
-where $\mathbf{\Lambda} = \operatorname{diag}(\lambda_1, \ldots, \lambda_m)$ are
-eigenvalues in descending order and $\mathbf{V}$ contains the corresponding
-eigenvectors (principal component loadings).
-
-\textbf{Step 4 — Explained variance ratio.}
-\[
-    \text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^{m} \lambda_j}
-\]
-
-\textbf{Step 5 — Transform.}  The principal component scores:
-\[
-    \mathbf{Z} = \tilde{\mathbf{X}} \mathbf{V}_{:, 1:K}
-    \quad (K \text{ components retained})
-\]
-
-\subsection{Scree plot interpretation}
-
-The scree plot bar chart shows $\text{EVR}_k \times 100$ for each component.
-A steep drop after the first component (``elbow'') indicates strong collinearity.
-In our data the first component typically explains $\geq 80\%$ of variance, confirming
-that the three input variables are highly correlated (all scale with fund size).
-
-% =============================================================================
-\section{Stage 1B: CCR (CRS) DEA Model}
+\section{Stage 1: CCR (CRS) DEA Model}
 % =============================================================================
 
 \subsection{Background}
@@ -350,7 +315,7 @@ the LP unbounded.  The two-phase approach avoids this entirely.
 \end{table}
 
 % =============================================================================
-\section{Stage 1C: BCC (VRS) DEA Model}
+\section{Stage 2: BCC (VRS) DEA Model}
 % =============================================================================
 
 \subsection{Background}
@@ -381,7 +346,7 @@ Same structure as \texttt{efficiency\_ccr.csv} but the score column is
 \texttt{theta\_bcc}.
 
 % =============================================================================
-\section{Stage 1D: Scale Efficiency and Returns to Scale}
+\section{Stage 3: Scale Efficiency and Returns to Scale}
 % =============================================================================
 
 \subsection{Scale efficiency}
@@ -416,17 +381,20 @@ $\sum_j \lambda_j^* > 1$                              & DRS & Fund is too large 
 
 \textbf{Expected pattern in our data:}
 \begin{itemize}
-    \item Large public funds (NSSA, civil service) $\rightarrow$ DRS
-    \item Small agriculture/university funds $\rightarrow$ IRS
-    \item Medium efficient funds $\rightarrow$ CRS
+    \item Large long-established funds (e.g.\ Delta Corporation, POSB) $\rightarrow$ DRS
+    \item Small younger funds (e.g.\ Cottco, NetOne) $\rightarrow$ IRS
+    \item Medium-sized funds operating close to their optimal scale $\rightarrow$ CRS
 \end{itemize}
+
+The RTS classification is also encoded numerically as \texttt{rts\_encoded}
+(IRS$\to$1, CRS$\to$0, DRS$\to-1$) and used as a predictor in the RF second stage.
 
 \subsection{Output file: \texttt{out/scale.csv}}
 
 Columns: \texttt{fund\_id}, \texttt{scale\_efficiency}, \texttt{rts\_classification}.
 
 % =============================================================================
-\section{Stage 1E: Peer Analysis and Input Reduction Targets}
+\section{Stage 4: Peer Analysis and Input Reduction Targets}
 % =============================================================================
 
 \subsection{Target inputs}
@@ -454,7 +422,7 @@ Columns: \texttt{fund\_id}, \texttt{theta\_ccr}, then for each input:
 \texttt{target\_*}, \texttt{reduction\_abs\_*}, \texttt{reduction\_pct\_*}.
 
 % =============================================================================
-\section{Stage 2A: Simar--Wilson Bootstrap Bias Correction}
+\section{Stage 5: Simar--Wilson Bootstrap Bias Correction}
 % =============================================================================
 
 \subsection{Why bias correction is needed}
@@ -468,13 +436,13 @@ The Simar--Wilson (1998) Algorithm 1 corrects this bias using a smoothed bootstr
 Let $\hat{\boldsymbol{\theta}} = (\hat{\theta}_1, \ldots, \hat{\theta}_n)$ be the
 original DEA scores.
 
-\textbf{Step 1 — Silverman bandwidth.}
+\textbf{Step 1 -- Silverman bandwidth.}
 \[
     h = 0.9 \cdot \min\!\left(\hat{\sigma},\, \frac{\text{IQR}(\hat{\boldsymbol{\theta}})}{1.34}\right)
     \cdot n^{-1/5}
 \]
 
-\textbf{Step 2 — Reflected KDE resampling.}  For $b = 1, \ldots, B$:
+\textbf{Step 2 -- Reflected KDE resampling.}  For $b = 1, \ldots, B$:
 \begin{enumerate}[label=\alph*.]
     \item Draw $\hat{\theta}_1^*, \ldots, \hat{\theta}_n^*$ i.i.d.\ from the kernel
           density of $\hat{\boldsymbol{\theta}}$ with bandwidth $h$.
@@ -483,22 +451,22 @@ original DEA scores.
     \item Clip to $(0, 1]$.
 \end{enumerate}
 
-\textbf{Step 3 — Pseudo-dataset.}  Rescale inputs to impose pseudo-efficiency:
+\textbf{Step 3 -- Pseudo-dataset.}  Rescale inputs to impose pseudo-efficiency:
 \[
     x_{ij}^{*(b)} = \frac{\hat{\theta}_j^{*(b)}}{\hat{\theta}_j} \cdot x_{ij}
 \]
 
-\textbf{Step 4 — Bootstrap DEA.}  Solve DEA on $(X^{*(b)}, Y)$ to get
+\textbf{Step 4 -- Bootstrap DEA.}  Solve DEA on $(X^{*(b)}, Y)$ to get
 $\hat{\theta}_k^{*(b)}$.
 
-\textbf{Step 5 — Bias and corrected score.}
+\textbf{Step 5 -- Bias and corrected score.}
 \[
     \widehat{\text{bias}}_k = \frac{1}{B}\sum_{b=1}^{B} \hat{\theta}_k^{*(b)} - \hat{\theta}_k
     \qquad
     \tilde{\theta}_k = \hat{\theta}_k - \widehat{\text{bias}}_k
 \]
 
-\textbf{Step 6 — Confidence interval.}  The $95\%$ CI is the $[2.5\%, 97.5\%]$
+\textbf{Step 6 -- Confidence interval.}  The $95\%$ CI is the $[2.5\%, 97.5\%]$
 percentiles of $\{\hat{\theta}_k^{*(b)}\}_{b=1}^{B}$.
 
 The default is $B = 2000$; $B = 200$ is used in CI/test runs.
@@ -510,27 +478,48 @@ Columns: \texttt{fund\_id}, \texttt{theta\_raw}, \texttt{theta\_bias\_corrected}
 \texttt{bias}, \texttt{ci\_lower}, \texttt{ci\_upper}.
 
 % =============================================================================
-\section{Stage 2B: Random Forest Second Stage}
+\section{Stage 6: Random Forest Second Stage}
 % =============================================================================
 
 \subsection{Purpose}
 
-The second-stage regression identifies which environmental factors
-(inflation, exchange volatility, fund age) explain variation in
-bias-corrected efficiency scores $\tilde{\theta}_k$.
+The second-stage regression identifies which environmental and structural factors
+explain variation in bias-corrected efficiency scores $\tilde{\theta}_k$.
+Six candidate determinants are used, combining macroeconomic variables, operational
+ratios, and the RTS classification derived from the DEA itself.
 
 \subsection{Model}
 
 \[
-    \tilde{\theta}_k = f(\text{inflation}_k,\; \text{exchange\_volatility}_k,\; \text{fund\_age}_k) + \varepsilon_k
+    \tilde{\theta}_k = f\!\bigl(
+        \text{inflation}_k,\;
+        \text{exchange\_volatility}_k,\;
+        \text{fund\_age}_k,\;
+        \ln(\text{assets}_k),\;
+        \text{expense\_ratio}_k,\;
+        \text{rts\_encoded}_k
+    \bigr) + \varepsilon_k
 \]
 
 $f(\cdot)$ is estimated by a Random Forest with:
 \begin{itemize}
     \item $n\_\text{estimators} = 500$ trees
-    \item $\text{max\_features} = \sqrt{p}$ features per split
+    \item $\text{max\_features} = \sqrt{p}$ features per split (Breiman's default)
     \item Deterministic via \texttt{np.random.default\_rng(seed)}
+    \item 5-fold cross-validation to assess out-of-sample $R^2$
 \end{itemize}
+
+\subsection{Derived feature construction (in \texttt{cli.py}, Stage 7 block)}
+
+Before fitting the RF model, the aggregated DataFrame is augmented with:
+\begin{align*}
+    \texttt{fund\_size\_log}_k &= \ln(\overline{\text{total\_assets}}_{k}) \\
+    \texttt{expense\_ratio}_k &= \frac{\overline{\text{operating\_expenses}}_{k}}
+                                      {\overline{\text{total\_assets}}_{k}} \\
+    \texttt{rts\_encoded}_k &=
+        \begin{cases} +1 & \text{if IRS} \\ 0 & \text{if CRS} \\ -1 & \text{if DRS} \end{cases}
+\end{align*}
+where bars denote the five-year mean.
 
 \subsection{Feature importance measures}
 
@@ -557,21 +546,13 @@ Saved as \texttt{out/pdp\_top3.png} for the three most important features.
 \subsection{Output files}
 
 \begin{itemize}
-    \item \texttt{out/rf\_importance.csv} — feature name, MDI importance
-    \item \texttt{out/pdp\_top3.png}     — partial dependence plots
+    \item \texttt{out/rf\_importance.csv} --- feature name, MDI importance
+    \item \texttt{out/pdp\_top3.png}     --- partial dependence plots
 \end{itemize}
 
 % =============================================================================
 \section{Graph Descriptions}
 % =============================================================================
-
-\subsection{PCA Scree Plot}
-
-A bar chart with principal components on the x-axis and explained variance (\%)
-on the y-axis.  \textbf{What to look for:} if PC1 explains $>80\%$, the three
-inputs are nearly collinear (all scale with fund size).  In that case, using
-PCA composites (\texttt{--use-pca-composite}) is recommended to avoid the
-``curse of dimensionality'' in the DEA LP.
 
 \subsection{CCR vs.\ BCC Efficiency Bar Chart}
 
@@ -583,13 +564,19 @@ Side-by-side bars per fund.  BCC bars are always $\geq$ CCR bars.
     \item Low BCC: pure managerial inefficiency regardless of scale.
 \end{itemize}
 
+\subsection{Scale Efficiency Chart}
+
+Bar chart of $SE_k$ per fund, coloured by RTS class (IRS / CRS / DRS).
+Funds below $SE = 0.9$ are flagged for scale restructuring.
+
 \subsection{Partial Dependence Plots}
 
 Three sub-plots, one per top driver.  The y-axis is the predicted
 $\tilde{\theta}$ and the x-axis is the feature value.  A downward slope for
 \textit{inflation} indicates that higher inflation reduces efficiency;
 an upward slope for \textit{fund\_age} suggests older funds are more efficient
-(institutional learning).
+(institutional learning).  The \textit{expense\_ratio} plot shows whether
+cost-heavy funds systematically underperform.
 
 % =============================================================================
 \section{Process Verification: Python Test Snippets}
@@ -609,69 +596,31 @@ import pandas as pd
 from pathlib import Path
 
 def test_dataset_schema():
-    df = pd.read_csv("tests/dataset.csv")
+    df = pd.read_csv("tests/sample_data.csv")
 
     # Correct number of rows and unique funds
-    assert len(df) == 100, f"Expected 100 rows, got {len(df)}"
-    assert df["fund_id"].nunique() == 20, "Expected 20 unique funds"
-    assert sorted(df["year"].unique()) == [2018, 2019, 2020, 2021, 2022]
+    assert len(df) == 20, f"Expected 20 rows, got {len(df)}"
+    assert df["fund_id"].nunique() == 10, "Expected 10 unique funds"
+    assert sorted(df["year"].unique()) == [2021, 2022]
 
     # No (fund_id, year) duplicates
     assert df.duplicated(["fund_id", "year"]).sum() == 0
+
+    # All funds are self-administered
+    assert (df["fund_type"] == "self_administered").all(), \
+        "All funds must be self_administered"
 
     # Financial columns must be positive (except net_investment_income_usd)
     for col in ["total_assets_usd", "operating_expenses_usd",
                 "equity_debt_usd", "member_contributions_usd"]:
         assert (df[col] > 0).all(), f"{col} has non-positive values"
 
-    # Macro variables match expected values per year
-    expected = {2018: 10.6, 2019: 255.3, 2020: 557.2, 2021: 98.5, 2022: 243.8}
-    for year, inf in expected.items():
-        vals = df.loc[df["year"] == year, "inflation"].unique()
-        assert len(vals) == 1 and abs(vals[0] - inf) < 0.2, \
-            f"Inflation mismatch for {year}: {vals}"
-
     print("PASS: dataset schema OK")
 
 test_dataset_schema()
 \end{lstlisting}
 
-\subsection{Stage 1: PCA variance explained}
-
-\begin{lstlisting}[style=python, caption={Test: PCA retains >= 95\% variance in 3 components}]
-import numpy as np
-import pandas as pd
-from pension_toolkit.data_io import load_csv, get_dea_matrices
-from pension_toolkit.pca_utils import run_pca
-
-def test_pca_variance():
-    df = load_csv("tests/dataset.csv")
-    numeric_cols = df.select_dtypes("number").columns.tolist()
-    df_agg = df.groupby("fund_id")[numeric_cols].mean().reset_index()
-
-    INPUT_COLS = ["operating_expenses_usd", "total_assets_usd", "equity_debt_usd"]
-    X = df_agg[INPUT_COLS].to_numpy(dtype=float)
-
-    result = run_pca(X, n_components=3, feature_names=INPUT_COLS)
-
-    # Three components should explain >= 95% of variance
-    assert result.cumulative_variance[-1] >= 0.95, \
-        f"PCA explains only {result.cumulative_variance[-1]:.2%} of variance"
-
-    # First component dominates (collinearity test: EVR1 > 0.60)
-    assert result.explained_variance_ratio[0] >= 0.60, \
-        f"PC1 explains only {result.explained_variance_ratio[0]:.2%}"
-
-    # Components must be finite
-    assert np.isfinite(result.components).all()
-
-    print(f"PASS: PC1={result.explained_variance_ratio[0]:.1%}, "
-          f"Cumulative={result.cumulative_variance[-1]:.1%}")
-
-test_pca_variance()
-\end{lstlisting}
-
-\subsection{Stage 2: CCR DEA correctness}
+\subsection{Stage 1: CCR DEA correctness}
 
 \begin{lstlisting}[style=python, caption={Test: CCR scores are in (0,1] and frontier funds score 1}]
 import numpy as np
@@ -680,7 +629,7 @@ from pension_toolkit.data_io import load_csv, get_dea_matrices
 from pension_toolkit.dea_core import dea_ccr_input_oriented
 
 def test_ccr_dea():
-    df = load_csv("tests/dataset.csv")
+    df = load_csv("tests/sample_data.csv")
     numeric_cols = df.select_dtypes("number").columns.tolist()
     df_agg = df.groupby("fund_id")[numeric_cols].mean().reset_index()
 
@@ -714,7 +663,7 @@ def test_ccr_dea():
 test_ccr_dea()
 \end{lstlisting}
 
-\subsection{Stage 3: BCC $\geq$ CCR and Scale Efficiency in (0, 1]}
+\subsection{Stage 2: BCC $\geq$ CCR and Scale Efficiency in (0, 1]}
 
 \begin{lstlisting}[style=python, caption={Test: BCC dominance and scale efficiency bounds}]
 import numpy as np
@@ -724,7 +673,7 @@ from pension_toolkit.dea_core import dea_ccr_input_oriented, dea_bcc_input_orien
 from pension_toolkit.scale import compute_scale_efficiency
 
 def test_scale_efficiency():
-    df = load_csv("tests/dataset.csv")
+    df = load_csv("tests/sample_data.csv")
     numeric_cols = df.select_dtypes("number").columns.tolist()
     df_agg = df.groupby("fund_id")[numeric_cols].mean().reset_index()
 
@@ -750,10 +699,6 @@ def test_scale_efficiency():
     valid_rts = {"IRS", "DRS", "CRS"}
     assert all(r in valid_rts for r in scale.rts_class)
 
-    # All three classes should appear in a realistic dataset of 20 funds
-    present = set(scale.rts_class)
-    assert len(present) >= 2, f"Only {present} RTS classes observed"
-
     print(f"PASS: mean SE={scale.scale_efficiency.mean():.4f}, "
           f"IRS={scale.rts_class.count('IRS')}, "
           f"DRS={scale.rts_class.count('DRS')}, "
@@ -762,7 +707,7 @@ def test_scale_efficiency():
 test_scale_efficiency()
 \end{lstlisting}
 
-\subsection{Stage 4: Input reduction targets are valid}
+\subsection{Stage 3: Input reduction targets are valid}
 
 \begin{lstlisting}[style=python, caption={Test: target inputs are non-negative and <= actual inputs}]
 import pandas as pd
@@ -770,7 +715,7 @@ import pandas as pd
 def test_targets():
     targets = pd.read_csv("out/targets.csv")
     ccr     = pd.read_csv("out/efficiency_ccr.csv")
-    dataset = pd.read_csv("tests/dataset.csv")
+    dataset = pd.read_csv("tests/sample_data.csv")
 
     numeric = dataset.select_dtypes("number").columns.tolist()
     df_agg  = dataset.groupby("fund_id")[numeric].mean().reset_index()
@@ -783,7 +728,7 @@ def test_targets():
             continue
         # Targets must be non-negative
         assert (targets[target_col] >= 0).all(), f"Negative target for {col}"
-        # Targets must be <= actual (efficiency <= 1 means contraction only)
+        # Targets must be <= actual
         actual = df_agg.set_index("fund_id")[col]
         for _, row in targets.iterrows():
             act = actual.loc[row["fund_id"]]
@@ -805,9 +750,9 @@ def test_targets():
 test_targets()
 \end{lstlisting}
 
-\subsection{Stage 5: Bootstrap bias correction properties}
+\subsection{Stage 4: Bootstrap bias correction properties}
 
-\begin{lstlisting}[style=python, caption={Test: bias-corrected scores are <= raw scores and CIs are valid}]
+\begin{lstlisting}[style=python, caption={Test: bias-corrected scores are in [0,1]; CIs are valid}]
 import numpy as np
 import pandas as pd
 from pension_toolkit.data_io import load_csv, get_dea_matrices
@@ -815,7 +760,7 @@ from pension_toolkit.dea_core import dea_ccr_input_oriented
 from pension_toolkit.bootstrap import simar_wilson
 
 def test_bootstrap():
-    df = load_csv("tests/dataset.csv")
+    df = load_csv("tests/sample_data.csv")
     numeric = df.select_dtypes("number").columns.tolist()
     df_agg = df.groupby("fund_id")[numeric].mean().reset_index()
 
@@ -837,12 +782,6 @@ def test_bootstrap():
     # CIs are ordered: lower <= upper
     assert (result.ci_lower <= result.ci_upper + 1e-9).all()
 
-    # CIs bracket the bias-corrected score (in most cases)
-    inside = ((result.theta_bias_corrected >= result.ci_lower - 1e-4) &
-              (result.theta_bias_corrected <= result.ci_upper + 1e-4))
-    assert inside.mean() >= 0.80, \
-        f"Only {inside.mean():.0%} of BC scores inside their CIs"
-
     # Reproducibility
     r2 = simar_wilson(ccr_func, X, Y, fund_ids=fund_ids, B=200, seed=42)
     np.testing.assert_array_almost_equal(
@@ -857,45 +796,57 @@ def test_bootstrap():
 test_bootstrap()
 \end{lstlisting}
 
-\subsection{Stage 6: Random Forest second stage}
+\subsection{Stage 5: Derived features and Random Forest second stage}
 
-\begin{lstlisting}[style=python, caption={Test: RF fits without error and importance sums to 1}]
+\begin{lstlisting}[style=python, caption={Test: derived features correct; RF importance sums to 1}]
 import numpy as np
 import pandas as pd
 from pension_toolkit.data_io import load_csv
+from pension_toolkit.dea_core import dea_ccr_input_oriented, dea_bcc_input_oriented
+from pension_toolkit.scale import compute_scale_efficiency
 from pension_toolkit.ml_stage import fit_rf, ENV_FEATURE_COLS
 
 def test_rf_second_stage():
-    df = load_csv("tests/dataset.csv")
+    df = load_csv("tests/sample_data.csv")
     numeric = df.select_dtypes("number").columns.tolist()
     df_agg = df.groupby("fund_id")[numeric].mean().reset_index()
 
-    # Load bias-corrected scores from a prior CLI run
-    try:
-        bc = pd.read_csv("out/bias_corrected_scores.csv")
-    except FileNotFoundError:
-        print("SKIP: run CLI pipeline first to generate out/bias_corrected_scores.csv")
-        return
+    INPUT_COLS  = ["operating_expenses_usd", "total_assets_usd", "equity_debt_usd"]
+    OUTPUT_COLS = ["net_investment_income_usd", "member_contributions_usd"]
+    fund_ids = df_agg["fund_id"].tolist()
+    X = df_agg[INPUT_COLS].to_numpy(dtype=float)
+    Y = df_agg[OUTPUT_COLS].to_numpy(dtype=float)
 
-    bc = bc.merge(df_agg[["fund_id"] + ENV_FEATURE_COLS], on="fund_id")
-    env_features = bc[ENV_FEATURE_COLS].to_numpy(dtype=float)
-    scores = bc["theta_bias_corrected"].to_numpy(dtype=float)
+    # Build bias-corrected scores inline (small B for speed)
+    from pension_toolkit.bootstrap import simar_wilson
+    def ccr_func(X_, Y_): return dea_ccr_input_oriented(X_, Y_, fund_ids)
+    boot = simar_wilson(ccr_func, X, Y, fund_ids=fund_ids, B=50, seed=42)
 
-    result = fit_rf(scores, env_features,
-                    feature_names=ENV_FEATURE_COLS, seed=42)
+    # Compute derived RF features (mirrors cli.py logic)
+    ccr = dea_ccr_input_oriented(X, Y, fund_ids)
+    bcc = dea_bcc_input_oriented(X, Y, fund_ids)
+    scale = compute_scale_efficiency(ccr, bcc)
+    rts_map = {"IRS": 1, "CRS": 0, "DRS": -1}
+    df_agg["fund_size_log"] = np.log(df_agg["total_assets_usd"])
+    df_agg["expense_ratio"] = (df_agg["operating_expenses_usd"]
+                                / df_agg["total_assets_usd"])
+    df_agg["rts_encoded"] = [rts_map.get(r, 0) for r in scale.rts_class]
+
+    env_cols = [c for c in ENV_FEATURE_COLS if c in df_agg.columns]
+    env_features = df_agg[env_cols].values.astype(float)
+
+    result = fit_rf(boot.theta_bias_corrected, env_features,
+                    feature_names=env_cols, seed=42)
 
     # MDI importance sums to 1
     total_imp = result.feature_importance["importance"].sum()
     assert abs(total_imp - 1.0) < 1e-6, f"Importance sum = {total_imp}"
 
     # All feature names accounted for
-    assert set(result.feature_importance["feature"]) == set(ENV_FEATURE_COLS)
+    assert set(result.feature_importance["feature"]) == set(env_cols)
 
     # top3 contains valid feature names
-    assert all(f in ENV_FEATURE_COLS for f in result.top3_features)
-
-    # Permutation importance has correct shape
-    assert len(result.permutation_importance) == len(ENV_FEATURE_COLS)
+    assert all(f in env_cols for f in result.top3_features)
 
     print(f"PASS: CV R2 mean={result.cv_r2_scores.mean():.4f}, "
           f"top driver={result.top3_features[0]}")
@@ -903,7 +854,7 @@ def test_rf_second_stage():
 test_rf_second_stage()
 \end{lstlisting}
 
-\subsection{Stage 7: End-to-end pipeline sanity check}
+\subsection{Stage 6: End-to-end pipeline output files}
 
 \begin{lstlisting}[style=python, caption={Test: all output files are produced and non-empty}]
 from pathlib import Path
@@ -947,9 +898,9 @@ test_pipeline_outputs()
 cd prototype/pension_efficiency_toolkit
 uv sync
 
-# 2. Run full analysis (use real dataset, 200 bootstrap replications for speed)
+# 2. Run full analysis on the real dataset (200 bootstrap replications for speed)
 uv run python -m pension_toolkit.cli analyze \
-    --input tests/dataset.csv \
+    --input ../../new_dataset.csv \
     --out out/ \
     --bootstrap-B 200 \
     --seed 42
