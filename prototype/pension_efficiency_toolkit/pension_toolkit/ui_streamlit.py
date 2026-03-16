@@ -27,7 +27,6 @@ st.set_page_config(
 from pension_toolkit.data_io import load_csv, get_dea_matrices
 from pension_toolkit.dea_core import dea_ccr_input_oriented, dea_bcc_input_oriented
 from pension_toolkit.scale import compute_scale_efficiency, scale_to_dataframe
-from pension_toolkit.pca_utils import run_pca
 from pension_toolkit.bootstrap import simar_wilson, bootstrap_to_dataframe
 from pension_toolkit.ml_stage import fit_rf, plot_pdp, ENV_FEATURE_COLS
 from pension_toolkit.reporting import generate_pdf_report
@@ -47,9 +46,6 @@ def run_pipeline(df: pd.DataFrame, B: int, seed: int) -> dict:
     df_agg = df_agg.merge(fund_type_map, on="fund_id")
 
     X_in, Y_out, fund_ids = get_dea_matrices(df_agg, INPUT_COLS, OUTPUT_COLS)
-
-    # PCA
-    pca_result = run_pca(X_in, n_components=3, feature_names=INPUT_COLS)
 
     # CCR + BCC
     ccr = dea_ccr_input_oriented(X_in, Y_out, fund_ids)
@@ -85,6 +81,12 @@ def run_pipeline(df: pd.DataFrame, B: int, seed: int) -> dict:
     boot = simar_wilson(_ccr_func, X_in, Y_out, fund_ids=fund_ids, B=B, seed=seed)
     boot_df = bootstrap_to_dataframe(boot)
 
+    # Derived RF features
+    df_agg["fund_size_log"] = np.log(df_agg["total_assets_usd"])
+    df_agg["expense_ratio"] = df_agg["operating_expenses_usd"] / df_agg["total_assets_usd"]
+    rts_map = {"IRS": 1, "CRS": 0, "DRS": -1}
+    df_agg["rts_encoded"] = [rts_map.get(r, 0) for r in scale.rts_class]
+
     # RF
     env_cols = [c for c in ENV_FEATURE_COLS if c in df_agg.columns]
     rf_result = None
@@ -100,7 +102,6 @@ def run_pipeline(df: pd.DataFrame, B: int, seed: int) -> dict:
 
     return dict(
         df_agg=df_agg,
-        pca_result=pca_result,
         ccr_df=ccr_df,
         bcc_df=bcc_df,
         scale_df=scale_df,
@@ -170,26 +171,16 @@ def main() -> None:
         st.subheader("Dataset Overview")
         st.dataframe(results["df_agg"], use_container_width=True)
 
-        st.subheader("PCA Input Validation")
-        pca = results["pca_result"]
-        pca_df = pd.DataFrame(
-            {
-                "Component": [f"PC{i+1}" for i in range(len(pca.explained_variance_ratio))],
-                "Explained Variance": pca.explained_variance_ratio,
-                "Cumulative": pca.cumulative_variance,
-            }
-        )
-        col1, col2 = st.columns([1, 2])
-        with col1:
-            st.dataframe(pca_df.round(4))
-        with col2:
-            import matplotlib.pyplot as plt
-            fig, ax = plt.subplots(figsize=(5, 3))
-            ax.bar(pca_df["Component"], pca_df["Explained Variance"] * 100, color="#2980B9")
-            ax.set_ylabel("Explained Variance (%)")
-            ax.set_title("PCA Scree Plot")
-            st.pyplot(fig)
-            plt.close(fig)
+        st.subheader("Pipeline Summary")
+        ccr_mean = results["ccr_df"]["theta_ccr"].mean()
+        bcc_mean = results["bcc_df"]["theta_bcc"].mean()
+        n_efficient = (results["ccr_df"]["theta_ccr"] >= 1 - 1e-4).sum()
+        n_funds = len(results["ccr_df"])
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("Funds analysed", n_funds)
+        col2.metric("Mean CCR efficiency", f"{ccr_mean:.3f}")
+        col3.metric("Mean BCC efficiency", f"{bcc_mean:.3f}")
+        col4.metric("Frontier funds (CCR)", int(n_efficient))
 
     # --- Efficiency tab ---
     with tabs[1]:

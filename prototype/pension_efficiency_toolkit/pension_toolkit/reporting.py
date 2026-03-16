@@ -29,30 +29,42 @@ PAGE_W, PAGE_H = A4
 MARGIN = 2 * cm
 
 
+_TABLE_STYLE = TableStyle(
+    [
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2C3E50")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, -1), 7),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#ECF0F1")]),
+        ("GRID", (0, 0), (-1, -1), 0.3, colors.grey),
+        ("LEFTPADDING", (0, 0), (-1, -1), 3),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 3),
+        ("TOPPADDING", (0, 0), (-1, -1), 2),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
+        ("WORDWRAP", (0, 0), (-1, -1), True),
+    ]
+)
+
+_USABLE_WIDTH = PAGE_W - 2 * MARGIN
+
+
+def _col_widths(n_cols: int, first_col_ratio: float = 0.15) -> list[float]:
+    """Distribute column widths: first column slightly wider, rest equal."""
+    first = _USABLE_WIDTH * first_col_ratio
+    rest = (_USABLE_WIDTH - first) / max(n_cols - 1, 1)
+    return [first] + [rest] * (n_cols - 1)
+
+
 def _df_to_table(df: pd.DataFrame, max_rows: int = 20) -> Table:
-    """Convert a DataFrame to a ReportLab Table."""
+    """Convert a DataFrame to a ReportLab Table that fits the page width."""
     df = df.head(max_rows).round(4)
     header = [list(df.columns)]
     data_rows = df.values.tolist()
     table_data = header + data_rows
 
-    t = Table(table_data, repeatRows=1)
-    t.setStyle(
-        TableStyle(
-            [
-                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2C3E50")),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-                ("FONTSIZE", (0, 0), (-1, -1), 8),
-                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#ECF0F1")]),
-                ("GRID", (0, 0), (-1, -1), 0.3, colors.grey),
-                ("LEFTPADDING", (0, 0), (-1, -1), 4),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 4),
-                ("TOPPADDING", (0, 0), (-1, -1), 3),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-            ]
-        )
-    )
+    col_w = _col_widths(len(df.columns))
+    t = Table(table_data, colWidths=col_w, repeatRows=1)
+    t.setStyle(_TABLE_STYLE)
     return t
 
 
@@ -149,10 +161,19 @@ def generate_pdf_report(
         story.append(_df_to_table(bootstrap_df))
         story.append(Spacer(1, 0.3 * cm))
 
-    # --- Targets ---
+    # --- Targets (split into two sub-tables to avoid overflow) ---
     if targets_df is not None:
         story.append(Paragraph("Input Reduction Targets", h1_style))
-        story.append(_df_to_table(targets_df))
+        target_cols = ["fund_id", "theta_ccr"] + [c for c in targets_df.columns if c.startswith("target_")]
+        pct_cols = ["fund_id"] + [c for c in targets_df.columns if c.startswith("reduction_pct_")]
+        story.append(Paragraph("Target input levels (USD):", body_style))
+        story.append(Spacer(1, 0.15 * cm))
+        story.append(_df_to_table(targets_df[[c for c in target_cols if c in targets_df.columns]]))
+        story.append(Spacer(1, 0.2 * cm))
+        if any(c.startswith("reduction_pct_") for c in targets_df.columns):
+            story.append(Paragraph("Required reductions (%):", body_style))
+            story.append(Spacer(1, 0.15 * cm))
+            story.append(_df_to_table(targets_df[[c for c in pct_cols if c in targets_df.columns]]))
         story.append(Spacer(1, 0.3 * cm))
 
     # --- RF importance ---
