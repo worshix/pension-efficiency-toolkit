@@ -50,52 +50,50 @@
 \contentsline {paragraph}{Bootstrap Bias Correction}{33}{subsubsection.5.1.6}%
 \contentsline {subsubsection}{\numberline {3.5.1.7}Stage 7: Random Forest Model for Second-Stage Determinant Analysis}{34}{subsubsection.5.1.7}%
 \contentsline {subsubsection}{\numberline {3.5.1.8}Random Forest Model Specification}{35}{subsubsection.5.1.8}%
-\contentsline {subsubsection}{\numberline {3.5.1.9}Candidate Determinant Variables}{36}{subsubsection.5.1.9}%
-\contentsline {subsubsection}{\numberline {3.5.1.10}Variable Importance and Interpretability}{36}{subsubsection.5.1.10}%
-\contentsline {subsubsection}{\numberline {3.5.1.11}Two-Stage Machine Learning Enhanced Framework}{37}{subsubsection.5.1.11}%
-\contentsline {subsubsection}{\numberline {3.5.1.12}Implementation Tools}{38}{subsubsection.5.1.12}%
-\contentsline {section}{\numberline {3.6}Chapter Summary}{39}{section.6}%
-\contentsline {section}{\textbf {CHAPTER 4: DATA ANALYSIS AND PRESENTATION}}{39}{section*.10}%
-\contentsline {section}{\numberline {4.1}Introduction}{39}{section.1}%
-\contentsline {section}{\numberline {4.2}Data Preparation and Descriptive Statistics}{40}{section.2}%
-\contentsline {subsection}{\numberline {4.2.1}Sample Selection and Data Collection}{40}{subsection.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Descriptive Statistics}{41}{subsection.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Correlation Analysis}{42}{subsection.2.3}%
-\contentsline {section}{\numberline {4.3}CRS Technical Efficiency Results: CCR Model}{42}{section.3}%
-\contentsline {subsection}{\numberline {4.3.1}Annual Frequency Distribution of CRS Efficiency Scores}{42}{subsection.3.1}%
-\contentsline {section}{\numberline {4.4}VRS Technical Efficiency Results: BCC Model}{44}{section.4}%
-\contentsline {section}{\numberline {4.5}Scale Efficiency and Returns-to-Scale Analysis}{46}{section.5}%
-\contentsline {section}{\numberline {4.6}Peer Analysis and Target Setting}{47}{section.6}%
-\contentsline {subsection}{\numberline {4.6.1}Reference Sets for Inefficient Funds}{47}{subsection.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Input Slacks and Efficiency Targets}{48}{subsection.6.2}%
-\contentsline {section}{\numberline {4.7}ML Stage 2: Bootstrap Bias-Corrected Efficiency Scores}{49}{section.7}%
-\contentsline {section}{\numberline {4.8}ML Stage 3: Random Forest Determinant Analysis}{50}{section.8}%
-\contentsline {subsection}{\numberline {4.8.1}Model Performance}{50}{subsection.8.1}%
-\contentsline {subsection}{\numberline {4.8.2}Variable Importance Rankings}{50}{subsection.8.2}%
-\contentsline {subsection}{\numberline {4.8.3}Interpretation of Results}{51}{subsection.8.3}%
-\contentsline {section}{\numberline {4.9}Research Objectives Addressed}{52}{section.9}%
-\contentsline {section}{\numberline {4.10}Chapter Summary}{53}{section.10}%
-\contentsline {section}{\textbf {CHAPTER 5: RESEARCH FINDINGS, CONCLUSIONS AND RECOMMENDATIONS}}{54}{section*.23}%
-\contentsline {section}{\numberline {5.1}Introduction}{54}{section.1}%
-\contentsline {section}{\numberline {5.2}Summary of Findings}{54}{section.2}%
-\contentsline {subsection}{\numberline {5.2.1}Descriptive Analysis}{54}{subsection.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Technical Efficiency under Constant Returns to Scale}{55}{subsection.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Technical Efficiency under Variable Returns to Scale}{55}{subsection.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Scale Efficiency Decomposition}{56}{subsection.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Peer Analysis and Input Target Setting}{56}{subsection.2.5}%
-\contentsline {subsection}{\numberline {5.2.6}Bootstrap Bias Correction}{57}{subsection.2.6}%
-\contentsline {subsection}{\numberline {5.2.7}Macroeconomic Determinants of Efficiency}{57}{subsection.2.7}%
-\contentsline {section}{\numberline {5.3}Conclusions}{58}{section.3}%
-\contentsline {subsection}{\numberline {5.3.1}Conclusion on Research Question 1: Technical Efficiency of Self-Administered Pension Funds}{58}{subsection.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Conclusion on Research Question 2: Macroeconomic and Structural Determinants of Efficiency}{58}{subsection.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Conclusion on Research Question 3: Benchmarking Against the Efficiency Frontier}{59}{subsection.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Conclusion on Research Question 4: The Role of Scale Effects}{59}{subsection.3.4}%
-\contentsline {section}{\numberline {5.4}Recommendations}{60}{section.4}%
-\contentsline {subsection}{\numberline {5.4.1}Recommendations for Pension Fund Managers and Trustees}{60}{subsection.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Recommendations for the Insurance and Pensions Commission of Zimbabwe}{61}{subsection.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Recommendations for National Policymakers}{61}{subsection.4.3}%
-\contentsline {section}{\numberline {5.5}Contribution to Knowledge}{62}{section.5}%
-\contentsline {section}{\numberline {5.6}Limitations of the Study}{63}{section.6}%
-\contentsline {section}{\numberline {5.7}Directions for Future Research}{64}{section.7}%
-\contentsline {section}{\numberline {5.8}Chapter Summary}{66}{section.8}%
-\contentsline {section}{References}{67}{section.8}%
+\contentsline {subsubsection}{\numberline {3.5.1.9}Candidate Determinant Variables and Variable Importance}{36}{subsubsection.5.1.9}%
+\contentsline {subsubsection}{\numberline {3.5.1.10}Two-Stage Machine Learning Enhanced Framework}{36}{subsubsection.5.1.10}%
+\contentsline {subsubsection}{\numberline {3.5.1.11}Implementation Tools}{37}{subsubsection.5.1.11}%
+\contentsline {section}{\numberline {3.6}Chapter Summary}{37}{section.6}%
+\contentsline {section}{\textbf {CHAPTER 4: DATA ANALYSIS AND PRESENTATION}}{38}{section*.10}%
+\contentsline {section}{\numberline {4.1}Introduction}{38}{section.1}%
+\contentsline {section}{\numberline {4.2}Data Preparation and Descriptive Statistics}{38}{section.2}%
+\contentsline {subsection}{\numberline {4.2.1}Sample Selection and Data Collection}{38}{subsection.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Descriptive Statistics}{39}{subsection.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Correlation Analysis}{40}{subsection.2.3}%
+\contentsline {section}{\numberline {4.3}CRS Technical Efficiency Results: CCR Model}{41}{section.3}%
+\contentsline {subsection}{\numberline {4.3.1}Annual Frequency Distribution of CRS Efficiency Scores}{41}{subsection.3.1}%
+\contentsline {section}{\numberline {4.4}VRS Technical Efficiency Results: BCC Model}{42}{section.4}%
+\contentsline {section}{\numberline {4.5}Scale Efficiency and Returns-to-Scale Analysis}{44}{section.5}%
+\contentsline {section}{\numberline {4.6}Peer Analysis and Target Setting}{45}{section.6}%
+\contentsline {subsection}{\numberline {4.6.1}Reference Sets for Inefficient Funds}{45}{subsection.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Input Slacks and Efficiency Targets}{46}{subsection.6.2}%
+\contentsline {section}{\numberline {4.7}ML Stage 2: Bootstrap Bias-Corrected Efficiency Scores}{47}{section.7}%
+\contentsline {section}{\numberline {4.8}ML Stage 3: Random Forest Determinant Analysis}{48}{section.8}%
+\contentsline {subsection}{\numberline {4.8.1}Model Performance}{48}{subsection.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Variable Importance Rankings}{48}{subsection.8.2}%
+\contentsline {subsection}{\numberline {4.8.3}Interpretation of Results}{49}{subsection.8.3}%
+\contentsline {section}{\numberline {4.9}Research Objectives Addressed}{50}{section.9}%
+\contentsline {section}{\numberline {4.10}Chapter Summary}{51}{section.10}%
+\contentsline {section}{\textbf {CHAPTER 5: RESEARCH FINDINGS, CONCLUSIONS AND RECOMMENDATIONS}}{53}{section*.23}%
+\contentsline {section}{\numberline {5.1}Introduction}{53}{section.1}%
+\contentsline {section}{\numberline {5.2}Summary of Findings}{53}{section.2}%
+\contentsline {subsection}{\numberline {5.2.1}Descriptive Analysis}{53}{subsection.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Technical Efficiency under Constant Returns to Scale}{54}{subsection.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Technical Efficiency under Variable Returns to Scale}{54}{subsection.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Scale Efficiency Decomposition}{55}{subsection.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Peer Analysis and Input Target Setting}{55}{subsection.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Bootstrap Bias Correction}{55}{subsection.2.6}%
+\contentsline {subsection}{\numberline {5.2.7}Macroeconomic Determinants of Efficiency}{56}{subsection.2.7}%
+\contentsline {section}{\numberline {5.3}Conclusions}{56}{section.3}%
+\contentsline {subsection}{\numberline {5.3.1}Conclusion on Research Question 1: Technical Efficiency of Self-Administered Pension Funds}{57}{subsection.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Conclusion on Research Question 2: Efficiency Decomposition into Pure Technical and Scale Components}{57}{subsection.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Conclusion on Research Question 3: Benchmarking Against the Efficiency Frontier}{58}{subsection.3.3}%
+\contentsline {section}{\numberline {5.4}Recommendations}{58}{section.4}%
+\contentsline {subsection}{\numberline {5.4.1}Recommendations for Pension Fund Managers and Trustees}{59}{subsection.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Recommendations for the Insurance and Pensions Commission of Zimbabwe}{59}{subsection.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Recommendations for National Policymakers}{60}{subsection.4.3}%
+\contentsline {section}{\numberline {5.5}Contribution to Knowledge}{61}{section.5}%
+\contentsline {section}{\numberline {5.6}Limitations of the Study}{62}{section.6}%
+\contentsline {section}{\numberline {5.7}Directions for Future Research}{63}{section.7}%
+\contentsline {section}{\numberline {5.8}Chapter Summary}{64}{section.8}%
+\contentsline {section}{References}{66}{section.8}%
