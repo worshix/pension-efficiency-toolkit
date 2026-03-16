@@ -5,9 +5,8 @@
 This toolkit implements a full DEA + ML pipeline:
 - Input-oriented CCR (CRS) and BCC (VRS) DEA models
 - Scale efficiency computation with IRS/DRS/CRS classification
-- PCA input validation
 - Simar-Wilson bootstrap bias correction
-- Random Forest second-stage determinant analysis
+- Random Forest second-stage determinant analysis (6 contextual variables)
 - Streamlit dashboard with PDF export
 
 ---
@@ -50,8 +49,7 @@ uv run python -m pension_toolkit.cli analyze \
   --input tests/sample_data.csv \
   --out out/ \
   --bootstrap-B 200 \
-  --seed 42 \
-  --use-pca-composite
+  --seed 42
 ```
 
 **CLI flags:**
@@ -61,7 +59,6 @@ uv run python -m pension_toolkit.cli analyze \
 | `--input` | Path to input CSV file | (required) |
 | `--out` | Output directory | `out/` |
 | `--bootstrap-B` | Number of bootstrap replications | `2000` |
-| `--use-pca-composite` | Use PCA composite inputs for DEA | `False` |
 | `--seed` | RNG seed for reproducibility | `42` |
 
 ### Launch Streamlit dashboard
@@ -93,7 +90,7 @@ The input CSV must have these columns:
 | `fund_id` | str | Unique fund identifier |
 | `year` | int | Year of observation |
 | `fund_name` | str | Fund name |
-| `fund_type` | str | `public` or `private` |
+| `fund_type` | str | `self_administered` |
 | `total_assets_usd` | float | Total assets (USD) |
 | `operating_expenses_usd` | float | Operating expenses (USD) |
 | `equity_debt_usd` | float | Equity + debt (USD) |
@@ -128,7 +125,6 @@ pension_efficiency_toolkit/
 │   ├── __init__.py
 │   ├── cli.py              # CLI entry point
 │   ├── data_io.py          # CSV loading + validation
-│   ├── pca_utils.py        # PCA input validation
 │   ├── dea_core.py         # CCR + BCC DEA models
 │   ├── scale.py            # Scale efficiency
 │   ├── bootstrap.py        # Simar-Wilson bootstrap
@@ -137,11 +133,11 @@ pension_efficiency_toolkit/
 │   ├── ui_streamlit.py     # Streamlit dashboard
 │   └── utils.py            # Shared utilities
 ├── tests/
-│   ├── sample_data.csv     # 10-fund synthetic dataset
+│   ├── sample_data.csv     # 10-fund synthetic dataset (self-administered)
 │   ├── test_data_io.py
 │   ├── test_dea_core.py
-│   ├── test_pca.py
-│   └── test_bootstrap.py
+│   ├── test_bootstrap.py
+│   └── test_ml_stage.py
 ├── scripts/
 │   └── run_local.sh
 ├── .github/workflows/ci.yml
@@ -153,8 +149,9 @@ pension_efficiency_toolkit/
 
 ## Technical Notes
 
-- **DEA formulation**: Input-oriented LP solved with PuLP/CBC
-- **Bootstrap**: Simar-Wilson Algorithm 1 (1998) with reflected kernel density
+- **DEA formulation**: Input-oriented LP solved with PuLP/CBC; CCR (CRS) and BCC (VRS) models
+- **Bootstrap**: Simar-Wilson Algorithm 1 (1998) with reflected kernel density for bias correction
+- **RF second stage**: 500-tree Random Forest on 6 determinants — inflation, exchange volatility, fund age, log fund size, expense ratio, RTS classification
 - **Parallelism**: Bootstrap replications parallelised with joblib
 - **Reproducibility**: All RNG uses `np.random.default_rng(seed)`
 - **Python**: 3.11+, fully type-annotated

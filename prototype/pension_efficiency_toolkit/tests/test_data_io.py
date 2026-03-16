@@ -44,7 +44,7 @@ class TestLoadCsv:
         with tempfile.NamedTemporaryFile(suffix=".csv", mode="w", delete=False) as f:
             header = ",".join(REQUIRED_COLUMNS)
             # Put 'abc' in total_assets_usd
-            row = "F001,2022,TestFund,private,abc,1000,2000,3000,4000,5.0,0.1,10"
+            row = "F001,2022,TestFund,self_administered,abc,1000,2000,3000,4000,5.0,0.1,10"
             f.write(f"{header}\n{row}\n")
             tmp_path = f.name
         with pytest.raises(ValueError):
@@ -53,7 +53,7 @@ class TestLoadCsv:
     def test_missing_value_raises(self):
         with tempfile.NamedTemporaryFile(suffix=".csv", mode="w", delete=False) as f:
             header = ",".join(REQUIRED_COLUMNS)
-            row = "F001,2022,TestFund,private,,1000,2000,3000,4000,5.0,0.1,10"
+            row = "F001,2022,TestFund,self_administered,,1000,2000,3000,4000,5.0,0.1,10"
             f.write(f"{header}\n{row}\n")
             tmp_path = f.name
         with pytest.raises(ValueError):
