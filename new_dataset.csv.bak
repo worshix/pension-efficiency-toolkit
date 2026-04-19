@@ -1,0 +1,96 @@
+fund_id,year,fund_name,fund_type,total_assets_usd,operating_expenses_usd,equity_debt_usd,net_investment_income_usd,member_contributions_usd,inflation,exchange_volatility,fund_age
+ZW002,2018,POSB Staff Pension Fund,self_administered,392560000,6328000,216000000,25516000,30409000,10.6,0.18,38
+ZW002,2019,POSB Staff Pension Fund,self_administered,408262000,6941000,224000000,7350000,31955000,255.3,0.72,39
+ZW002,2020,POSB Staff Pension Fund,self_administered,351105000,9512000,189000000,-2458000,27230000,557.2,0.85,40
+ZW002,2021,POSB Staff Pension Fund,self_administered,389727000,8209000,211000000,10912000,31178000,98.5,0.45,41
+ZW002,2022,POSB Staff Pension Fund,self_administered,436494000,7385000,238000000,18905000,34221000,243.8,0.61,42
+ZW003,2018,NRZ Staff Pension Fund,self_administered,152380000,2985000,85400000,9905000,11723000,10.6,0.18,54
+ZW003,2019,NRZ Staff Pension Fund,self_administered,157433000,3182000,88200000,5195000,12136000,255.3,0.72,55
+ZW003,2020,NRZ Staff Pension Fund,self_administered,138541000,4215000,76000000,-430000,10614000,557.2,0.85,56
+ZW003,2021,NRZ Staff Pension Fund,self_administered,149624000,3924000,83300000,2537000,11816000,98.5,0.45,57
+ZW003,2022,NRZ Staff Pension Fund,self_administered,164586000,3489000,92400000,5941000,12926000,243.8,0.61,58
+ZW004,2018,Air Zimbabwe Staff Pension Fund,self_administered,235810000,4383000,133000000,15328000,18542000,10.6,0.18,32
+ZW004,2019,Air Zimbabwe Staff Pension Fund,self_administered,243655000,4678000,137000000,4135000,19219000,255.3,0.72,33
+ZW004,2020,Air Zimbabwe Staff Pension Fund,self_administered,209543000,6315000,115000000,-1219000,16434000,557.2,0.85,34
+ZW004,2021,Air Zimbabwe Staff Pension Fund,self_administered,228402000,5918000,127000000,5928000,18272000,98.5,0.45,35
+ZW004,2022,Air Zimbabwe Staff Pension Fund,self_administered,251242000,5146000,141000000,9452000,20191000,243.8,0.61,36
+ZW005,2018,CBZ Bank Staff Pension Fund,self_administered,84512000,2198000,46400000,5916000,8102000,10.6,0.18,17
+ZW005,2019,CBZ Bank Staff Pension Fund,self_administered,87324000,2407000,47900000,3857000,8393000,255.3,0.72,18
+ZW005,2020,CBZ Bank Staff Pension Fund,self_administered,75972000,3404000,41000000,-1219000,7231000,557.2,0.85,19
+ZW005,2021,CBZ Bank Staff Pension Fund,self_administered,83086000,2972000,45500000,1898000,7982000,98.5,0.45,20
+ZW005,2022,CBZ Bank Staff Pension Fund,self_administered,92226000,2586000,51100000,3468000,8957000,243.8,0.61,21
+ZW006,2018,First Capital Bank Staff Pension Fund,self_administered,76250000,2021000,42100000,5338000,7178000,10.6,0.18,22
+ZW006,2019,First Capital Bank Staff Pension Fund,self_administered,78790000,2238000,43500000,3195000,7432000,255.3,0.72,23
+ZW006,2020,First Capital Bank Staff Pension Fund,self_administered,68547000,3085000,37100000,-885000,6423000,557.2,0.85,24
+ZW006,2021,First Capital Bank Staff Pension Fund,self_administered,74964000,2734000,41100000,1582000,7101000,98.5,0.45,25
+ZW006,2022,First Capital Bank Staff Pension Fund,self_administered,83210000,2379000,46100000,2942000,7949000,243.8,0.61,26
+ZW007,2018,Zimplats Mineworkers Pension Fund,self_administered,321560000,4374000,183000000,20901000,26493000,10.6,0.18,29
+ZW007,2019,Zimplats Mineworkers Pension Fund,self_administered,332241000,4612000,189000000,13545000,27456000,255.3,0.72,30
+ZW007,2020,Zimplats Mineworkers Pension Fund,self_administered,295694000,6365000,165000000,532000,24294000,557.2,0.85,31
+ZW007,2021,Zimplats Mineworkers Pension Fund,self_administered,323321000,5672000,183000000,9383000,26855000,98.5,0.45,32
+ZW007,2022,Zimplats Mineworkers Pension Fund,self_administered,358886000,5013000,205000000,14983000,29938000,243.8,0.61,33
+ZW008,2018,Bindura Nickel Corporation Pension Fund,self_administered,75210000,1994000,41600000,5265000,7085000,10.6,0.18,24
+ZW008,2019,Bindura Nickel Corporation Pension Fund,self_administered,77717000,2212000,43000000,3009000,7340000,255.3,0.72,25
+ZW008,2020,Bindura Nickel Corporation Pension Fund,self_administered,67614000,3043000,36700000,-1045000,6344000,557.2,0.85,26
+ZW008,2021,Bindura Nickel Corporation Pension Fund,self_administered,73952000,2687000,40600000,1350000,7007000,98.5,0.45,27
+ZW008,2022,Bindura Nickel Corporation Pension Fund,self_administered,82087000,2339000,45600000,2796000,7846000,243.8,0.61,28
+ZW009,2018,Econet Wireless Staff Pension Fund,self_administered,65180000,1812000,35900000,4563000,6099000,10.6,0.18,13
+ZW009,2019,Econet Wireless Staff Pension Fund,self_administered,67348000,1998000,37100000,2328000,6320000,255.3,0.72,14
+ZW009,2020,Econet Wireless Staff Pension Fund,self_administered,58593000,2801000,31700000,-812000,5466000,557.2,0.85,15
+ZW009,2021,Econet Wireless Staff Pension Fund,self_administered,64083000,2441000,35100000,1136000,6034000,98.5,0.45,16
+ZW009,2022,Econet Wireless Staff Pension Fund,self_administered,71132000,2124000,39400000,2382000,6753000,243.8,0.61,17
+ZW010,2018,Telecel Zimbabwe Staff Pension Fund,self_administered,59420000,1691000,32700000,4159000,5540000,10.6,0.18,15
+ZW010,2019,Telecel Zimbabwe Staff Pension Fund,self_administered,61397000,1863000,33800000,1842000,5743000,255.3,0.72,16
+ZW010,2020,Telecel Zimbabwe Staff Pension Fund,self_administered,53415000,2649000,28900000,-982000,4963000,557.2,0.85,17
+ZW010,2021,Telecel Zimbabwe Staff Pension Fund,self_administered,58415000,2261000,32100000,752000,5471000,98.5,0.45,18
+ZW010,2022,Telecel Zimbabwe Staff Pension Fund,self_administered,64841000,1968000,36000000,1959000,6122000,243.8,0.61,19
+ZW011,2018,Agricultural Development Bank Staff Pension Fund,self_administered,48260000,1448000,26500000,3378000,4576000,10.6,0.18,31
+ZW011,2019,Agricultural Development Bank Staff Pension Fund,self_administered,49865000,1597000,27400000,1542000,4742000,255.3,0.72,32
+ZW011,2020,Agricultural Development Bank Staff Pension Fund,self_administered,43383000,2213000,23400000,-829000,4101000,557.2,0.85,33
+ZW011,2021,Agricultural Development Bank Staff Pension Fund,self_administered,47447000,1976000,25900000,664000,4522000,98.5,0.45,34
+ZW011,2022,Agricultural Development Bank Staff Pension Fund,self_administered,52666000,1720000,29100000,1513000,5063000,243.8,0.61,35
+ZW012,2018,Cottco Staff Pension Fund,self_administered,17320000,746000,9400000,1212000,1597000,10.6,0.18,9
+ZW012,2019,Cottco Staff Pension Fund,self_administered,17895000,814000,9700000,589000,1656000,255.3,0.72,10
+ZW012,2020,Cottco Staff Pension Fund,self_administered,15569000,1154000,8300000,-321000,1432000,557.2,0.85,11
+ZW012,2021,Cottco Staff Pension Fund,self_administered,17025000,1023000,9200000,240000,1581000,98.5,0.45,12
+ZW012,2022,Cottco Staff Pension Fund,self_administered,18898000,893000,10300000,496000,1768000,243.8,0.61,13
+ZW013,2018,ZISCO Steel Workers Pension Fund,self_administered,36240000,1160000,19900000,2537000,3391000,10.6,0.18,27
+ZW013,2019,ZISCO Steel Workers Pension Fund,self_administered,37445000,1274000,20600000,1182000,3515000,255.3,0.72,28
+ZW013,2020,ZISCO Steel Workers Pension Fund,self_administered,32577000,1809000,17600000,-495000,3037000,557.2,0.85,29
+ZW013,2021,ZISCO Steel Workers Pension Fund,self_administered,35625000,1577000,19500000,547000,3353000,98.5,0.45,30
+ZW013,2022,ZISCO Steel Workers Pension Fund,self_administered,39544000,1374000,21900000,1179000,3751000,243.8,0.61,31
+ZW014,2018,Delta Corporation Pension Fund,self_administered,184260000,2911000,103000000,11977000,15943000,10.6,0.18,46
+ZW014,2019,Delta Corporation Pension Fund,self_administered,190405000,3105000,106000000,6523000,16521000,255.3,0.72,47
+ZW014,2020,Delta Corporation Pension Fund,self_administered,169460000,4364000,93000000,-2372000,14591000,557.2,0.85,48
+ZW014,2021,Delta Corporation Pension Fund,self_administered,185351000,3884000,103000000,4127000,16151000,98.5,0.45,49
+ZW014,2022,Delta Corporation Pension Fund,self_administered,205739000,3396000,115000000,8267000,18009000,243.8,0.61,50
+ZW015,2018,NMB Bank Staff Pension Scheme,self_administered,71420000,1929000,39300000,4999000,6760000,10.6,0.18,18
+ZW015,2019,NMB Bank Staff Pension Scheme,self_administered,73792000,2133000,40600000,3219000,7008000,255.3,0.72,19
+ZW015,2020,NMB Bank Staff Pension Scheme,self_administered,64199000,2941000,34700000,-1084000,6053000,557.2,0.85,20
+ZW015,2021,NMB Bank Staff Pension Scheme,self_administered,70218000,2631000,38500000,1338000,6681000,98.5,0.45,21
+ZW015,2022,NMB Bank Staff Pension Scheme,self_administered,77942000,2292000,43200000,2958000,7478000,243.8,0.61,22
+ZW016,2018,Innscor Africa Staff Pension Fund,self_administered,87560000,1896000,48600000,5691000,8123000,10.6,0.18,65
+ZW016,2019,Innscor Africa Staff Pension Fund,self_administered,90472000,2093000,50200000,3211000,8422000,255.3,0.72,66
+ZW016,2020,Innscor Africa Staff Pension Fund,self_administered,78711000,2954000,42800000,-1496000,7281000,557.2,0.85,67
+ZW016,2021,Innscor Africa Staff Pension Fund,self_administered,86073000,2621000,47500000,1193000,8055000,98.5,0.45,68
+ZW016,2022,Innscor Africa Staff Pension Fund,self_administered,95541000,2276000,53200000,3126000,9021000,243.8,0.61,69
+ZW017,2018,Old Mutual Zimbabwe Staff Pension Fund,self_administered,63250000,1579000,35000000,4111000,5998000,10.6,0.18,42
+ZW017,2019,Old Mutual Zimbabwe Staff Pension Fund,self_administered,65361000,1747000,36200000,2053000,6220000,255.3,0.72,43
+ZW017,2020,Old Mutual Zimbabwe Staff Pension Fund,self_administered,56864000,2489000,30900000,-1024000,5377000,557.2,0.85,44
+ZW017,2021,Old Mutual Zimbabwe Staff Pension Fund,self_administered,62194000,2186000,34200000,808000,5941000,98.5,0.45,45
+ZW017,2022,Old Mutual Zimbabwe Staff Pension Fund,self_administered,69035000,1902000,38400000,2219000,6650000,243.8,0.61,46
+ZW018,2018,NetOne Cellular Staff Pension Fund,self_administered,7210000,330000,3700000,505000,654000,10.6,0.18,11
+ZW018,2019,NetOne Cellular Staff Pension Fund,self_administered,7450000,362000,3820000,254000,679000,255.3,0.72,12
+ZW018,2020,NetOne Cellular Staff Pension Fund,self_administered,6482000,513000,3270000,-119000,587000,557.2,0.85,13
+ZW018,2021,NetOne Cellular Staff Pension Fund,self_administered,7089000,451000,3620000,81000,649000,98.5,0.45,14
+ZW018,2022,NetOne Cellular Staff Pension Fund,self_administered,7869000,395000,4060000,189000,727000,243.8,0.61,15
+ZW019,2018,Mining Industry Pension Fund (MIPF),self_administered,25840000,827000,14200000,1809000,2395000,10.6,0.18,35
+ZW019,2019,Mining Industry Pension Fund (MIPF),self_administered,26700000,911000,14600000,923000,2485000,255.3,0.72,36
+ZW019,2020,Mining Industry Pension Fund (MIPF),self_administered,23229000,1294000,12500000,-442000,2146000,557.2,0.85,37
+ZW019,2021,Mining Industry Pension Fund (MIPF),self_administered,25405000,1150000,13900000,315000,2371000,98.5,0.45,38
+ZW019,2022,Mining Industry Pension Fund (MIPF),self_administered,28200000,1002000,15600000,715000,2653000,243.8,0.61,39
+ZW020,2018,Grain Marketing Board Staff Pension Fund,self_administered,44160000,1307000,24200000,3091000,4139000,10.6,0.18,28
+ZW020,2019,Grain Marketing Board Staff Pension Fund,self_administered,45628000,1441000,25000000,1518000,4291000,255.3,0.72,29
+ZW020,2020,Grain Marketing Board Staff Pension Fund,self_administered,39696000,2035000,21400000,-756000,3709000,557.2,0.85,30
+ZW020,2021,Grain Marketing Board Staff Pension Fund,self_administered,43412000,1794000,23700000,599000,4101000,98.5,0.45,31
+ZW020,2022,Grain Marketing Board Staff Pension Fund,self_administered,48187000,1564000,26600000,1404000,4591000,243.8,0.61,32
