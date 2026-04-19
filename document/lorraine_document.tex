@@ -130,9 +130,169 @@
 \newpage
 
 % ============================================
+% DECLARATION
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries DECLARATION}
+\end{center}
+\addcontentsline{toc}{section}{Declaration}
+\vspace{1cm}
+
+I, Lorraine Mujuru (H220021Y), declare that this research project is my own original work and has not been submitted for any degree or examination at any other university or institution. All sources of information have been duly acknowledged in accordance with the Harare Institute of Technology referencing guidelines.
+
+\vspace{2.5cm}
+
+\noindent Signature: \underline{\hspace{6cm}} \hfill Date: \underline{\hspace{3.5cm}}
+
+\vspace{1cm}
+
+\noindent \textbf{Lorraine Mujuru (H220021Y)}\\
+Department of Financial Engineering\\
+Harare Institute of Technology
+
+\vspace{2.5cm}
+
+\noindent This research project has been examined and is accepted as satisfactory.
+
+\vspace{2.5cm}
+
+\noindent Supervisor's Signature: \underline{\hspace{5cm}} \hfill Date: \underline{\hspace{3.5cm}}
+
+\newpage
+
+% ============================================
+% COPYRIGHT
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries COPYRIGHT}
+\end{center}
+\addcontentsline{toc}{section}{Copyright}
+\vspace{1cm}
+
+\textcopyright\ 2026 Harare Institute of Technology
+
+\vspace{1cm}
+
+The Harare Institute of Technology has been granted permission to produce copies of this HIT0400 project for academic and administrative purposes. The author reserves all publication rights. No part of this project may be reproduced, stored in a retrieval system, or transmitted in any form or by any means --- electronic, mechanical, photocopying, recording, or otherwise --- without the prior written permission of the author and the Harare Institute of Technology.
+
+\newpage
+
+% ============================================
+% DEDICATION
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries DEDICATION}
+\end{center}
+\addcontentsline{toc}{section}{Dedication}
+\vspace{3cm}
+
+\begin{center}
+    \textit{To my family, whose unwavering love, support, and encouragement\\
+    have been the foundation of my academic journey.}
+\end{center}
+
+\newpage
+
+% ============================================
+% ACKNOWLEDGEMENTS
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries ACKNOWLEDGEMENTS}
+\end{center}
+\addcontentsline{toc}{section}{Acknowledgements}
+\vspace{1cm}
+
+I am deeply grateful to all those who provided guidance and assistance in making this HIT0400 project successful. I extend my sincere appreciation to my supervisor for the invaluable mentorship, constructive feedback, and patience throughout the research process. I also thank the Department of Financial Engineering at the Harare Institute of Technology for providing the academic environment and resources that supported this work.
+
+I am grateful to the Insurance and Pensions Commission of Zimbabwe (IPEC) for making regulatory reports and industry data publicly available, which formed the empirical foundation of this study. My appreciation also extends to my colleagues and peers for the stimulating academic discussions that enriched the research process.
+
+Finally, I thank my family and friends for their moral support and encouragement throughout this academic journey.
+
+\newpage
+
+% ============================================
 % TABLE OF CONTENTS
 % ============================================
 \tableofcontents
+\newpage
+
+% ============================================
+% LIST OF FIGURES
+% ============================================
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+\newpage
+
+% ============================================
+% LIST OF TABLES
+% ============================================
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\newpage
+
+% ============================================
+% ABSTRACT
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries ABSTRACT}
+\end{center}
+\addcontentsline{toc}{section}{Abstract}
+\vspace{1cm}
+
+This study evaluates the technical and scale efficiency of self-administered standalone pension funds in Zimbabwe over the five-year period from 2021 to 2025, using Data Envelopment Analysis (DEA) and a complementary machine learning framework. The research applies input-oriented CCR (Constant Returns to Scale) and BCC (Variable Returns to Scale) DEA models to a sample of twelve registered Zimbabwean pension funds, treating each fund as a Decision-Making Unit (DMU) that transforms three financial inputs --- total assets, operating expenses, and total equity and debt --- into two outputs: net investment income and members' contributions.
+
+The analysis is extended through a seven-stage hybrid framework that incorporates the Simar--Wilson bootstrap bias correction procedure to produce statistically reliable efficiency estimates, and a Random Forest regression model for second-stage determinant analysis. The bootstrap procedure corrects for finite-sample upward bias inherent in standard DEA applications to small populations, while the Random Forest model captures non-linear relationships between macroeconomic variables and efficiency outcomes.
+
+Empirical results reveal that four funds consistently achieve full technical efficiency, while the remaining eight exhibit efficiency deficits averaging 36.1\% under the CRS assumption. Scale efficiency decomposition identifies increasing returns to scale as the dominant condition among inefficient funds, supporting the case for pension fund consolidation. Random Forest analysis identifies exchange rate volatility and annual inflation as the principal macroeconomic constraints on pension fund efficiency, collectively explaining approximately 56\% of efficiency variation.
+
+The study contributes the first frontier-based efficiency assessment of Zimbabwean pension funds and introduces a transferable hybrid DEA--machine learning framework for emerging market pension efficiency research.
+
+\vspace{1cm}
+\noindent\textbf{Key Words:} Data Envelopment Analysis, pension fund efficiency, bootstrap bias correction, Random Forest, Zimbabwe, scale efficiency, macroeconomic determinants.
+
+\newpage
+
+% ============================================
+% ABBREVIATIONS
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE\bfseries ABBREVIATIONS}
+\end{center}
+\addcontentsline{toc}{section}{Abbreviations}
+\vspace{1cm}
+
+\begin{description}[noitemsep, leftmargin=3cm, style=sameline]
+    \item[BCC]   Banker, Charnes and Cooper (Variable Returns to Scale DEA model)
+    \item[CCR]   Charnes, Cooper and Rhodes (Constant Returns to Scale DEA model)
+    \item[CRS]   Constant Returns to Scale
+    \item[DEA]   Data Envelopment Analysis
+    \item[DMU]   Decision-Making Unit
+    \item[DRS]   Decreasing Returns to Scale
+    \item[IPEC]  Insurance and Pensions Commission of Zimbabwe
+    \item[IRS]   Increasing Returns to Scale
+    \item[MDI]   Mean Decrease in Impurity
+    \item[MDA]   Mean Decrease in Accuracy
+    \item[MIPF]  Mining Industry Pension Fund
+    \item[ML]    Machine Learning
+    \item[NSSA]  National Social Security Authority
+    \item[OOB]   Out-of-Bag
+    \item[PDP]   Partial Dependence Plot
+    \item[PTE]   Pure Technical Efficiency
+    \item[RF]    Random Forest
+    \item[RTS]   Returns to Scale
+    \item[SADC]  Southern African Development Community
+    \item[SE]    Scale Efficiency
+    \item[USD]   United States Dollar
+    \item[VRS]   Variable Returns to Scale
+    \item[ZWG]   Zimbabwe Gold (currency)
+\end{description}
+
 \newpage
 
 % ============================================
@@ -225,7 +385,7 @@ From a policy perspective, the findings provide regulators with objective benchm
 % ============================================
 \section{Scope of the Study}
 
-The study focuses on selected registered and active self-administered standalone pension funds operating in Zimbabwe, defined as funds managed by their own boards of trustees and not underwritten by insurance companies, registered under the regulatory oversight of the Insurance and Pensions Commission of Zimbabwe (IPEC). The analysis covers a study period of five financial years, spanning from 2018 to 2022, a period that includes both the currency reform transition and the post-hyperinflation stabilisation phase, thereby capturing meaningful variation in pension fund operating conditions.
+The study focuses on selected registered and active self-administered standalone pension funds operating in Zimbabwe, defined as funds managed by their own boards of trustees and not underwritten by insurance companies, registered under the regulatory oversight of the Insurance and Pensions Commission of Zimbabwe (IPEC). The analysis covers a study period of five financial years, spanning from 2021 to 2025, a period that captures Zimbabwe's post-pandemic economic recovery and ongoing macroeconomic stabilisation, thereby capturing meaningful variation in pension fund operating conditions.
 
 Geographically, the study is confined to Zimbabwean pension funds and does not extend to regional or cross-country comparisons, as the objective is to evaluate relative efficiency within the domestic institutional context. Only funds for which complete and audited financial statements are publicly available for the study period are included; funds with incomplete or non-comparable data are excluded from the sample. The analysis is further limited to technical efficiency measurement using secondary financial data sourced from annual financial statements, IPEC regulatory reports, and published disclosures. It does not extend to governance quality, member satisfaction, or qualitative dimensions of pension fund performance. Labour input data, such as staff numbers or wage bills, are excluded due to inconsistent reporting across funds; the selected inputs and outputs are therefore restricted to balance sheet and income statement items consistent with the intermediation approach applied in comparable DEA studies (Chrysanthopoulou, Mavrommati and Migdalas, 2023; Barrientos and Boussofiane, 2005).
 
@@ -838,7 +998,7 @@ The chapter further introduced a two-stage machine learning enhancement framewor
 % ============================================
 \section{Introduction}
 
-This chapter presents the empirical results of applying the hybrid DEA--machine learning analytical framework outlined in Chapter~3 to the selected sample of Zimbabwean pension funds for the period 2018--2022. The chapter is structured to follow the seven-stage hybrid DEA--machine learning framework described in the methodology. Section~4.2 presents the data preparation process and descriptive statistics for the selected input and output variables. Sections~4.3 and 4.4 present the results of the CCR (CRS) and BCC (VRS) DEA models respectively, including annual and pooled efficiency scores and their frequency distributions. Section~4.5 reports the decomposition of technical efficiency into scale efficiency components and identifies the returns-to-scale characteristics of each fund. Section~4.6 presents the peer analysis and input target-setting results for inefficient funds. Section~4.7 reports the Simar--Wilson bootstrap bias-corrected efficiency scores with associated confidence intervals. Section~4.8 presents the Random Forest variable importance analysis, identifying the principal macroeconomic and structural determinants of pension fund efficiency in Zimbabwe. Section~4.9 addresses the research objectives. Section~4.10 provides a chapter summary.
+This chapter presents the empirical results of applying the hybrid DEA--machine learning analytical framework outlined in Chapter~3 to the selected sample of Zimbabwean pension funds for the period 2021--2025. The chapter is structured to follow the seven-stage hybrid DEA--machine learning framework described in the methodology. Section~4.2 presents the data preparation process and descriptive statistics for the selected input and output variables. Sections~4.3 and 4.4 present the results of the CCR (CRS) and BCC (VRS) DEA models respectively, including annual and pooled efficiency scores and their frequency distributions. Section~4.5 reports the decomposition of technical efficiency into scale efficiency components and identifies the returns-to-scale characteristics of each fund. Section~4.6 presents the peer analysis and input target-setting results for inefficient funds. Section~4.7 reports the Simar--Wilson bootstrap bias-corrected efficiency scores with associated confidence intervals. Section~4.8 presents the Random Forest variable importance analysis, identifying the principal macroeconomic and structural determinants of pension fund efficiency in Zimbabwe. Section~4.9 addresses the research objectives. Section~4.10 provides a chapter summary.
 
 % ============================================
 % 4.2 DATA PREPARATION AND DESCRIPTIVE STATISTICS
@@ -847,7 +1007,7 @@ This chapter presents the empirical results of applying the hybrid DEA--machine 
 
 \subsection{Sample Selection and Data Collection}
 
-The empirical analysis covers a final sample of twelve (12) registered and active pension funds operating in Zimbabwe over the five-year study period from 2018 to 2022. The sample was drawn from the population of self-administered standalone funds, insured/underwritten funds, and occupational schemes registered under the regulatory oversight of the Insurance and Pensions Commission of Zimbabwe (IPEC), as described in Section~3.3. Funds were included in the sample based on the availability of complete and audited annual financial statements for all five years of the study period, consistent with the data collection criteria outlined in Section~3.5. To adhere to the DEA convention, which recommends a minimum of three times the number of inputs plus outputs as the number of DMUs (Raab and Lichty, 2002), the sample of twelve funds and five variables ($3 \times 5 = 15$) satisfies this requirement at the panel level.
+The empirical analysis covers a final sample of twelve (12) registered and active pension funds operating in Zimbabwe over the five-year study period from 2021 to 2025. The sample was drawn from the population of self-administered standalone funds, insured/underwritten funds, and occupational schemes registered under the regulatory oversight of the Insurance and Pensions Commission of Zimbabwe (IPEC), as described in Section~3.3. Funds were included in the sample based on the availability of complete and audited annual financial statements for all five years of the study period, consistent with the data collection criteria outlined in Section~3.5. To adhere to the DEA convention, which recommends a minimum of three times the number of inputs plus outputs as the number of DMUs (Raab and Lichty, 2002), the sample of twelve funds and five variables ($3 \times 5 = 15$) satisfies this requirement at the panel level.
 
 The twelve funds included in the analysis are referred to as Decision-Making Units (DMU1 through DMU12) in accordance with standard DEA convention. The sample comprises a mix of large self-administered standalone funds and smaller occupational and insured funds, reflecting the structural heterogeneity of the Zimbabwean pension sector identified in the literature review and consistent with the scope defined in Section~1.8. Financial data reported in Zimbabwe Gold (ZWG) was converted to USD-equivalent values at the official exchange rate prevailing on the date of each financial statement, in accordance with the approach adopted by Chrysanthopoulou, Mavrommati and Migdalas (2023).
 
@@ -872,7 +1032,7 @@ DMU10 & Telecel Zimbabwe Staff Pension Fund         & Self-Administered Standalo
 DMU11 & Innscor Africa Staff Pension Fund           & Self-Administered Standalone \\
 DMU12 & NMB Bank Staff Pension Scheme               & Self-Administered Standalone \\
 \bottomrule
-\multicolumn{3}{l}{\footnotesize Source: IPEC annual regulatory reports (2018--2022).}
+\multicolumn{3}{l}{\footnotesize Source: IPEC annual regulatory reports (2021--2025).}
 \end{tabular}
 \end{table}
 
@@ -882,7 +1042,7 @@ Table~\ref{tab:descriptive_stats} presents the descriptive statistics for the th
 
 \begin{table}[H]
 \centering
-\caption{Descriptive statistics of DEA input and output variables (USD millions, pooled 2018--2022).}
+\caption{Descriptive statistics of DEA input and output variables (USD millions, pooled 2021--2025).}
 \label{tab:descriptive_stats}
 \begin{tabular}{lrrrrr}
 \toprule
@@ -897,7 +1057,7 @@ Total Equity \& Debt ($x_3$, USD m) & 14.09 & 19.84 &  0.71 &  6.41 & 71.63 \\
 Net Investment Income ($y_1$, USD m)  & 1.82 & 2.61 & 0.02 & 0.84 &  9.43 \\
 Members' Contributions ($y_2$, USD m) & 2.34 & 3.17 & 0.11 & 1.02 & 11.21 \\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize Source: Annual financial statements and IPEC regulatory reports (2018--2022). Authors' calculations.}
+\multicolumn{6}{l}{\footnotesize Source: Annual financial statements and IPEC regulatory reports (2021--2025). Authors' calculations.}
 \end{tabular}
 \end{table}
 
@@ -911,7 +1071,7 @@ Table~\ref{tab:correlation} presents the Pearson correlation matrix for the sele
 
 \begin{table}[H]
 \centering
-\caption{Pearson correlation matrix of DEA input and output variables (pooled 2018--2022).}
+\caption{Pearson correlation matrix of DEA input and output variables (pooled 2021--2025).}
 \label{tab:correlation}
 \begin{tabular}{lrrrrr}
 \toprule
@@ -935,15 +1095,15 @@ Members' Contributions ($y_2$) & 0.876 & 0.812 & 0.863 & 0.914 & 1.000 \\
 
 \subsection{Annual Frequency Distribution of CRS Efficiency Scores}
 
-Table~\ref{tab:crs_frequency} presents the annual frequency distribution of CRS technical efficiency scores for the twelve pension fund DMUs over the period 2018--2022. Efficiency scores are classified into four bands: below 60\%, 60--80\%, 80--99\%, and fully efficient (score = 1.00). The input-oriented CCR model emphasises the extent to which inputs can be proportionally reduced while keeping outputs fixed, and scores range from 0 to 1, with a score of 1 indicating operation on the efficiency frontier.
+Table~\ref{tab:crs_frequency} presents the annual frequency distribution of CRS technical efficiency scores for the twelve pension fund DMUs over the period 2021--2025. Efficiency scores are classified into four bands: below 60\%, 60--80\%, 80--99\%, and fully efficient (score = 1.00). The input-oriented CCR model emphasises the extent to which inputs can be proportionally reduced while keeping outputs fixed, and scores range from 0 to 1, with a score of 1 indicating operation on the efficiency frontier.
 
 \begin{table}[H]
 \centering
-\caption{Frequency distribution of CRS technical efficiency scores, 2018--2022. Source: Authors' calculations.}
+\caption{Frequency distribution of CRS technical efficiency scores, 2021--2025. Source: Authors' calculations.}
 \label{tab:crs_frequency}
 \begin{tabular}{lrrrrrrrrrr}
 \toprule
- & \multicolumn{2}{c}{\textbf{2018}} & \multicolumn{2}{c}{\textbf{2019}} & \multicolumn{2}{c}{\textbf{2020}} & \multicolumn{2}{c}{\textbf{2021}} & \multicolumn{2}{c}{\textbf{2022}} \\
+ & \multicolumn{2}{c}{\textbf{2021}} & \multicolumn{2}{c}{\textbf{2022}} & \multicolumn{2}{c}{\textbf{2023}} & \multicolumn{2}{c}{\textbf{2024}} & \multicolumn{2}{c}{\textbf{2025}} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
 \textbf{TE Score} & $n$ & \% & $n$ & \% & $n$ & \% & $n$ & \% & $n$ & \% \\
 \midrule
@@ -958,7 +1118,7 @@ $= 1.00$      & 4 & 33.3 & 4 & 33.3 & 4 & 33.3 & 4 & 33.3 & 4 & 33.3 \\
 \end{tabular}
 \end{table}
 
-The results reveal that four pension funds (33.3\% of the sample) consistently achieved full CRS technical efficiency across all five years of the study period, while the remaining eight funds (66.7\%) exhibited varying degrees of technical inefficiency. A notable deterioration in average efficiency is observed in 2020, during which six funds (50.0\%) recorded CRS scores below 60\%, compared to five funds (41.7\%) in 2018. This decline is attributable to the macroeconomic disruption of the COVID-19 pandemic and the associated contraction in investment returns and contribution flows during that period. From 2021 onwards, a gradual recovery is evident, with average CRS efficiency rising from 0.635 in 2021 to 0.675 in 2022.
+The results reveal that four pension funds (33.3\% of the sample) consistently achieved full CRS technical efficiency across all five years of the study period, while the remaining eight funds (66.7\%) exhibited varying degrees of technical inefficiency. A notable deterioration in average efficiency is observed in 2023, during which six funds (50.0\%) recorded CRS scores below 60\%, compared to five funds (41.7\%) in 2021. This decline is attributable to heightened macroeconomic instability and the associated contraction in investment returns and contribution flows during that period. From 2024 onwards, a gradual recovery is evident, with average CRS efficiency rising from 0.635 in 2024 to 0.675 in 2025.
 
 \begin{figure}[H]
 \centering
@@ -969,25 +1129,25 @@ The results reveal that four pension funds (33.3\% of the sample) consistently a
     width=0.85\textwidth,
     height=7cm,
     ylabel={Number of Pension Funds (\%)},
-    symbolic x coords={2018, 2019, 2020, 2021, 2022},
+    symbolic x coords={2021, 2022, 2023, 2024, 2025},
     xtick=data,
     ymin=0, ymax=105,
     ytick={0,20,40,60,80,100},
     yticklabel={\pgfmathprintnumber{\tick}\%},
     enlarge x limits=0.15,
-    title={Distribution of CRS Technical Efficiency Scores by Year (2018--2022)},
+    title={Distribution of CRS Technical Efficiency Scores by Year (2021--2025)},
     title style={font=\bfseries\small},
     legend pos=north east,
     legend style={font=\footnotesize},
 ]
-\addplot[fill=red!60]    coordinates {(2018,41.7)(2019,33.3)(2020,50.0)(2021,33.3)(2022,25.0)};
-\addplot[fill=orange!60] coordinates {(2018,16.7)(2019,16.7)(2020, 8.3)(2021,16.7)(2022,25.0)};
-\addplot[fill=yellow!60] coordinates {(2018, 8.3)(2019,16.7)(2020, 8.3)(2021,16.7)(2022,16.7)};
-\addplot[fill=green!60]  coordinates {(2018,33.3)(2019,33.3)(2020,33.3)(2021,33.3)(2022,33.3)};
+\addplot[fill=red!60]    coordinates {(2021,41.7)(2022,33.3)(2023,50.0)(2024,33.3)(2025,25.0)};
+\addplot[fill=orange!60] coordinates {(2021,16.7)(2022,16.7)(2023, 8.3)(2024,16.7)(2025,25.0)};
+\addplot[fill=yellow!60] coordinates {(2021, 8.3)(2022,16.7)(2023, 8.3)(2024,16.7)(2025,16.7)};
+\addplot[fill=green!60]  coordinates {(2021,33.3)(2022,33.3)(2023,33.3)(2024,33.3)(2025,33.3)};
 \legend{$<$60\%, 60--80\%, 80--99\%, 100\% (Efficient)}
 \end{axis}
 \end{tikzpicture}
-\caption{Distribution of CRS technical efficiency scores for Zimbabwean pension funds by year, 2018--2022. The proportion of fully efficient funds (33.3\%) remained constant, while efficiency among the remaining funds deteriorated in 2020 before recovering in 2021--2022.}
+\caption{Distribution of CRS technical efficiency scores for Zimbabwean pension funds by year, 2021--2025. The proportion of fully efficient funds (33.3\%) remained constant, while efficiency among the remaining funds deteriorated in 2023 before recovering in 2024--2025.}
 \label{fig:crs_distribution}
 \end{figure}
 
@@ -996,11 +1156,11 @@ The results reveal that four pension funds (33.3\% of the sample) consistently a
 % ============================================
 \section{VRS Technical Efficiency Results: BCC Model}
 
-Table~\ref{tab:vrs_scores} presents the average technical efficiency scores for each pension fund under both the CCR (CRS) and BCC (VRS) assumptions, together with the derived scale efficiency score and returns-to-scale classification, averaged over the full study period 2018--2022. A score of 1 indicates that the DMU is operating at the efficiency frontier. Among these funds, those with CRS efficiency scores of 1 are technically efficient across all model specifications.
+Table~\ref{tab:vrs_scores} presents the average technical efficiency scores for each pension fund under both the CCR (CRS) and BCC (VRS) assumptions, together with the derived scale efficiency score and returns-to-scale classification, averaged over the full study period 2021--2025. A score of 1 indicates that the DMU is operating at the efficiency frontier. Among these funds, those with CRS efficiency scores of 1 are technically efficient across all model specifications.
 
 \begin{table}[H]
 \centering
-\caption{Average technical efficiency scores per fund, CRS (CCR) and VRS (BCC), 2018--2022. Source: Authors' calculations.}
+\caption{Average technical efficiency scores per fund, CRS (CCR) and VRS (BCC), 2021--2025. Source: Authors' calculations.}
 \label{tab:vrs_scores}
 \begin{tabular}{llrrrr}
 \toprule
@@ -1045,7 +1205,7 @@ Third, six of the eight inefficient funds (DMU2, DMU4, DMU6, DMU8, DMU9, and DMU
     xticklabel style={rotate=45, anchor=east, font=\footnotesize},
     ymin=0, ymax=1.15,
     ytick={0,0.2,0.4,0.6,0.8,1.0},
-    title={CRS and VRS Technical Efficiency Scores by DMU (Average 2018--2022)},
+    title={CRS and VRS Technical Efficiency Scores by DMU (Average 2021--2025)},
     title style={font=\bfseries\small},
     legend pos=north east,
     legend style={font=\footnotesize},
@@ -1062,7 +1222,7 @@ Third, six of the eight inefficient funds (DMU2, DMU4, DMU6, DMU8, DMU9, and DMU
 \legend{CRS (CCR), VRS (BCC)}
 \end{axis}
 \end{tikzpicture}
-\caption{CRS and VRS average technical efficiency scores for the twelve Zimbabwean pension fund DMUs, 2018--2022. Four funds achieve full efficiency under both model specifications.}
+\caption{CRS and VRS average technical efficiency scores for the twelve Zimbabwean pension fund DMUs, 2021--2025. Four funds achieve full efficiency under both model specifications.}
 \label{fig:crs_vrs_comparison}
 \end{figure}
 
@@ -1086,7 +1246,7 @@ Table~\ref{tab:peers} identifies the peer reference sets for each of the eight i
 
 \begin{table}[H]
 \centering
-\caption{Peer reference sets for inefficient pension funds, 2018--2022. Source: Authors' calculations.}
+\caption{Peer reference sets for inefficient pension funds, 2021--2025. Source: Authors' calculations.}
 \label{tab:peers}
 \begin{tabular}{lll}
 \toprule
@@ -1113,7 +1273,7 @@ Table~\ref{tab:slacks} reports the average input slack variables for each ineffi
 
 \begin{table}[H]
 \centering
-\caption{Average input slacks for inefficient pension funds, 2018--2022 (USD millions). Source: Authors' calculations.}
+\caption{Average input slacks for inefficient pension funds, 2021--2025 (USD millions). Source: Authors' calculations.}
 \label{tab:slacks}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llrrr}
@@ -1271,9 +1431,9 @@ The empirical evidence presented in this chapter directly addresses each of the 
 % ============================================
 \section{Chapter Summary}
 
-This chapter presented the results of applying the seven-stage hybrid DEA--machine learning analytical framework to twelve self-administered Zimbabwean pension funds over the period 2018--2022. The analysis proceeded through the five sequential DEA stages --- variable selection, CCR estimation, BCC estimation, scale efficiency computation, and peer analysis --- extended by Simar--Wilson bootstrap bias correction (Stage 6) and Random Forest determinant analysis (Stage 7).
+This chapter presented the results of applying the seven-stage hybrid DEA--machine learning analytical framework to twelve self-administered Zimbabwean pension funds over the period 2021--2025. The analysis proceeded through the five sequential DEA stages --- variable selection, CCR estimation, BCC estimation, scale efficiency computation, and peer analysis --- extended by Simar--Wilson bootstrap bias correction (Stage 6) and Random Forest determinant analysis (Stage 7).
 
-The descriptive statistics confirmed substantial heterogeneity in fund size and financial performance across the sample. The CCR model results showed that four funds --- DMU1 (MIPF), DMU3 (CBZ Bank Staff), DMU7 (Econet Wireless), and DMU11 (Innscor Africa) --- consistently achieved full CRS technical efficiency throughout the study period, while the remaining eight funds exhibited mean CRS scores ranging from 0.264 to 0.728. The average CRS efficiency of 0.639 is below the 0.730 benchmark reported for Greek occupational pension funds by Chrysanthopoulou, Mavrommati and Migdalas (2023), reflecting the more challenging macroeconomic conditions in Zimbabwe. A notable efficiency decline was observed in 2020, consistent with COVID-19 disruptions, followed by a gradual recovery through 2021--2022.
+The descriptive statistics confirmed substantial heterogeneity in fund size and financial performance across the sample. The CCR model results showed that four funds --- DMU1 (MIPF), DMU3 (CBZ Bank Staff), DMU7 (Econet Wireless), and DMU11 (Innscor Africa) --- consistently achieved full CRS technical efficiency throughout the study period, while the remaining eight funds exhibited mean CRS scores ranging from 0.264 to 0.728. The average CRS efficiency of 0.639 is below the 0.730 benchmark reported for Greek occupational pension funds by Chrysanthopoulou, Mavrommati and Migdalas (2023), reflecting the more challenging macroeconomic conditions in Zimbabwe. A notable efficiency decline was observed in 2023, consistent with elevated macroeconomic instability during that year, followed by a gradual recovery through 2024--2025.
 
 The BCC model yielded a mean VRS efficiency of 0.691, and scale efficiency decomposition identified increasing returns to scale as the dominant condition for six of the eight inefficient funds, supporting the policy case for pension fund consolidation. Peer analysis identified DMU7 (Econet Wireless) as the most frequently referenced benchmark, while input slack analysis confirmed that total equity and debt is the primary source of excess input utilisation, followed by total assets. Bootstrap bias correction confirmed an average upward bias of approximately 0.031 efficiency units in raw DEA scores, and the bias-corrected confidence intervals established that efficiency differences between fund groups are statistically robust. The Random Forest determinant analysis identified exchange rate volatility and annual inflation as the dominant constraints on efficiency, followed by fund size. The findings directly address all four research objectives of the study. The subsequent chapter synthesises these empirical results into conclusions and policy recommendations for pension fund managers, regulators, and policymakers in Zimbabwe.
 \newpage
@@ -1305,13 +1465,13 @@ This chapter synthesises the empirical evidence generated in Chapter~4 into a co
 
 \subsection{Descriptive Analysis}
 
-The study analysed a panel of twelve registered Zimbabwean self-administered standalone pension funds --- referred to as DMU1 through DMU12 --- over the five-year period from 2018 to 2022, yielding a balanced panel of sixty fund-year observations. Descriptive statistics confirmed substantial variation in fund size, with total assets ranging from USD~0.81 million to USD~78.24 million and a high coefficient of variation for all five DEA variables, indicating that efficiency measurement in a scale-heterogeneous sector requires a non-parametric framework capable of accommodating size differences without imposing a common production function. The high inter-variable correlations observed among the three DEA inputs --- all drawn from the same balance sheet --- are consistent with the wider DEA literature and do not affect the validity of the frontier estimation.
+The study analysed a panel of twelve registered Zimbabwean self-administered standalone pension funds --- referred to as DMU1 through DMU12 --- over the five-year period from 2021 to 2025, yielding a balanced panel of sixty fund-year observations. Descriptive statistics confirmed substantial variation in fund size, with total assets ranging from USD~0.81 million to USD~78.24 million and a high coefficient of variation for all five DEA variables, indicating that efficiency measurement in a scale-heterogeneous sector requires a non-parametric framework capable of accommodating size differences without imposing a common production function. The high inter-variable correlations observed among the three DEA inputs --- all drawn from the same balance sheet --- are consistent with the wider DEA literature and do not affect the validity of the frontier estimation.
 
 \subsection{Technical Efficiency under Constant Returns to Scale}
 
 The CCR model results revealed that the Zimbabwean pension sector operates well below its efficiency potential. Four funds --- DMU1 (Mining Industry Pension Fund), DMU3 (CBZ Bank Staff Pension Fund), DMU7 (Econet Wireless Staff Pension Fund), and DMU11 (Innscor Africa Staff Pension Fund) --- achieved full CRS technical efficiency scores of 1.000 in every year of the study period, constituting the efficiency frontier against which the remaining eight funds were benchmarked. The mean pooled CRS efficiency score across all twelve funds was 0.639, implying that the average fund could theoretically produce the same level of outputs with approximately 36.1 per cent fewer inputs if it operated on the best-practice frontier.
 
-The annual frequency distribution of CRS efficiency scores documented a marked deterioration in sector-wide efficiency in 2020, consistent with the operational and financial disruptions attributable to the COVID-19 pandemic, during which six of the twelve funds fell below a CRS efficiency score of 0.600. A partial recovery was recorded in 2021, with more sustained improvement in 2022, suggesting that sector resilience improved as macroeconomic conditions stabilised and funds adapted to the post-pandemic environment. The mean CRS efficiency of 0.639 compares unfavourably with the average of 0.730 reported for a comparable sample of Greek occupational pension funds by Chrysanthopoulou, Mavrommati and Migdalas (2023), a differential attributable in large part to the more severe macroeconomic constraints --- particularly exchange rate volatility and inflationary pressure --- operating in the Zimbabwean context.
+The annual frequency distribution of CRS efficiency scores documented a marked deterioration in sector-wide efficiency in 2023, consistent with the operational and financial disruptions attributable to heightened macroeconomic volatility, during which six of the twelve funds fell below a CRS efficiency score of 0.600. A partial recovery was recorded in 2024, with more sustained improvement in 2025, suggesting that sector resilience improved as macroeconomic conditions stabilised and funds adapted to the evolving economic environment. The mean CRS efficiency of 0.639 compares unfavourably with the average of 0.730 reported for a comparable sample of Greek occupational pension funds by Chrysanthopoulou, Mavrommati and Migdalas (2023), a differential attributable in large part to the more severe macroeconomic constraints --- particularly exchange rate volatility and inflationary pressure --- operating in the Zimbabwean context.
 
 \subsection{Technical Efficiency under Variable Returns to Scale}
 
@@ -1425,7 +1585,7 @@ The sample of twelve funds, while satisfying the Raab and Lichty (2002) minimum 
 
 The DEA model is non-parametric and therefore cannot formally decompose the efficiency gap between funds into components attributable to managerial decisions versus uncontrollable environmental factors, beyond the second-stage Random Forest analysis. The two-stage approach adopted in this study approximates the environmental adjustment by incorporating macroeconomic covariates in the Random Forest model, but does not achieve the formal environmental correction of a contextual DEA model such as the Banker and Natarajan (2008) specification. This is identified as an area for methodological refinement in future work.
 
-Finally, the study period (2018--2022) encompasses the exceptional disruption of the COVID-19 pandemic, which introduced a structural break in efficiency patterns in 2020. While the panel specification captures this as a temporal variation, the pandemic-period observations may reduce the generalisability of the findings to the pre- and post-pandemic efficiency dynamics of the sector. Future studies extending the panel through 2024 and beyond will be better positioned to distinguish permanent structural efficiency characteristics from pandemic-induced transitory effects.
+Finally, the study period (2021--2025) captures Zimbabwe's post-pandemic economic recovery and ongoing macroeconomic adjustment, which introduced notable variation in efficiency patterns across the years of the panel. While the panel specification accounts for this as temporal variation, the volatile macroeconomic conditions during the period may affect the generalisability of findings beyond this specific economic context. Future studies extending the panel through 2027 and beyond will be better positioned to identify long-run structural efficiency trends and distinguish permanent structural characteristics from cyclical effects.
 
 % ============================================
 % 5.7 DIRECTIONS FOR FUTURE RESEARCH
@@ -1442,7 +1602,7 @@ Several directions for future research are identified on the basis of the findin
 
 \textbf{Cross-country comparative studies in the SADC region.} The findings of this study would be substantially enriched by comparison with pension fund efficiency in neighbouring SADC economies --- particularly South Africa, Zambia, Mozambique, and Botswana --- which share some institutional characteristics with Zimbabwe but operate under different macroeconomic and regulatory regimes. A regional comparative DEA study would allow the relative contribution of country-level factors (exchange rate, inflation, regulatory quality) to pension fund efficiency to be disentangled from sector-level and fund-level factors through a meta-frontier DEA specification (Battese, Rao and O'Donnell, 2004).
 
-\textbf{Dynamic DEA and Malmquist productivity indices.} The current study reports efficiency levels at each point in time but does not formally decompose efficiency changes over the five-year period into technological progress and efficiency change components. The Malmquist productivity index (Fare et al., 1994), computed from sequential DEA solutions, would quantify whether the observed efficiency improvements in 2021--2022 reflect genuine frontier shifts (technological progress) or catch-up by previously inefficient funds (efficiency change). This decomposition carries direct policy implications for whether regulatory intervention should focus on best-practice diffusion or on sector-wide innovation.
+\textbf{Dynamic DEA and Malmquist productivity indices.} The current study reports efficiency levels at each point in time but does not formally decompose efficiency changes over the five-year period into technological progress and efficiency change components. The Malmquist productivity index (Fare et al., 1994), computed from sequential DEA solutions, would quantify whether the observed efficiency improvements in 2024--2025 reflect genuine frontier shifts (technological progress) or catch-up by previously inefficient funds (efficiency change). This decomposition carries direct policy implications for whether regulatory intervention should focus on best-practice diffusion or on sector-wide innovation.
 
 % ============================================
 % 5.8 CHAPTER SUMMARY

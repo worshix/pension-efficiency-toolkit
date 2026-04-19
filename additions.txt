@@ -1,0 +1,44 @@
+            1.1.2 Declaration 
+This serves as official acknowledgement and acceptance of the research project as satisfactory. It is signed by your supervisor.
+
+            1.1.3 Copyright 
+This is a form that grants the Harare Institute of Technology permission to produce copies of the HIT0400 project and also reserves the authors’ publication rights.
+
+
+            1.1.4 Dedication
+This serves as a tribute or recognition to a specific individual or individuals organization.
+
+            1.1.5 Acknowledgments 
+In this section you thank persons to whom you are indebted for guidance and assistance in making your HIT0400 successful. 
+            1.1.6 Table of Contents 
+You present an outline of the components of your HIT0400 project. These components include, the preliminaries and these are typed in upper case. They are arranged as follows:
+    • Title page  
+    • Declaration 
+    • Copyright    
+    • Dedication  
+    • Acknowledgements 
+    • Table of Contents    
+    • List of Tables 
+    • List of Figures 
+    • Abstract  
+    • Abbreviations
+After the preliminaries, you then list chapters and chapter headings and sub-headings giving the page(s) where these are located in your design project. Lastly, you present the back pages materials, which are references and appendices. For typing, you should ensure that:
+    • Chapter numbers and preliminaries pages are typed in Roman numerals(Have font size 14, Times New Roman)
+    • Chapter titles and chapter numbers are typed in upper case.
+    • Sub-headings of each chapter are typed in lower case and are single spaced. (Have font size 12, Times New Roman)
+    • Font colour is black.
+    • Margins are not required.
+    • Headers and Footers are not required.
+    • Numbering of the pages should be at the centre Bottom of Page.
+    • Appendices are presented in Arabic numerals and typed in upper case (eg Appendix i, Appendix ii etc.)
+    • References should be formatted to Times New Roman
+
+            1.1.7 List of figures 
+Anything other than tables should be considered as a figure. You should write the figure number, title and reference page. Type these in lower case.
+            1.1.8 List of Tables 
+	You should show the table number, its title and reference page. This should be done in lower case.
+            1.1.9 The Abstract (Maximum of 300 words)
+   The abstract is used by potential readers to determine at a glance, the contents of the HIT0400 project. You should present it as a precise and well written summary. Key Words should be indicated at the end of the abstract.
+	
+            1.1.10 Abbreviations 
+All terms abbreviated in the project document should be specified in this category.
