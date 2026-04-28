@@ -9,13 +9,12 @@ from pension_toolkit.ml_stage import fit_rf, ENV_FEATURE_COLS, RFResult
 
 
 def _sample_rf_data(n: int = 12, seed: int = 7) -> tuple[np.ndarray, np.ndarray, list[str]]:
-    """Generate synthetic efficiency scores and 6 environmental features."""
+    """Generate synthetic efficiency scores and 5 environmental features."""
     rng = np.random.default_rng(seed)
     scores = rng.uniform(0.5, 1.0, n)
-    # 6 features matching ENV_FEATURE_COLS order:
-    # inflation, exchange_volatility, fund_age, fund_size_log, expense_ratio, rts_encoded
+    # 5 features matching ENV_FEATURE_COLS order:
+    # exchange_volatility, fund_age, fund_size_log, expense_ratio, rts_encoded
     features = np.column_stack([
-        rng.uniform(5, 300, n),      # inflation
         rng.uniform(0.1, 0.9, n),    # exchange_volatility
         rng.integers(5, 70, n),      # fund_age
         rng.uniform(15, 21, n),      # fund_size_log (log of assets)
@@ -69,9 +68,9 @@ class TestFitRF:
         )
 
     def test_env_feature_cols_constant(self):
-        """ENV_FEATURE_COLS must include all 6 determinant variables."""
+        """ENV_FEATURE_COLS must include all 5 determinant variables."""
         expected = {
-            "inflation", "exchange_volatility", "fund_age",
+            "exchange_volatility", "fund_age",
             "fund_size_log", "expense_ratio", "rts_encoded",
         }
         assert set(ENV_FEATURE_COLS) == expected

@@ -16,7 +16,6 @@ from .utils import get_logger, ensure_dir, make_rng
 logger = get_logger(__name__)
 
 ENV_FEATURE_COLS = [
-    "inflation",
     "exchange_volatility",
     "fund_age",
     "fund_size_log",

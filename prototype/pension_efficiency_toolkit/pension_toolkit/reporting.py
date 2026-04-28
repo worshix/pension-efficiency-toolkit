@@ -39,27 +39,51 @@ _TABLE_STYLE = TableStyle(
         ("GRID", (0, 0), (-1, -1), 0.3, colors.grey),
         ("LEFTPADDING", (0, 0), (-1, -1), 3),
         ("RIGHTPADDING", (0, 0), (-1, -1), 3),
-        ("TOPPADDING", (0, 0), (-1, -1), 2),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
-        ("WORDWRAP", (0, 0), (-1, -1), True),
+        ("TOPPADDING", (0, 0), (-1, -1), 3),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
     ]
 )
 
 _USABLE_WIDTH = PAGE_W - 2 * MARGIN
 
+_CELL_STYLE = ParagraphStyle(
+    "TableCell",
+    fontSize=7,
+    leading=9,
+    wordWrap="LTR",
+)
+_HEADER_CELL_STYLE = ParagraphStyle(
+    "TableHeader",
+    fontSize=7,
+    leading=9,
+    textColor=colors.white,
+    fontName="Helvetica-Bold",
+    wordWrap="LTR",
+)
 
-def _col_widths(n_cols: int, first_col_ratio: float = 0.15) -> list[float]:
-    """Distribute column widths: first column slightly wider, rest equal."""
-    first = _USABLE_WIDTH * first_col_ratio
-    rest = (_USABLE_WIDTH - first) / max(n_cols - 1, 1)
+
+def _col_widths(n_cols: int) -> list[float]:
+    if n_cols == 1:
+        return [_USABLE_WIDTH]
+    if n_cols == 2:
+        # Give the first column (usually names) 45% so text has room to breathe
+        return [_USABLE_WIDTH * 0.45, _USABLE_WIDTH * 0.55]
+    # 3+ columns: first column gets 25%, rest share equally
+    first = _USABLE_WIDTH * 0.25
+    rest = (_USABLE_WIDTH - first) / (n_cols - 1)
     return [first] + [rest] * (n_cols - 1)
 
 
 def _df_to_table(df: pd.DataFrame, max_rows: int = 20) -> Table:
     """Convert a DataFrame to a ReportLab Table that fits the page width."""
     df = df.head(max_rows).round(4)
-    header = [list(df.columns)]
-    data_rows = df.values.tolist()
+
+    header = [[Paragraph(str(col), _HEADER_CELL_STYLE) for col in df.columns]]
+    data_rows = [
+        [Paragraph(str(val), _CELL_STYLE) for val in row]
+        for row in df.values.tolist()
+    ]
     table_data = header + data_rows
 
     col_w = _col_widths(len(df.columns))

@@ -21,7 +21,6 @@ REQUIRED_COLUMNS: list[str] = [
     "equity_debt_usd",
     "net_investment_income_usd",
     "member_contributions_usd",
-    "inflation",
     "exchange_volatility",
     "fund_age",
 ]
@@ -32,7 +31,6 @@ NUMERIC_COLUMNS: list[str] = [
     "equity_debt_usd",
     "net_investment_income_usd",
     "member_contributions_usd",
-    "inflation",
     "exchange_volatility",
     "fund_age",
     "year",
@@ -101,8 +99,15 @@ def _check_missing(df: pd.DataFrame) -> None:
             raise ValueError(f"Column '{col}' has {n_missing} missing values.")
 
 
+_DEA_FLOOR = 1.0  # minimum positive value substituted for zero/negative DEA columns
+
+# Columns that must be strictly positive for DEA; tracked for UI warnings.
+NON_POSITIVE_WARNINGS: list[str] = []
+
+
 def _check_positivity(df: pd.DataFrame) -> None:
     """Warn if financial columns contain non-positive values (DEA requires >0)."""
+    NON_POSITIVE_WARNINGS.clear()
     financial_cols = [
         "total_assets_usd",
         "operating_expenses_usd",
@@ -112,7 +117,12 @@ def _check_positivity(df: pd.DataFrame) -> None:
     ]
     for col in financial_cols:
         if (df[col] <= 0).any():
-            logger.warning("Column '%s' contains non-positive values; DEA requires positive inputs/outputs.", col)
+            n = int((df[col] <= 0).sum())
+            logger.warning(
+                "Column '%s' has %d non-positive value(s); they will be replaced with %.1f for DEA.",
+                col, n, _DEA_FLOOR,
+            )
+            NON_POSITIVE_WARNINGS.append(col)
 
 
 def get_dea_matrices(
@@ -144,7 +154,7 @@ def get_dea_matrices(
     if output_cols is None:
         output_cols = ["net_investment_income_usd", "member_contributions_usd"]
 
-    X_in = df[input_cols].to_numpy(dtype=float)
-    Y_out = df[output_cols].to_numpy(dtype=float)
+    X_in = np.clip(df[input_cols].to_numpy(dtype=float), _DEA_FLOOR, None)
+    Y_out = np.clip(df[output_cols].to_numpy(dtype=float), _DEA_FLOOR, None)
     fund_ids = df["fund_id"].tolist()
     return X_in, Y_out, fund_ids
