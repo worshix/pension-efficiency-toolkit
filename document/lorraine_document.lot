@@ -1,9 +1,9 @@
-\contentsline {table}{\numberline {1}{\ignorespaces Decision-Making Units (DMUs) included in the DEA sample.}}{47}{table.caption.11}%
-\contentsline {table}{\numberline {2}{\ignorespaces Descriptive statistics of DEA input and output variables (USD millions, pooled 2021--2025).}}{48}{table.caption.12}%
-\contentsline {table}{\numberline {3}{\ignorespaces Pearson correlation matrix of DEA input and output variables (pooled 2021--2025).}}{49}{table.caption.13}%
-\contentsline {table}{\numberline {4}{\ignorespaces Frequency distribution of CRS technical efficiency scores, 2021--2025. Source: Authors' calculations.}}{49}{table.caption.14}%
-\contentsline {table}{\numberline {5}{\ignorespaces Average technical efficiency scores per fund, CRS (CCR) and VRS (BCC), 2021--2025. Source: Authors' calculations.}}{51}{table.caption.16}%
-\contentsline {table}{\numberline {6}{\ignorespaces Peer reference sets for inefficient pension funds, 2021--2025. Source: Authors' calculations.}}{53}{table.caption.18}%
-\contentsline {table}{\numberline {7}{\ignorespaces Average input slacks for inefficient pension funds, 2021--2025 (USD millions). Source: Authors' calculations.}}{54}{table.caption.19}%
-\contentsline {table}{\numberline {8}{\ignorespaces Bootstrap bias-corrected CRS efficiency scores with 95\% confidence intervals ($B = 2{,}000$). Source: Authors' calculations.}}{55}{table.caption.20}%
-\contentsline {table}{\numberline {9}{\ignorespaces Random Forest variable importance rankings for pension fund efficiency determinants. Source: Authors' calculations.}}{56}{table.caption.21}%
+\contentsline {table}{\numberline {1}{\ignorespaces Decision-Making Units (DMUs) included in the DEA sample.}}{34}{table.caption.11}%
+\contentsline {table}{\numberline {2}{\ignorespaces Descriptive statistics of DEA input and output variables (USD millions, pooled 2021--2025).}}{35}{table.caption.12}%
+\contentsline {table}{\numberline {3}{\ignorespaces Pearson correlation matrix of DEA input and output variables (pooled 2021--2025).}}{36}{table.caption.13}%
+\contentsline {table}{\numberline {4}{\ignorespaces Frequency distribution of CRS technical efficiency scores, 2021--2025. Source: Authors' calculations.}}{36}{table.caption.14}%
+\contentsline {table}{\numberline {5}{\ignorespaces Average technical efficiency scores per fund, CRS (CCR) and VRS (BCC), 2021--2025. Source: Authors' calculations.}}{38}{table.caption.16}%
+\contentsline {table}{\numberline {6}{\ignorespaces Peer reference sets for inefficient pension funds, 2021--2025. Source: Authors' calculations.}}{40}{table.caption.18}%
+\contentsline {table}{\numberline {7}{\ignorespaces Average input slacks for inefficient pension funds, 2021--2025 (USD millions). Source: Authors' calculations.}}{41}{table.caption.19}%
+\contentsline {table}{\numberline {8}{\ignorespaces Bootstrap bias-corrected CRS efficiency scores with 95\% confidence intervals ($B = 2{,}000$). Source: Authors' calculations.}}{42}{table.caption.20}%
+\contentsline {table}{\numberline {9}{\ignorespaces Random Forest variable importance rankings for pension fund efficiency determinants. Source: Authors' calculations.}}{43}{table.caption.21}%
