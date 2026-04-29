@@ -37,27 +37,32 @@ def is_admin_email(email: str) -> bool:
     return email.strip().lower() == _admin_email()
 
 
-def login(email: str, password: str) -> tuple[bool, str, bool]:
-    """Attempt login. Returns (success, display_name, is_admin)."""
+def login(email: str, password: str) -> tuple[bool, str, bool, int]:
+    """Attempt login. Returns (success, display_name, is_admin, user_id).
+
+    Admin always gets user_id=0 (ADMIN_USER_ID sentinel).
+    Regular users get their DB row id.
+    """
+    from pension_toolkit.db import ADMIN_USER_ID, get_user_by_email
+
     email = email.strip()
 
     # Admin check first (env vars, never in DB)
     if is_admin_email(email):
         if password == _admin_password():
-            return True, _admin_name(), True
-        return False, "", False
+            return True, _admin_name(), True, ADMIN_USER_ID
+        return False, "", False, -1
 
     # Regular user check (SQLite)
-    from pension_toolkit.db import get_user_by_email
     user = get_user_by_email(email)
     if user and user["password"] == password:
-        return True, user["full_name"], False
-    return False, "", False
+        return True, user["full_name"], False, user["id"]
+    return False, "", False, -1
 
 
 # Keep backward-compatible helper used elsewhere in the codebase
 def check_credentials(email: str, password: str) -> bool:
-    success, _, _ = login(email, password)
+    success, _, _, _ = login(email, password)
     return success
 
 

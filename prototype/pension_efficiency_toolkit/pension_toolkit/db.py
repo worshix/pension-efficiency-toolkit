@@ -1,4 +1,4 @@
-"""SQLite persistence layer — stores fund data with full upload history and users."""
+"""SQLite persistence layer — fund data scoped per user, with user management."""
 
 from __future__ import annotations
 
@@ -10,6 +10,9 @@ from pathlib import Path
 import pandas as pd
 
 _DB_PATH = Path(__file__).parent.parent / "pension_data.db"
+
+# user_id=0 is the admin sentinel (never stored in the users table)
+ADMIN_USER_ID = 0
 
 
 @dataclass
@@ -29,7 +32,6 @@ def _connect() -> sqlite3.Connection:
 
 
 def _init_tables(conn: sqlite3.Connection) -> None:
-    """Create tables if missing; migrate old fund_data schema if needed."""
     conn.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id         INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,6 +45,7 @@ def _init_tables(conn: sqlite3.Connection) -> None:
     conn.execute("""
         CREATE TABLE IF NOT EXISTS upload_history (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id     INTEGER NOT NULL DEFAULT 0,
             filename    TEXT    NOT NULL,
             uploaded_at TEXT    NOT NULL,
             n_rows      INTEGER NOT NULL,
@@ -50,7 +53,12 @@ def _init_tables(conn: sqlite3.Connection) -> None:
         )
     """)
 
-    # If fund_data exists but has no upload_id column, drop it (old schema migration).
+    # Migrate upload_history: add user_id column if it was created before this change.
+    upload_cols = {r[1] for r in conn.execute("PRAGMA table_info(upload_history)").fetchall()}
+    if "user_id" not in upload_cols:
+        conn.execute("ALTER TABLE upload_history ADD COLUMN user_id INTEGER NOT NULL DEFAULT 0")
+
+    # Migrate fund_data: drop if it has no upload_id (old schema).
     tables = {r[0] for r in conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table'"
     ).fetchall()}
@@ -62,8 +70,10 @@ def _init_tables(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-def save_fund_data(df: pd.DataFrame, filename: str) -> int:
-    """Persist a new upload. Returns the new upload_id."""
+# ── Fund data ─────────────────────────────────────────────────────────────────
+
+def save_fund_data(df: pd.DataFrame, filename: str, user_id: int) -> int:
+    """Persist a new upload for the given user. Returns the new upload_id."""
     with _connect() as conn:
         _init_tables(conn)
         n_rows = len(df)
@@ -71,8 +81,9 @@ def save_fund_data(df: pd.DataFrame, filename: str) -> int:
         uploaded_at = datetime.now().isoformat(timespec="seconds")
 
         cur = conn.execute(
-            "INSERT INTO upload_history (filename, uploaded_at, n_rows, n_funds) VALUES (?, ?, ?, ?)",
-            (filename, uploaded_at, n_rows, n_funds),
+            "INSERT INTO upload_history (user_id, filename, uploaded_at, n_rows, n_funds) "
+            "VALUES (?, ?, ?, ?, ?)",
+            (user_id, filename, uploaded_at, n_rows, n_funds),
         )
         upload_id = cur.lastrowid
 
@@ -100,14 +111,15 @@ def load_fund_data(upload_id: int) -> pd.DataFrame | None:
         return None
 
 
-def get_upload_history() -> list[UploadRecord]:
-    """Return all upload records, newest first."""
+def get_upload_history(user_id: int) -> list[UploadRecord]:
+    """Return upload records for the given user, newest first."""
     try:
         with _connect() as conn:
             _init_tables(conn)
             rows = conn.execute(
                 "SELECT id, filename, uploaded_at, n_rows, n_funds "
-                "FROM upload_history ORDER BY id DESC"
+                "FROM upload_history WHERE user_id = ? ORDER BY id DESC",
+                (user_id,),
             ).fetchall()
         return [
             UploadRecord(id=r[0], filename=r[1], uploaded_at=r[2], n_rows=r[3], n_funds=r[4])
@@ -125,17 +137,19 @@ def delete_upload(upload_id: int) -> None:
         conn.execute("DELETE FROM upload_history WHERE id = ?", (upload_id,))
 
 
-def has_fund_data() -> bool:
-    """Return True if any uploads exist."""
+def has_fund_data(user_id: int) -> bool:
+    """Return True if the given user has any uploads."""
     try:
         with _connect() as conn:
             _init_tables(conn)
-            return conn.execute("SELECT COUNT(*) FROM upload_history").fetchone()[0] > 0
+            return conn.execute(
+                "SELECT COUNT(*) FROM upload_history WHERE user_id = ?", (user_id,)
+            ).fetchone()[0] > 0
     except Exception:
         return False
 
 
-# ── User management ──────────────────────────────────────────────────────────
+# ── User management ───────────────────────────────────────────────────────────
 
 def create_user(full_name: str, email: str, password: str) -> None:
     """Insert a new regular user. Raises ValueError if email already exists."""
@@ -180,7 +194,16 @@ def get_all_users() -> list[dict]:
 
 
 def delete_user(user_id: int) -> None:
-    """Remove a user by ID."""
+    """Remove a user and all their uploads from the database."""
     with _connect() as conn:
         _init_tables(conn)
+        # Remove their fund data rows first
+        upload_ids = [
+            r[0] for r in conn.execute(
+                "SELECT id FROM upload_history WHERE user_id = ?", (user_id,)
+            ).fetchall()
+        ]
+        for uid in upload_ids:
+            conn.execute("DELETE FROM fund_data WHERE upload_id = ?", (uid,))
+        conn.execute("DELETE FROM upload_history WHERE user_id = ?", (user_id,))
         conn.execute("DELETE FROM users WHERE id = ?", (user_id,))

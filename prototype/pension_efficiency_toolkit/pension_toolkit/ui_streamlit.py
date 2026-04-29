@@ -267,11 +267,12 @@ def render_login() -> None:
                     "Sign In", use_container_width=True, type="primary"
                 )
                 if submitted:
-                    success, display_name, is_admin = login(email, password)
+                    success, display_name, is_admin, user_id = login(email, password)
                     if success:
                         st.session_state["authenticated"] = True
                         st.session_state["manager_name"] = display_name
                         st.session_state["is_admin"] = is_admin
+                        st.session_state["user_id"] = user_id
                         st.rerun()
                     else:
                         st.error("Incorrect email or password. Please try again.")
@@ -795,6 +796,7 @@ def main() -> None:
 
     manager_name = st.session_state.get("manager_name", get_manager_name())
     is_admin = st.session_state.get("is_admin", False)
+    user_id = st.session_state.get("user_id", 0)
     first_name = manager_name.split()[0]
 
     # ── Sidebar ──────────────────────────────────────────────────────────────
@@ -806,7 +808,7 @@ def main() -> None:
 
         st.markdown("#### 📁 Fund Data")
 
-        history = get_upload_history()
+        history = get_upload_history(user_id)
 
         # Auto-load the most recent upload on first visit
         if history and st.session_state.get("active_upload_id") is None:
@@ -875,7 +877,7 @@ def main() -> None:
                     with _tmp.NamedTemporaryFile(suffix=".csv", delete=False) as f:
                         f.write(file_bytes)
                         df_new = load_csv(f.name)
-                    new_id = save_fund_data(df_new, filename=uploaded.name)
+                    new_id = save_fund_data(df_new, filename=uploaded.name, user_id=user_id)
                     st.session_state["df"] = df_new
                     st.session_state["active_upload_id"] = new_id
                     st.session_state["last_upload_hash"] = file_hash
@@ -915,17 +917,6 @@ def main() -> None:
     )
     st.markdown("---")
 
-    if "df" not in st.session_state:
-        st.markdown(
-            "### Getting Started\n\n"
-            "Upload your fund data CSV using the **sidebar** to begin. "
-            "Your data will be saved automatically — you won't need to upload it again "
-            "on your next visit.\n\n"
-            "The CSV must include columns for fund financials across one or more years. "
-            "See the README for the required format."
-        )
-        return
-
     if run_btn:
         with st.spinner("Running efficiency analysis — this may take up to a minute..."):
             try:
@@ -936,31 +927,40 @@ def main() -> None:
                 st.success("Analysis complete.")
             except Exception as e:
                 st.error(f"Analysis failed: {e}")
-                return
-
-    if "results" not in st.session_state:
-        st.info("Click **▶ Run Analysis** in the sidebar to generate the efficiency report.")
-        return
-
-    results = st.session_state["results"]
 
     tab_labels = ["📊 Dashboard", "🏆 Fund Rankings", "🔍 Fund Details", "📄 Download Report"]
     if is_admin:
         tab_labels.append("👥 Users")
 
     tabs = st.tabs(tab_labels)
+    results = st.session_state.get("results")
 
     with tabs[0]:
-        render_dashboard(results)
+        if "df" not in st.session_state:
+            st.markdown(
+                "### Getting Started\n\n"
+                "Upload your fund data CSV using the **sidebar** to begin. "
+                "Your data will be saved automatically — you won't need to upload it again "
+                "on your next visit.\n\n"
+                "The CSV must include columns for fund financials across one or more years. "
+                "See the README for the required format."
+            )
+        elif results is None:
+            st.info("Click **▶ Run Analysis** in the sidebar to generate the efficiency report.")
+        else:
+            render_dashboard(results)
 
     with tabs[1]:
-        render_rankings(results)
+        if results:
+            render_rankings(results)
 
     with tabs[2]:
-        render_fund_details(results)
+        if results:
+            render_fund_details(results)
 
     with tabs[3]:
-        render_reports(results)
+        if results:
+            render_reports(results)
 
     if is_admin:
         with tabs[4]:
