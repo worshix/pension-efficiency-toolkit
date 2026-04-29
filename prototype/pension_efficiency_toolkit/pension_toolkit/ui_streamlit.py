@@ -23,9 +23,12 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-from pension_toolkit.auth import check_credentials, get_manager_name
+from pension_toolkit.auth import login, get_manager_name
 from pension_toolkit.data_io import load_csv, get_dea_matrices, NON_POSITIVE_WARNINGS
-from pension_toolkit.db import save_fund_data, load_fund_data, has_fund_data, get_upload_history, delete_upload
+from pension_toolkit.db import (
+    save_fund_data, load_fund_data, has_fund_data, get_upload_history, delete_upload,
+    create_user, get_all_users, delete_user,
+)
 from pension_toolkit.dea_core import dea_ccr_input_oriented, dea_bcc_input_oriented
 from pension_toolkit.scale import compute_scale_efficiency, scale_to_dataframe
 from pension_toolkit.bootstrap import simar_wilson, bootstrap_to_dataframe
@@ -254,19 +257,45 @@ def render_login() -> None:
         )
         st.markdown("<br>", unsafe_allow_html=True)
 
-        with st.form("login_form"):
-            email = st.text_input("Email Address", placeholder="your.email@example.com")
-            password = st.text_input("Password", type="password")
-            submitted = st.form_submit_button(
-                "Sign In", use_container_width=True, type="primary"
-            )
-            if submitted:
-                if check_credentials(email, password):
-                    st.session_state["authenticated"] = True
-                    st.session_state["manager_name"] = get_manager_name()
-                    st.rerun()
-                else:
-                    st.error("Incorrect email or password. Please try again.")
+        tab_sign_in, tab_create = st.tabs(["Sign In", "Create Account"])
+
+        with tab_sign_in:
+            with st.form("login_form"):
+                email = st.text_input("Email Address", placeholder="your.email@example.com")
+                password = st.text_input("Password", type="password")
+                submitted = st.form_submit_button(
+                    "Sign In", use_container_width=True, type="primary"
+                )
+                if submitted:
+                    success, display_name, is_admin = login(email, password)
+                    if success:
+                        st.session_state["authenticated"] = True
+                        st.session_state["manager_name"] = display_name
+                        st.session_state["is_admin"] = is_admin
+                        st.rerun()
+                    else:
+                        st.error("Incorrect email or password. Please try again.")
+
+        with tab_create:
+            with st.form("register_form"):
+                new_name = st.text_input("Full Name", placeholder="Jane Doe")
+                new_email = st.text_input("Email Address", placeholder="jane@example.com")
+                new_pw = st.text_input("Password", type="password")
+                new_pw2 = st.text_input("Confirm Password", type="password")
+                reg_submitted = st.form_submit_button(
+                    "Create Account", use_container_width=True, type="primary"
+                )
+                if reg_submitted:
+                    if not new_name or not new_email or not new_pw:
+                        st.error("Please fill in all fields.")
+                    elif new_pw != new_pw2:
+                        st.error("Passwords do not match.")
+                    else:
+                        try:
+                            create_user(new_name, new_email, new_pw)
+                            st.success("Account created! You can now sign in.")
+                        except ValueError as exc:
+                            st.error(str(exc))
 
 
 # ─── Dashboard Tab ───────────────────────────────────────────────────────────
@@ -715,6 +744,46 @@ def render_reports(results: dict) -> None:
         )
 
 
+# ─── User Management Tab (admin only) ────────────────────────────────────────
+
+def render_user_management() -> None:
+    st.subheader("User Management")
+    st.markdown(
+        "The following accounts have been created by users of the application. "
+        "As administrator, you can remove any account."
+    )
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    users = get_all_users()
+
+    if not users:
+        st.info("No user accounts yet. Users can register via the **Create Account** tab on the login page.")
+        return
+
+    for user in users:
+        col_info, col_del = st.columns([5, 1])
+        with col_info:
+            created = user.get("created_at", "")
+            try:
+                from datetime import datetime as _dt
+                created = _dt.fromisoformat(created).strftime("%d %b %Y")
+            except Exception:
+                pass
+            st.markdown(
+                f'<div style="padding:0.6rem 0.8rem;background:#F8FAFC;border-radius:8px;'
+                f'border:1px solid #E2E8F0;margin-bottom:0.4rem">'
+                f'<strong style="color:#1A2B3C">{user["full_name"]}</strong>'
+                f'<span style="color:#64748B;font-size:0.85rem;margin-left:0.6rem">{user["email"]}</span>'
+                f'<span style="color:#94A3B8;font-size:0.78rem;margin-left:0.6rem">Joined {created}</span>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+        with col_del:
+            if st.button("Delete", key=f"del_user_{user['id']}", type="secondary"):
+                delete_user(user["id"])
+                st.rerun()
+
+
 # ─── Main ────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -725,11 +794,13 @@ def main() -> None:
         return
 
     manager_name = st.session_state.get("manager_name", get_manager_name())
+    is_admin = st.session_state.get("is_admin", False)
     first_name = manager_name.split()[0]
 
     # ── Sidebar ──────────────────────────────────────────────────────────────
     with st.sidebar:
-        st.markdown(f"### 👋 Welcome, {first_name}")
+        admin_badge = " &nbsp;<span style='background:#1E6B8A22;color:#1E6B8A;padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;border:1px solid #1E6B8A55'>Admin</span>" if is_admin else ""
+        st.markdown(f"### 👋 Welcome, {first_name}{admin_badge}", unsafe_allow_html=True)
         st.markdown(f"<small style='color:#64748B'>{manager_name}</small>", unsafe_allow_html=True)
         st.markdown("---")
 
@@ -873,21 +944,27 @@ def main() -> None:
 
     results = st.session_state["results"]
 
-    tab_dash, tab_rank, tab_detail, tab_report = st.tabs(
-        ["📊 Dashboard", "🏆 Fund Rankings", "🔍 Fund Details", "📄 Download Report"]
-    )
+    tab_labels = ["📊 Dashboard", "🏆 Fund Rankings", "🔍 Fund Details", "📄 Download Report"]
+    if is_admin:
+        tab_labels.append("👥 Users")
 
-    with tab_dash:
+    tabs = st.tabs(tab_labels)
+
+    with tabs[0]:
         render_dashboard(results)
 
-    with tab_rank:
+    with tabs[1]:
         render_rankings(results)
 
-    with tab_detail:
+    with tabs[2]:
         render_fund_details(results)
 
-    with tab_report:
+    with tabs[3]:
         render_reports(results)
+
+    if is_admin:
+        with tabs[4]:
+            render_user_management()
 
 
 if __name__ == "__main__":

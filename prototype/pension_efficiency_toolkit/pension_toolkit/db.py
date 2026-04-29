@@ -1,4 +1,4 @@
-"""SQLite persistence layer — stores fund data with full upload history."""
+"""SQLite persistence layer — stores fund data with full upload history and users."""
 
 from __future__ import annotations
 
@@ -23,12 +23,23 @@ class UploadRecord:
 
 def _connect() -> sqlite3.Connection:
     conn = sqlite3.connect(_DB_PATH)
+    conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
 
 def _init_tables(conn: sqlite3.Connection) -> None:
     """Create tables if missing; migrate old fund_data schema if needed."""
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id         INTEGER PRIMARY KEY AUTOINCREMENT,
+            full_name  TEXT NOT NULL,
+            email      TEXT NOT NULL UNIQUE,
+            password   TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+    """)
+
     conn.execute("""
         CREATE TABLE IF NOT EXISTS upload_history (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -122,3 +133,54 @@ def has_fund_data() -> bool:
             return conn.execute("SELECT COUNT(*) FROM upload_history").fetchone()[0] > 0
     except Exception:
         return False
+
+
+# ── User management ──────────────────────────────────────────────────────────
+
+def create_user(full_name: str, email: str, password: str) -> None:
+    """Insert a new regular user. Raises ValueError if email already exists."""
+    with _connect() as conn:
+        _init_tables(conn)
+        existing = conn.execute(
+            "SELECT id FROM users WHERE LOWER(email) = LOWER(?)", (email,)
+        ).fetchone()
+        if existing:
+            raise ValueError("An account with that email already exists.")
+        conn.execute(
+            "INSERT INTO users (full_name, email, password, created_at) VALUES (?, ?, ?, ?)",
+            (full_name.strip(), email.strip().lower(), password,
+             datetime.now().isoformat(timespec="seconds")),
+        )
+
+
+def get_user_by_email(email: str) -> dict | None:
+    """Return user row as dict, or None if not found."""
+    try:
+        with _connect() as conn:
+            _init_tables(conn)
+            row = conn.execute(
+                "SELECT * FROM users WHERE LOWER(email) = LOWER(?)", (email.strip(),)
+            ).fetchone()
+        return dict(row) if row else None
+    except Exception:
+        return None
+
+
+def get_all_users() -> list[dict]:
+    """Return all regular users, newest first."""
+    try:
+        with _connect() as conn:
+            _init_tables(conn)
+            rows = conn.execute(
+                "SELECT id, full_name, email, created_at FROM users ORDER BY id DESC"
+            ).fetchall()
+        return [dict(r) for r in rows]
+    except Exception:
+        return []
+
+
+def delete_user(user_id: int) -> None:
+    """Remove a user by ID."""
+    with _connect() as conn:
+        _init_tables(conn)
+        conn.execute("DELETE FROM users WHERE id = ?", (user_id,))
