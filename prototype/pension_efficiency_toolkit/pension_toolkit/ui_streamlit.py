@@ -157,6 +157,28 @@ def inject_css() -> None:
             border-left: 4px solid #1E6B8A;
             margin-bottom: 1rem;
         }
+
+        /* Login page — larger text */
+        div[data-testid="stForm"] label,
+        div[data-testid="stForm"] .st-bq,
+        div[data-testid="stForm"] p {
+            font-size: 1.05rem !important;
+        }
+        div[data-testid="stForm"] input[type="text"],
+        div[data-testid="stForm"] input[type="password"],
+        div[data-testid="stForm"] input {
+            font-size: 1.05rem !important;
+            height: 2.8rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+        div[data-testid="stForm"] button[kind="primaryFormSubmit"],
+        div[data-testid="stForm"] button[data-testid="baseButton-primaryFormSubmit"] {
+            font-size: 1.1rem !important;
+            height: 3rem !important;
+        }
+        div[data-testid="stTabs"] button[role="tab"] {
+            font-size: 1rem !important;
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -251,8 +273,8 @@ def render_login() -> None:
             unsafe_allow_html=True,
         )
         st.markdown(
-            '<h2 style="text-align:center;color:#1E6B8A;margin-bottom:0">Pension Efficiency Toolkit</h2>'
-            '<p style="text-align:center;color:#64748B;margin-top:4px">Zimbabwe Pension Fund Analysis System</p>',
+            '<h2 style="text-align:center;color:#1E6B8A;margin-bottom:0;font-size:2.2rem;font-weight:700">Pension Efficiency Toolkit</h2>'
+            '<p style="text-align:center;color:#64748B;margin-top:6px;font-size:1.1rem">Zimbabwe Pension Fund Analysis System</p>',
             unsafe_allow_html=True,
         )
         st.markdown("<br>", unsafe_allow_html=True)
