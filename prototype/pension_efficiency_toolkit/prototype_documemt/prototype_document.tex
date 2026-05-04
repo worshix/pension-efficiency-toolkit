@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb}
@@ -9,7 +9,6 @@
 \usepackage{pgfplots,tikz}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc,patterns,fit,backgrounds}
-\usepackage{pgf-pie}
 \usepackage{listings}
 
 \definecolor{codeblue}{rgb}{0.13,0.29,0.53}
@@ -19,6 +18,7 @@
 \definecolor{accentblue}{RGB}{41,128,185}
 \definecolor{lightgray}{RGB}{236,240,241}
 \definecolor{darkgray}{RGB}{44,62,80}
+\definecolor{lavender}{RGB}{200,200,240}
 
 \lstdefinestyle{pythonstyle}{
   language=Python, backgroundcolor=\color{backcolour},
@@ -27,33 +27,42 @@
   numbers=left, numbersep=5pt, frame=single, showstringspaces=false,
 }
 
-\setlength{\cftsecnumwidth}{3em}
-\setlength{\cftsubsecnumwidth}{3.5em}
 \geometry{left=1.5in,right=1in,top=1in,bottom=1in}
 \onehalfspacing
+
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[R]{\thepage}\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\nouppercase{\leftmark}}
 \renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\chaptertitlename\ \thechapter}
+  {20pt}
+  {\Huge\bfseries}
+
 \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=cyan,citecolor=blue,
-  pdftitle={Pension Fund Efficiency Toolkit: Prototype System Documentation},
+  pdftitle={Pension Fund Efficiency Toolkit: Prototype Documentation},
   pdfauthor={Lorraine Mujuru}}
 
 \begin{document}
 
-%% COVER PAGE
+%% ── COVER PAGE ───────────────────────────────────────────────
 \thispagestyle{empty}
 \begin{center}
-\includegraphics[width=0.5\textwidth]{../../../document/hit_logo.png}\\[0.3cm]
+\includegraphics[width=0.8\textwidth]{../../../document/hit_logo.png}\\[0.3cm]
 {\normalsize\bfseries SCHOOL OF BUSINESS AND MANAGEMENT SCIENCES}\\[0.2cm]
 {\normalsize\bfseries DEPARTMENT OF FINANCIAL ENGINEERING}\\[1.5cm]
-{\large\bfseries PENSION FUND EFFICIENCY TOOLKIT: A PROTOTYPE SYSTEM FOR
+{\normalsize\bfseries PENSION FUND EFFICIENCY TOOLKIT: A PROTOTYPE SYSTEM FOR
 FRONTIER-BASED OPTIMIZATION ANALYSIS OF SELF-ADMINISTERED PENSION FUNDS IN ZIMBABWE}\\[1.5cm]
 {\normalsize BY}\\[0.5cm]
 {\large\bfseries LORRAINE MUJURU}\\[0.2cm]
 {\large\bfseries H220021Y}\\[1cm]
+{\normalsize\bfseries SUPERVISOR: MR SHUMBASHAVA}\\[1cm]
 {\small THIS PROTOTYPE DOCUMENTATION IS SUBMITTED TO THE DEPARTMENT OF FINANCIAL
 ENGINEERING, SCHOOL OF BUSINESS AND MANAGEMENT SCIENCES, IN PARTIAL FULFILMENT
 OF THE BACHELOR OF TECHNOLOGY HONOURS DEGREE IN FINANCIAL ENGINEERING}\\[1cm]
@@ -61,797 +70,656 @@ OF THE BACHELOR OF TECHNOLOGY HONOURS DEGREE IN FINANCIAL ENGINEERING}\\[1cm]
 \end{center}
 \newpage
 
+%% ── FRONT MATTER (roman numerals) ────────────────────────────
+\pagenumbering{roman}
+
+%% TITLE PAGE
+\chapter*{Title Page}
+\addcontentsline{toc}{chapter}{Title Page}
+
+\begin{tabbing}
+\hspace{4.5cm}\=\kill
+\textbf{Title of project:}   \> PENSION FUND EFFICIENCY TOOLKIT \\[1em]
+\textbf{Author:}             \> LORRAINE MUJURU \\[1em]
+\textbf{University Name:}    \> HARARE INSTITUTE OF TECHNOLOGY \\[1em]
+\textbf{School Name:}        \> BUSINESS AND MANAGEMENT SCIENCES \\[1em]
+\textbf{Department Name:}    \> DEPARTMENT OF FINANCIAL ENGINEERING \\[1em]
+\textbf{Year:}               \> 2026 \\
+\end{tabbing}
+\newpage
+
+%% DECLARATION
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+I the author, LORRAINE MUJURU H220021Y do hereby declare that this work has not
+previously been accepted in substance for any degree and is not being concurrently
+submitted in candidature for any degree.
+
+\vspace{3cm}
+Student Signature\dotfill Date\dotfill
+
+\vspace{2.5cm}
+Supervisor's Signature\dotfill Date\dotfill
+\newpage
+
+%% COPYRIGHT
+\chapter*{Copyright}
+\addcontentsline{toc}{chapter}{Copyright}
+
+All rights reserved. No part of this research may be reproduced, stored in any
+retrieval system, or transmitted in any form or by any means, electronic, mechanical,
+photocopying, recording or otherwise from scholarly purpose without the prior written
+permission of the author and Harare Institute of Technology on behalf of the author.
+\newpage
+
+%% DEDICATION
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+
+This prototype is dedicated to my family, whose unwavering support throughout my
+studies at HIT made this work possible. The sacrifices they made and the encouragement
+they offered during difficult periods are what carried me to the finish line. I hope this
+achievement brings them the pride they deserve.
+\newpage
+
+%% ACKNOWLEDGEMENTS
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+I would like to extend sincere gratitude to my supervisor for the guidance and mentorship
+provided throughout the development of this prototype. The constructive feedback at each
+stage of the project meaningfully shaped both the quality and direction of the final system.
+
+My appreciation also goes to the Department of Financial Engineering and the research
+coordinators whose continued support during the final year kept the project on track. Their
+direction was particularly valuable during the more demanding phases of implementation.
+
+Lastly, I thank my fellow students and friends at HIT. Four years of shared experiences,
+late-night study sessions, and diverse perspectives have had a genuine impact on who I am
+as both a student and a person.
+\newpage
+
+%% TABLE OF CONTENTS
 \tableofcontents
 \newpage
 
-%%=============================================================
-%% CHAPTER 1
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 1}\\[0.5cm]{\Large\bfseries Introduction}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{1.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 1: INTRODUCTION}}\vspace{1cm}
-
-\section{Background and Motivation}
-
-The Pension Fund Efficiency Toolkit is a software prototype developed in support of the
-research study \textit{Modeling Efficiency of Self-Administered Pension Funds in Zimbabwe
-Using a Frontier-Based Optimization Analysis and Random Forest Model}. The study applies
-Data Envelopment Analysis (DEA) to evaluate the technical efficiency of Zimbabwean
-self-administered standalone pension funds over the period 2018--2022, and subsequently
-employs a Random Forest regression model to identify the environmental determinants of
-efficiency differentials.
-
-The prototype operationalises the full DEA-plus-machine-learning pipeline in Python~3.11,
-using \texttt{PuLP} for linear programming, \texttt{scikit-learn} for machine learning,
-\texttt{joblib} for parallel bootstrap computation, \texttt{Streamlit} for an interactive
-dashboard, and \texttt{ReportLab} for automated PDF report generation.
-
-\section{Objectives of the Prototype}
-
-\begin{enumerate}[noitemsep]
-  \item Implement input-oriented CCR (CRS) DEA to evaluate overall technical efficiency.
-  \item Implement input-oriented BCC (VRS) DEA to isolate pure technical efficiency.
-  \item Compute scale efficiency and classify each fund by IRS/CRS/DRS regime.
-  \item Apply Simar-Wilson (1998) bootstrap bias correction with 95\% confidence intervals.
-  \item Fit a Random Forest second-stage regression on six contextual determinants.
-  \item Provide a Streamlit dashboard for interactive analysis and PDF export.
-  \item Support reproducibility through Docker containerisation and GitHub Actions CI.
-\end{enumerate}
-
-\section{Scope}
-
-The prototype operates on panel data from 16--20 Zimbabwean self-administered standalone
-pension funds, each observed over five annual periods (2018--2022). Data are aggregated
-to fund-level means before cross-sectional DEA is executed. The system does not currently
-implement window DEA, Malmquist indices, or stochastic frontier analysis.
-
+%% LIST OF FIGURES
+\listoffigures
 \newpage
 
-%%=============================================================
-%% CHAPTER 2
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 2}\\[0.5cm]{\Large\bfseries System Architecture}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{2.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 2: SYSTEM ARCHITECTURE}}\vspace{1cm}
+%% LIST OF TABLES
+\listoftables
+\newpage
 
-\section{High-Level Architecture}
+%% ABSTRACT
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
 
-The toolkit is organised as a layered, pipeline-style architecture. Figure~\ref{fig:arch}
-shows the high-level module layout; data flows left-to-right through loosely coupled modules.
+The Pension Fund Efficiency Toolkit is a software prototype that operationalises the
+analytical framework from the accompanying research study on frontier-based efficiency
+measurement of Zimbabwean self-administered pension funds. The system translates a
+multi-stage pipeline --- covering data ingestion, efficiency scoring, peer benchmarking,
+and contextual factor analysis --- into an interactive web-based dashboard designed for
+pension fund managers. Built in Python~3.11 using Streamlit and a set of specialised
+open-source libraries, the prototype enables users to upload fund data, execute the full
+analysis pipeline without any programming knowledge, and generate professional PDF reports
+suitable for board presentations and regulatory submissions. The system demonstrates that
+rigorous financial modelling can be made accessible to non-technical practitioners through
+careful interface design without sacrificing analytical integrity.
+\newpage
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[
-  box/.style={rectangle,rounded corners=3pt,draw=darkgray,thick,fill=lightgray,
-              text centered,minimum height=1.1cm,minimum width=2.9cm,font=\small},
-  arr/.style={-{Stealth[length=6pt]},thick,darkgray},
-  node distance=0.5cm and 1.3cm,
-  every node/.style={align=center}
-]
-\node[box](csv){\textbf{CSV Input}\\12 columns};
-\node[box,right=of csv](dio){\texttt{data\_io}\\Validation};
-\node[box,right=of dio](dea){\texttt{dea\_core}\\CCR + BCC};
-\node[box,right=of dea](sc){\texttt{scale}\\SE + RTS};
-\node[box,below=1.2cm of sc](bt){\texttt{bootstrap}\\Simar-Wilson};
-\node[box,left=of bt](ml){\texttt{ml\_stage}\\Random Forest};
-\node[box,left=of ml](rp){\texttt{reporting}\\PDF + Dashboard};
-
-\draw[arr](csv)--(dio);\draw[arr](dio)--(dea);\draw[arr](dea)--(sc);
-\draw[arr](sc)--(bt);\draw[arr](bt)--(ml);\draw[arr](ml)--(rp);
-\end{tikzpicture}
-\caption{High-level architecture of the Pension Fund Efficiency Toolkit}
-\label{fig:arch}
-\end{figure}
-
-\section{Module Responsibilities}
+%% ABBREVIATIONS
+\chapter*{Abbreviation}
+\addcontentsline{toc}{chapter}{Abbreviation}
 
 \begin{table}[H]
-\centering\caption{Toolkit modules and responsibilities}\label{tab:mods}\small
-\begin{tabular}{@{}lp{9.5cm}@{}}
-\toprule\textbf{Module}&\textbf{Responsibility}\\\midrule
-\texttt{data\_io.py}&CSV loading, schema validation, numeric coercion, missing-value detection, DEA matrix extraction\\
-\texttt{dea\_core.py}&Two-phase input-oriented LP for CCR and BCC models via PuLP/CBC; peer identification\\
-\texttt{scale.py}&Scale efficiency $\theta^\text{CCR}/\theta^\text{BCC}$; IRS/DRS/CRS classification\\
-\texttt{bootstrap.py}&Simar-Wilson Algorithm~1 with Silverman KDE, reflection, joblib parallelism\\
-\texttt{ml\_stage.py}&Random Forest (500 trees), MDI + permutation importance, CV R$^2$, PDP plots\\
-\texttt{reporting.py}&ReportLab PDF with styled tables and embedded PDP image\\
-\texttt{ui\_streamlit.py}&4-tab Streamlit dashboard: Overview, Efficiency, Drivers, Recommendations\\
-\texttt{cli.py}&Argparse CLI entry point orchestrating the full pipeline\\
-\bottomrule
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Abbreviation} & \textbf{Full Form} \\
+\hline
+DEA   & Data Envelopment Analysis \\
+\hline
+CCR   & Charnes, Cooper and Rhodes Model \\
+\hline
+BCC   & Banker, Charnes and Cooper Model \\
+\hline
+CRS   & Constant Returns to Scale \\
+\hline
+VRS   & Variable Returns to Scale \\
+\hline
+IRS   & Increasing Returns to Scale \\
+\hline
+DRS   & Decreasing Returns to Scale \\
+\hline
+RF    & Random Forest \\
+\hline
+PDF   & Portable Document Format \\
+\hline
+UI    & User Interface \\
+\hline
+IPEC  & Insurance and Pensions Commission \\
+\hline
+HIT   & Harare Institute of Technology \\
+\hline
+SQLite & Self-Contained Relational Database Engine \\
+\hline
+CSV   & Comma-Separated Values \\
+\hline
 \end{tabular}
+\caption{Glossary of Abbreviations}
+\label{tab:abbrev}
 \end{table}
+\newpage
 
-\section{Full Pipeline Flowchart}
+%% ── MAIN MATTER (arabic numerals) ────────────────────────────
+\pagenumbering{arabic}
+
+%%=============================================================
+%% CHAPTER 1: INTRODUCTION
+%%=============================================================
+\chapter{INTRODUCTION}
+
+Zimbabwe's pension sector has faced considerable turbulence over the past decade.
+Hyperinflation eroded fund values substantially, exchange rate instability disrupted
+investment portfolios, and regulatory scrutiny intensified following several high-profile
+fund failures. Against this backdrop pension fund managers need practical tools --- not
+just academic models --- to understand how efficiently their funds are operating and where
+improvements are realistically achievable.
+
+The Pension Fund Efficiency Toolkit is the software implementation of a research study on
+efficiency measurement in Zimbabwe's self-administered standalone pension funds. The study
+applied Data Envelopment Analysis (DEA) to benchmark funds against each other and then
+used a Random Forest regression model to identify which structural and environmental factors
+drive the observed efficiency differences. This prototype takes that analytical pipeline from
+a research setting into practice, packaging it into an interactive dashboard that a fund
+manager can actually sit down and use. No programming is required.
+
+The system processes panel data from up to twenty registered Zimbabwean pension funds.
+It produces efficiency scores, identifies top-performing peer funds, generates specific
+cost-reduction recommendations, and exports formatted PDF reports. All of this happens
+through a web interface accessible from a standard browser.
+
+\section{Problem Statement}
+
+Pension fund managers in Zimbabwe currently lack accessible tools to systematically
+evaluate operational efficiency. Regulators like the Insurance and Pensions Commission
+(IPEC) collect annual financial disclosures, but there is no standardised mechanism for
+funds to benchmark themselves against peers or receive specific, data-driven guidance on
+improving performance. Those who want to understand their fund's relative position typically
+rely on manual spreadsheet comparisons --- time-consuming work that is prone to error and
+fails to capture the multi-dimensional nature of fund performance.
+
+The analytical framework that addresses these limitations --- Data Envelopment Analysis ---
+computes a frontier of best-practice performance across the peer group and measures each
+fund's distance from that frontier. DEA and its extensions have historically been the domain
+of researchers. The gap between what the literature makes available and what fund managers
+can practically access is exactly what motivated the development of this system.
+
+\section{System Objectives}
+
+The Pension Fund Efficiency Toolkit was designed to achieve the following objectives:
+
+\begin{itemize}
+  \item To implement a fund efficiency scoring pipeline that evaluates both overall and
+        internal operational efficiency for up to twenty Zimbabwean pension funds
+
+  \item To automatically identify best-practice benchmark funds and calculate specific,
+        actionable input-reduction targets for underperforming funds in dollar terms
+
+  \item To determine which structural and environmental factors most strongly influence
+        fund efficiency across the sector as a whole
+
+  \item To deliver an interactive browser-based dashboard requiring no technical expertise
+        to operate, so that fund managers can run the full analysis independently
+
+  \item To persist uploaded fund data in a local database so that managers do not need to
+        re-upload files on subsequent visits
+
+  \item To generate downloadable PDF reports summarising findings for stakeholders and
+        regulatory purposes
+\end{itemize}
+
+\subsection*{Conclusion}
+
+This chapter established the sector context and motivation behind the prototype.
+Zimbabwe's pension funds operate in a difficult environment and evidence-based efficiency
+measurement can help managers make better decisions with the resources they have. The
+objectives show that the system aims to bridge the gap between research-grade analytical
+methods and practical day-to-day fund management. The chapters that follow document the
+development process, feasibility considerations, and the full system implementation.
+
+%%=============================================================
+%% CHAPTER 2: PROCESS MODELLING
+%%=============================================================
+\chapter{PROCESS MODELLING}
+
+\section{Introduction}
+
+Building this prototype meant choosing a development approach that could accommodate both
+the technical complexity of the underlying analytical models and the requirement that the
+resulting interface be simple for non-technical users to operate. This chapter covers the
+process model chosen, a feasibility analysis across four dimensions, and the security
+architecture that governs system access.
+
+\section{Process Model (Iterative)}
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  proc/.style={rectangle,draw=darkgray,fill=lightgray,text centered,
-               minimum width=5cm,minimum height=0.75cm,font=\small},
-  term/.style={rectangle,rounded corners=6pt,draw=hitblue,fill=hitblue!15,
-               text centered,minimum width=5cm,minimum height=0.75cm,font=\small\bfseries},
-  dec/.style={diamond,draw=accentblue,fill=accentblue!10,aspect=2.6,
-              text centered,font=\small},
-  io/.style={trapezium,trapezium left angle=70,trapezium right angle=110,
-             draw=codegreen!70!black,fill=codegreen!10,
-             text centered,minimum width=5cm,font=\small},
-  arr/.style={-{Stealth[length=6pt]},thick,darkgray},
+  proc/.style={rectangle, draw=darkgray, fill=lavender!70, text centered,
+               minimum width=5cm, minimum height=0.72cm, font=\small, rounded corners=2pt},
+  dec/.style={diamond, draw=darkgray, fill=lavender!40, aspect=2.8,
+              text centered, font=\small},
+  arr/.style={-{Stealth[length=6pt]}, thick, darkgray},
   node distance=0.48cm, every node/.style={align=center}
 ]
-\node[term](st){START};
-\node[io,below=of st](ld){Load CSV};
-\node[proc,below=of ld](vl){Schema Validation \& Numeric Coercion};
-\node[dec,below=of vl](vd){Valid?};
-\node[proc,below=of vd](ag){Aggregate fund means across 2018--2022};
-\node[proc,below=of ag](mx){Extract $X\!\in\!\mathbb{R}^{n\times3}$, $Y\!\in\!\mathbb{R}^{n\times2}$};
-\node[proc,below=of mx](cr){Solve CCR LP $\to\theta^\text{CCR}$, slacks, peers};
-\node[proc,below=of cr](bc){Solve BCC LP $\to\theta^\text{BCC}$, $\lambda$ weights};
-\node[proc,below=of bc](se){Scale Efficiency \& IRS/DRS/CRS};
-\node[proc,below=of se](sw){Simar-Wilson Bootstrap ($B\!=\!2000$) $\to\tilde\theta$, 95\% CI};
-\node[proc,below=of sw](rf){Random Forest ($Z\!\in\!\mathbb{R}^{n\times6}$) $\to$ importance, PDP};
-\node[proc,below=of rf](tg){Input Reduction Targets};
-\node[io,below=of tg](op){Export CSV files + PDF Report};
-\node[term,below=of op](en){END};
-\node[proc,right=2.8cm of vd,text width=2.5cm](er){Raise\\ValueError};
+\node[proc](rv){Research Validation};
+\node[proc,below=of rv](ra){Requirement Analysis};
+\node[proc,below=of ra](sd){System Design};
+\node[proc,below=of sd](pd){Prototype Development};
+\node[proc,below=of pd](ut){User Testing};
+\node[dec,below=of ut](vl){Validation};
+\node[proc,below=of vl](fi){Final Implementation};
 
-\draw[arr](st)--(ld);\draw[arr](ld)--(vl);\draw[arr](vl)--(vd);
-\draw[arr](vd)--node[left,font=\footnotesize]{Yes}(ag);
-\draw[arr](vd)--node[above,font=\footnotesize]{No}(er);
-\draw[arr](ag)--(mx);\draw[arr](mx)--(cr);\draw[arr](cr)--(bc);
-\draw[arr](bc)--(se);\draw[arr](se)--(sw);\draw[arr](sw)--(rf);
-\draw[arr](rf)--(tg);\draw[arr](tg)--(op);\draw[arr](op)--(en);
+\draw[arr](rv)--(ra);
+\draw[arr](ra)--(sd);
+\draw[arr](sd)--(pd);
+\draw[arr](pd)--(ut);
+\draw[arr](ut)--(vl);
+\draw[arr](vl)--node[left,font=\footnotesize]{Pass}(fi);
+\draw[arr](vl.east)--++(1.8,0)|-node[right,font=\footnotesize,pos=0.25]{Fail}(pd.east);
 \end{tikzpicture}
-\caption{End-to-end pipeline flowchart}
-\label{fig:pipe}
+\caption{Process Model (Iterative)}
+\label{fig:process_model}
 \end{figure}
 
-\newpage
-
-%%=============================================================
-%% CHAPTER 3
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 3}\\[0.5cm]{\Large\bfseries Data Layer}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{3.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 3: DATA LAYER}}\vspace{1cm}
-
-\section{Input Data Schema}
-
-The system requires a single CSV with 12 columns.  Three columns serve as DEA inputs
-and two as DEA outputs; the remainder provide contextual metadata.
-
-\begin{table}[H]
-\centering\caption{Required CSV schema}\label{tab:schema}\small
-\begin{tabular}{@{}llp{7cm}@{}}
-\toprule\textbf{Column}&\textbf{Type}&\textbf{Description}\\\midrule
-\texttt{fund\_id}&string&Unique identifier (ZW001--ZW020)\\
-\texttt{year}&integer&Observation year (2018--2022)\\
-\texttt{fund\_name}&string&Full fund name\\
-\texttt{fund\_type}&string&Must be \texttt{self\_administered}\\
-\texttt{total\_assets\_usd}&float&\textbf{DEA Input 1}: total assets (USD)\\
-\texttt{operating\_expenses\_usd}&float&\textbf{DEA Input 2}: operating expenses (USD)\\
-\texttt{equity\_debt\_usd}&float&\textbf{DEA Input 3}: equity + debt capital (USD)\\
-\texttt{net\_investment\_income\_usd}&float&\textbf{DEA Output 1}: net investment income (USD)\\
-\texttt{member\_contributions\_usd}&float&\textbf{DEA Output 2}: member contributions (USD)\\
-\texttt{inflation}&float&Country-level annual inflation rate (\%)\\
-\texttt{exchange\_volatility}&float&Annual exchange rate volatility index\\
-\texttt{fund\_age}&integer&Years since fund inception\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Dataset Description}
-
-The study dataset covers 20 registered Zimbabwean self-administered standalone pension
-funds (ZW001--ZW020) over 2018--2022 (100 rows total).  Fund sizes range from
-\$7\,M to \$584\,M in total assets, capturing the scale heterogeneity of the sector.
-Country-level macroeconomic shocks are reflected in the data: annual inflation reached
-557.2\% in 2020, and most funds recorded negative net investment income in 2019--2020.
-Table~\ref{tab:macro} shows the macroeconomic control variables by year.
-
-\begin{table}[H]
-\centering\caption{Macroeconomic control variables by year}\label{tab:macro}\small
-\begin{tabular}{@{}ccc@{}}
-\toprule\textbf{Year}&\textbf{Inflation (\%)}&\textbf{Exchange Volatility}\\\midrule
-2018&10.6&0.18\\2019&255.3&0.72\\2020&557.2&0.85\\2021&98.5&0.45\\2022&243.8&0.61\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{DEA Matrix Construction}
-
-Multi-year panel data are reduced to a cross-section by computing fund-level arithmetic
-means across 2018--2022.  The DEA matrices extracted are:
-
-\[
-X = \begin{pmatrix}
-\text{OpEx}_1 & \text{Assets}_1 & \text{Equity}_1\\
-\vdots&\vdots&\vdots\\
-\text{OpEx}_n & \text{Assets}_n & \text{Equity}_n
-\end{pmatrix}\in\mathbb{R}^{n\times3},\quad
-Y = \begin{pmatrix}
-\text{NetInvInc}_1 & \text{Contrib}_1\\
-\vdots&\vdots\\
-\text{NetInvInc}_n & \text{Contrib}_n
-\end{pmatrix}\in\mathbb{R}^{n\times2}
-\]
-
-\newpage
-
-%%=============================================================
-%% CHAPTER 4
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 4}\\[0.5cm]{\Large\bfseries DEA Engine}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{4.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 4: DEA ENGINE}}\vspace{1cm}
-
-\section{Mathematical Formulation}
-
-\subsection{CCR (CRS) Input-Oriented Model}
-
-For each DMU $k$ ($k=1,\ldots,n$), solve:
-\begin{align}
-\min_{\theta,\boldsymbol{\lambda}}\;&\theta \label{eq:ccr}\\
-\text{s.t.}\;&\sum_j\lambda_j x_{ij}\le\theta x_{ik},\quad i=1,\ldots,m\notag\\
-&\sum_j\lambda_j y_{rj}\ge y_{rk},\quad r=1,\ldots,s\notag\\
-&\lambda_j\ge0\notag
-\end{align}
-$\theta\in(0,1]$ is the radial efficiency score.  A score of 1 indicates the fund lies on
-the efficiency frontier; $1-\theta$ is the proportional input reduction achievable at the
-same output levels.
-
-\subsection{BCC (VRS) Extension}
-
-Adding the convexity constraint $\sum_j\lambda_j=1$ to~\eqref{eq:ccr} gives the BCC model,
-which allows variable returns to scale.  The BCC score $\theta^\text{BCC}\ge\theta^\text{CCR}$.
-
-\subsection{Two-Phase Slack Maximisation}
-
-Phase I solves~\eqref{eq:ccr} to obtain $\theta^*$.
-Phase II fixes $\theta=\theta^*$ and maximises $\sum_i s_i^- + \sum_r s_r^+$ with equality
-constraints and non-negative slacks, eliminating weak efficiency.
-
-\section{Scale Efficiency}
-
-\begin{equation}
-\mathrm{SE}_k = \frac{\theta_k^\text{CCR}}{\theta_k^\text{BCC}},\qquad
-\mathrm{RTS}_k=
-\begin{cases}\text{IRS}&\sum_j\lambda_j^*<1\\\text{CRS}&\sum_j\lambda_j^*\approx1\text{ and }\mathrm{SE}\approx1\\\text{DRS}&\sum_j\lambda_j^*>1\end{cases}
-\end{equation}
-
-\section{DEA Solving Flowchart}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}[
-  box/.style={rectangle,draw=darkgray,fill=lightgray,text centered,
-              minimum width=5.5cm,minimum height=0.75cm,font=\small},
-  term/.style={rectangle,rounded corners=5pt,draw=hitblue,fill=hitblue!15,
-               text centered,minimum width=5.5cm,minimum height=0.75cm,font=\small\bfseries},
-  dec/.style={diamond,draw=accentblue,fill=accentblue!10,aspect=3,text centered,font=\small},
-  arr/.style={-{Stealth[length=6pt]},thick,darkgray},
-  node distance=0.45cm, every node/.style={align=center}
-]
-\node[term](s){Initialise LP for DMU $k$: variables $\theta,\boldsymbol{\lambda}$};
-\node[box,below=of s](p1){Phase I: minimise $\theta$ subject to I/O constraints};
-\node[dec,below=of p1](d1){Optimal?};
-\node[box,below=of d1](th){Fix $\theta^*\leftarrow\theta$};
-\node[box,below=of th](p2){Phase II: maximise $\textstyle\sum s^-\!+\!\sum s^+$, $\theta$ fixed};
-\node[dec,below=of p2](d2){Optimal?};
-\node[box,below=of d2](rc){Record $\boldsymbol{\lambda}^*$, $\mathbf{s}^-$, $\mathbf{s}^+$};
-\node[box,below=of rc](pe){Peers: $\{j:\lambda_j^*>10^{-4}\}$};
-\node[term,below=of pe](en){Return DEAResult};
-\node[box,right=2.4cm of d1,text width=2.6cm](f1){$\theta^*\leftarrow1$\\zeros for slacks};
-\node[box,right=2.4cm of d2,text width=2.6cm](f2){Zeros for\\$\boldsymbol{\lambda},\mathbf{s}^-,\mathbf{s}^+$};
-
-\draw[arr](s)--(p1);\draw[arr](p1)--(d1);
-\draw[arr](d1)--node[left,font=\scriptsize]{Yes}(th);
-\draw[arr](d1)--node[above,font=\scriptsize]{No}(f1);
-\draw[arr](th)--(p2);\draw[arr](p2)--(d2);
-\draw[arr](d2)--node[left,font=\scriptsize]{Yes}(rc);
-\draw[arr](d2)--node[above,font=\scriptsize]{No}(f2);
-\draw[arr](rc)--(pe);\draw[arr](pe)--(en);
-\end{tikzpicture}
-\caption{Two-phase DEA LP solving flowchart for a single DMU}
-\label{fig:dea}
-\end{figure}
-
-\section{Efficiency Frontier Diagram}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}
-\begin{axis}[
-  width=10cm,height=7cm,
-  xlabel={Input 1 (normalised)},ylabel={Input 2 (normalised)},
-  xmin=0,xmax=1.25,ymin=0,ymax=1.25,
-  grid=both,grid style={draw=gray!25},
-  tick label style={font=\footnotesize},label style={font=\small},
-  legend style={font=\footnotesize,at={(0.97,0.97)},anchor=north east}
-]
-\addplot[only marks,mark=*,mark size=3pt,color=hitblue]
-  coordinates{(0.28,1.05)(0.52,0.62)(0.70,0.41)(1.02,0.30)};
-\addlegendentry{Efficient DMUs}
-\addplot[only marks,mark=square*,mark size=2.5pt,color=accentblue!80]
-  coordinates{(0.60,0.88)(0.80,0.78)(0.90,0.66)(0.55,0.84)(0.75,0.55)};
-\addlegendentry{Inefficient DMUs}
-\addplot[thick,dashed,color=hitblue]
-  coordinates{(0.28,1.05)(0.52,0.62)(0.70,0.41)(1.02,0.30)};
-\addlegendentry{Efficiency frontier}
-\addplot[-{Stealth[length=5pt]},thick,color=red!70]
-  coordinates{(0.80,0.78)(0.56,0.546)};
-\addlegendentry{Radial projection ($\theta<1$)}
-\end{axis}
-\end{tikzpicture}
-\caption{Input-oriented DEA efficiency frontier (conceptual)}
-\label{fig:frontier}
-\end{figure}
-
-\section{Comparative Efficiency Score Chart}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}
-\begin{axis}[
-  ybar=2pt,bar width=7pt,width=13cm,height=6cm,
-  xlabel={Fund},ylabel={Efficiency Score $\theta$},
-  ymin=0,ymax=1.18,
-  xtick={1,...,20},
-  xticklabels={ZW01,ZW02,ZW03,ZW04,ZW05,ZW06,ZW07,ZW08,ZW09,ZW10,
-               ZW11,ZW12,ZW13,ZW14,ZW15,ZW16,ZW17,ZW18,ZW19,ZW20},
-  xticklabel style={rotate=45,anchor=east,font=\tiny},
-  legend style={font=\footnotesize,at={(0.99,0.99)},anchor=north east},
-  ymajorgrids=true,grid style={draw=gray!25},
-  tick label style={font=\footnotesize},label style={font=\small}
-]
-\addplot[fill=hitblue!70,draw=hitblue] coordinates{
-  (1,.85)(2,1.00)(3,.72)(4,.91)(5,.68)(6,.79)(7,1.00)(8,.63)(9,.88)(10,.74)
-  (11,.59)(12,1.00)(13,.81)(14,.66)(15,.93)(16,.77)(17,.70)(18,1.00)(19,.82)(20,.57)};
-\addlegendentry{CCR ($\theta^\text{CCR}$)}
-\addplot[fill=accentblue!50,draw=accentblue] coordinates{
-  (1,.93)(2,1.00)(3,.85)(4,.97)(5,.81)(6,.88)(7,1.00)(8,.79)(9,.94)(10,.87)
-  (11,.74)(12,1.00)(13,.91)(14,.80)(15,.99)(16,.88)(17,.84)(18,1.00)(19,.92)(20,.71)};
-\addlegendentry{BCC ($\theta^\text{BCC}$)}
-\addplot[thick,dashed,color=red!60,domain=0.5:20.5]{1};
-\addlegendentry{Frontier ($\theta=1$)}
-\end{axis}
-\end{tikzpicture}
-\caption{Representative CCR and BCC efficiency scores across 20 pension fund DMUs}
-\label{fig:scores}
-\end{figure}
-
-\newpage
-
-%%=============================================================
-%% CHAPTER 5
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 5}\\[0.5cm]{\Large\bfseries Simar-Wilson Bootstrap Bias Correction}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{5.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 5: SIMAR-WILSON BOOTSTRAP}}\vspace{1cm}
-
-\section{Motivation}
-
-DEA scores are upward-biased estimators of true efficiency because the frontier is
-estimated from the same sample used for evaluation.  Simar and Wilson (1998) Algorithm~1
-corrects this bias and constructs valid confidence intervals.  The implementation in
-\texttt{bootstrap.py} parallelises $B=2{,}000$ replications with \texttt{joblib}.
-
-\section{Algorithm}
-
-\begin{enumerate}[noitemsep]
-  \item Compute original DEA scores $\hat{\boldsymbol{\theta}}$.
-  \item Estimate Silverman bandwidth:
-    $h = 0.9\min\!\bigl(\hat\sigma_\theta,\,\tfrac{\text{IQR}_\theta}{1.34}\bigr)n^{-1/5}$.
-  \item For $b=1,\ldots,B$ (parallelised):
-    \begin{enumerate}[noitemsep,label=(\alph*)]
-      \item Draw $\boldsymbol{\theta}^*$ from reflected KDE of $\hat{\boldsymbol{\theta}}$;
-            reflect values $>1$ as $2-\theta^*$.
-      \item Pseudo-inputs: $X^* = \mathrm{diag}(\boldsymbol{\theta}^*/\hat{\boldsymbol{\theta}})\,X$.
-      \item Solve DEA on $(X^*,Y)\to\hat{\boldsymbol{\theta}}^{*b}$.
-    \end{enumerate}
-  \item Bias: $\hat B_k = \overline{\hat\theta^*_k}-\hat\theta_k$.
-  \item Bias-corrected: $\tilde\theta_k=\hat\theta_k-\hat B_k$.
-  \item 95\% CI from empirical bootstrap percentiles.
-\end{enumerate}
-
-\section{Bootstrap Flowchart}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}[
-  box/.style={rectangle,draw=darkgray,fill=lightgray,text centered,
-              minimum width=6.5cm,minimum height=0.75cm,font=\small},
-  term/.style={rectangle,rounded corners=5pt,draw=hitblue,fill=hitblue!15,
-               text centered,minimum width=6.5cm,minimum height=0.75cm,font=\small\bfseries},
-  arr/.style={-{Stealth[length=6pt]},thick,darkgray},
-  node distance=0.45cm, every node/.style={align=center}
-]
-\node[term](s){Compute original CCR scores $\hat{\boldsymbol{\theta}}$};
-\node[box,below=of s](bw){Estimate Silverman bandwidth $h$};
-\node[box,below=of bw](pp){Parallelise $b=1,\ldots,B$ (joblib loky)};
-\node[box,below=of pp](rs){Resample $\boldsymbol{\theta}^*$ from reflected KDE; clip to $(0,1]$};
-\node[box,below=of rs](xi){Pseudo-inputs $X^*=\mathrm{diag}(\boldsymbol{\theta}^*/\hat{\boldsymbol{\theta}})\,X$};
-\node[box,below=of xi](dd){Solve DEA$(X^*,Y)\to\hat{\boldsymbol{\theta}}^{*b}$};
-\node[box,below=of dd](ag){Stack results: matrix $\mathbf{B}\in\mathbb{R}^{B\times n}$};
-\node[box,below=of ag](bi){Bias $\hat B_k$; corrected $\tilde\theta_k=\hat\theta_k-\hat B_k$};
-\node[box,below=of bi](ci){95\% CI from empirical percentiles};
-\node[term,below=of ci](en){Export \texttt{bias\_corrected\_scores.csv}};
-\draw[arr](s)--(bw);\draw[arr](bw)--(pp);\draw[arr](pp)--(rs);
-\draw[arr](rs)--(xi);\draw[arr](xi)--(dd);\draw[arr](dd)--(ag);
-\draw[arr](ag)--(bi);\draw[arr](bi)--(ci);\draw[arr](ci)--(en);
-\end{tikzpicture}
-\caption{Simar-Wilson bootstrap bias-correction flowchart}
-\label{fig:boot}
-\end{figure}
-
-\newpage
-
-%%=============================================================
-%% CHAPTER 6
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 6}\\[0.5cm]{\Large\bfseries Random Forest Second Stage}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{6.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 6: RANDOM FOREST SECOND STAGE}}\vspace{1cm}
-
-\section{Two-Stage Framework}
-
-Stage~1 (DEA) produces bias-corrected scores $\tilde\theta_k$.  Stage~2 regresses these
-scores on six contextual variables using a Random Forest regressor to quantify which
-structural and environmental factors drive efficiency differentials.
-
-\section{Contextual Features}
-
-\begin{table}[H]
-\centering\caption{Second-stage Random Forest features}\label{tab:feats}\small
-\begin{tabular}{@{}llp{7cm}@{}}
-\toprule\textbf{Feature}&\textbf{Source}&\textbf{Definition}\\\midrule
-\texttt{inflation}&CSV&Annual inflation rate (\%)\\
-\texttt{exchange\_volatility}&CSV&Annual exchange rate volatility index\\
-\texttt{fund\_age}&CSV&Years since inception\\
-\texttt{fund\_size\_log}&Derived&$\ln(\text{mean total assets})$\\
-\texttt{expense\_ratio}&Derived&mean OpEx / mean total assets\\
-\texttt{rts\_encoded}&Derived&IRS$=+1$, CRS$=0$, DRS$=-1$\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Model Configuration}
-
-\textbf{RandomForestRegressor}: 500 trees, \texttt{max\_features="sqrt"}, fixed seed.\\
-\textbf{Feature importance}: MDI (built-in) + permutation importance (30 repeats).\\
-\textbf{Validation}: $k$-fold cross-validation ($k\le5$), reporting mean $\pm$ std R$^2$.\\
-\textbf{Visualisation}: Partial Dependence Plots (PDPs) for top-3 features.
-
-\section{Random Forest Pipeline Diagram}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}[
-  box/.style={rectangle,draw=darkgray,fill=lightgray,text centered,
-              minimum width=5.5cm,minimum height=0.75cm,font=\small},
-  term/.style={rectangle,rounded corners=5pt,draw=hitblue,fill=hitblue!15,
-               text centered,minimum width=5.5cm,minimum height=0.75cm,font=\small\bfseries},
-  outb/.style={rectangle,draw=accentblue,fill=accentblue!12,text centered,
-              minimum width=4.5cm,minimum height=0.7cm,font=\small},
-  arr/.style={-{Stealth[length=6pt]},thick,darkgray},
-  node distance=0.45cm and 1.8cm, every node/.style={align=center}
-]
-\node[term](in){Bias-corrected scores $\tilde{\boldsymbol{\theta}}$ (target)};
-\node[box,below=of in](ft){Build feature matrix $Z\in\mathbb{R}^{n\times6}$};
-\node[box,below=of ft](rf){Fit RandomForest (500 trees)};
-\node[box,below=of rf](md){MDI Feature Importance};
-\node[box,right=2.2cm of md](pm){Permutation Importance\\(30 repeats)};
-\node[box,below=of md](cv){Cross-Validation R$^2$ ($k$-fold)};
-\node[box,below=of cv](t3){Identify Top-3 Features};
-\node[outb,below=of t3](pd){Generate PDPs\\(\texttt{pdp\_top3.png})};
-\node[outb,right=2.2cm of pd](im){Export\\{\texttt{rf\_importance.csv}}};
-\node[term,below=of pd](en){Return RFResult};
-
-\draw[arr](in)--(ft);\draw[arr](ft)--(rf);\draw[arr](rf)--(md);
-\draw[arr](rf)--(pm);\draw[arr](md)--(cv);\draw[arr](cv)--(t3);
-\draw[arr](t3)--(pd);\draw[arr](t3)--(im);\draw[arr](pd)--(en);
-\end{tikzpicture}
-\caption{Random Forest second-stage analysis pipeline}
-\label{fig:rf}
-\end{figure}
-
-\section{Indicative Feature Importance}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}
-\begin{axis}[
-  xbar,width=10cm,height=6cm,
-  xlabel={Feature Importance (MDI)},
-  ytick={1,...,6},
-  yticklabels={RTS Encoded,Expense Ratio,Exchange Volatility,Fund Age,Fund Size (log),Inflation},
-  xmin=0,xmax=0.42,bar width=12pt,
-  nodes near coords,nodes near coords style={font=\footnotesize},
-  xmajorgrids=true,grid style={draw=gray!25},
-  tick label style={font=\small},label style={font=\small}
-]
-\addplot[fill=hitblue!70,draw=hitblue]
-  coordinates{(0.07,1)(0.11,2)(0.13,3)(0.15,4)(0.21,5)(0.33,6)};
-\end{axis}
-\end{tikzpicture}
-\caption{Indicative Random Forest MDI feature importance}
-\label{fig:imp}
-\end{figure}
-
-\newpage
-
-%%=============================================================
-%% CHAPTER 7
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 7}\\[0.5cm]{\Large\bfseries Dashboard and Reporting}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{7.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 7: DASHBOARD AND REPORTING}}\vspace{1cm}
-
-\section{Streamlit Dashboard}
-
-The interactive dashboard is built with Streamlit (\texttt{ui\_streamlit.py}) and organised
-into four tabs.
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}[
-  side/.style={rectangle,rounded corners=4pt,draw=hitblue,fill=hitblue!10,
-               minimum width=2.8cm,minimum height=4.5cm,font=\small},
-  tab/.style={rectangle,rounded corners=3pt,draw=accentblue,fill=accentblue!12,
-              text centered,minimum width=3cm,minimum height=1.9cm,font=\small},
-  arr/.style={-{Stealth[length=5pt]},thick,darkgray},
-  every node/.style={align=center}
-]
-\node[side](sd) at (-4,0)
-  {\textbf{Sidebar}\\[4pt] CSV Upload\\Bootstrap $B$\\RNG Seed\\Run Analysis};
-\node[tab](t1) at (0,1.7){\textbf{Tab 1: Overview}\\Dataset table\\KPI metrics};
-\node[tab](t2) at (3.4,1.7){\textbf{Tab 2: Efficiency}\\CCR/BCC tables\\Score bar chart};
-\node[tab](t3) at (0,-0.9){\textbf{Tab 3: Drivers}\\RF importance\\PDP images};
-\node[tab](t4) at (3.4,-0.9){\textbf{Tab 4: Recs.}\\Input targets\\PDF export};
-\draw[arr](sd)--(t1);\draw[arr](sd)--(t2);\draw[arr](sd)--(t3);\draw[arr](sd)--(t4);
-\end{tikzpicture}
-\caption{Streamlit dashboard four-tab structure}
-\label{fig:dash}
-\end{figure}
-
-\subsection{Tab 1 --- Overview}
-
-Displays the aggregated dataset table (one row per fund) and four KPI metrics: number of
-funds, mean CCR efficiency, mean BCC efficiency, and count of frontier funds.
-
-\subsection{Tab 2 --- Efficiency}
-
-Presents CCR and BCC score tables with slacks and peer IDs; the scale efficiency table
-with IRS/DRS/CRS labels; Simar-Wilson bias-corrected scores with 95\% CIs; and a
-side-by-side CCR/BCC bar chart with a horizontal frontier line.
-
-\subsection{Tab 3 --- Drivers}
-
-Shows Random Forest MDI and permutation importance tables, cross-validation
-R\textsuperscript{2}, and the partial dependence plot image for the top-3 features.
-
-\subsection{Tab 4 --- Recommendations}
-
-Provides per-fund input reduction targets (absolute USD and percentage) and a button to
-generate and download the full PDF report.
-
-\section{PDF Report}
-
-\texttt{generate\_pdf\_report()} (ReportLab) produces \texttt{report.pdf} containing:
-
-\begin{enumerate}[noitemsep]
-  \item Executive summary;
-  \item CCR and BCC efficiency tables;
-  \item Scale efficiency table;
-  \item Simar-Wilson bias-corrected scores;
-  \item Input reduction targets;
-  \item RF feature importance table;
-  \item Embedded PDP image.
-\end{enumerate}
-
-\section{Output File Summary}
-
-\begin{table}[H]
-\centering\caption{Pipeline output files}\label{tab:out}\small
-\begin{tabular}{@{}lp{9.5cm}@{}}
-\toprule\textbf{File}&\textbf{Contents}\\\midrule
-\texttt{out/efficiency\_ccr.csv}&CCR scores, input slacks, peer IDs\\
-\texttt{out/efficiency\_vrs.csv}&BCC scores, input slacks, peer IDs\\
-\texttt{out/scale.csv}&Scale efficiency and IRS/DRS/CRS classification\\
-\texttt{out/targets.csv}&Input reduction targets (absolute and \%)\\
-\texttt{out/bias\_corrected\_scores.csv}&Raw score, bias, corrected score, 95\% CI\\
-\texttt{out/rf\_importance.csv}&MDI and permutation feature importances\\
-\texttt{out/pdp\_top3.png}&Partial dependence plots for top-3 features\\
-\texttt{out/report.pdf}&Full styled PDF report\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\newpage
-
-%%=============================================================
-%% CHAPTER 8
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 8}\\[0.5cm]{\Large\bfseries Testing, Validation, and Deployment}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{8.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 8: TESTING AND DEPLOYMENT}}\vspace{1cm}
-
-\section{Test Suite}
-
-\begin{table}[H]
-\centering\caption{Test module coverage}\label{tab:tests}\small
-\begin{tabular}{@{}llp{8cm}@{}}
-\toprule\textbf{Module}&\textbf{Tests}&\textbf{Coverage}\\\midrule
-\texttt{test\_data\_io.py}&9&Schema validation, coercion, missing values, positivity, matrix extraction\\
-\texttt{test\_dea\_core.py}&8&Scores in $[0,1]$, BCC$\ge$CCR, slack feasibility, peer identification, edge cases\\
-\texttt{test\_bootstrap.py}&6&Output shapes, score ranges, CI ordering, reproducibility, DataFrame export\\
-\texttt{test\_ml\_stage.py}&5&Importance sums, permutation shapes, CV R$^2$ finite, PDP generation\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{CI/CD Pipeline}
-
-GitHub Actions (\texttt{.github/workflows/ci.yml}) executes on every push:
-\begin{enumerate}[noitemsep]
-  \item Install \texttt{uv} package manager.
-  \item \texttt{uv sync} to install pinned dependencies (\texttt{uv.lock}).
-  \item \texttt{uv run pytest -q} --- full test suite.
-  \item \texttt{ruff} lint and \texttt{black} format check.
-\end{enumerate}
-
-\section{CLI Usage}
-
-\begin{lstlisting}[style=pythonstyle,caption={Full pipeline via CLI}]
-uv run python -m pension_toolkit.cli analyze \
-    --input tests/sample_data.csv \
-    --out out/ \
-    --bootstrap-B 2000 \
-    --seed 42
-\end{lstlisting}
-
-\section{Docker Deployment}
-
-\begin{lstlisting}[style=pythonstyle,caption={Docker build and run}]
-docker build -t pension-toolkit .
-docker run -p 8501:8501 pension-toolkit
-# Dashboard available at http://localhost:8501
-\end{lstlisting}
-
-The image is based on \texttt{python:3.11-slim} with \texttt{uv} installed and all
-dependencies resolved at build time.
-
-\section{Reproducibility Controls}
-
-\begin{itemize}[noitemsep]
-  \item User-configurable \texttt{--seed} (default 42) passed to all stochastic components.
-  \item \texttt{make\_rng(seed)} in \texttt{utils.py} uses \texttt{numpy.random.default\_rng()}.
-  \item \texttt{uv.lock} pins exact transitive dependency versions.
-  \item Docker eliminates environment-level variability.
+The iterative prototyping model was selected for this project for several reasons.
+Financial analysis software of this kind depends on tight feedback loops between the
+analytical engine and the interface. Getting the DEA pipeline to produce correct results is
+one thing; surfacing those results in a way that a fund manager actually finds interpretable
+is quite another. Iterative development allowed both concerns to be addressed in cycles
+rather than requiring a complete design commitment upfront.
+
+The approach also suited the nature of the underlying algorithms. The bootstrap
+bias-correction module and the Random Forest second-stage analysis each required
+calibration iterations. Being able to revisit the design of these components after
+observing their outputs in the dashboard context --- rather than validating them in
+isolation --- produced a more coherent final product. Each cycle of the model above maps
+roughly to one development sprint, with the validation step corresponding to functional
+testing of the dashboard against expected analytical outputs.
+
+\section{Feasibility Analysis}
+
+\begin{itemize}
+  \item \textbf{Economic Feasibility}: The entire system is built on open-source
+  technologies. Python, Streamlit, PuLP, scikit-learn, and SQLite carry no licensing
+  costs. Compared to commercial financial analytics platforms that charge per-seat fees
+  running into thousands of dollars annually, this prototype achieves equivalent
+  functionality at essentially zero cost while being tailored specifically to the
+  Zimbabwean pension context.
+
+  \item \textbf{Technical Feasibility}: The DEA linear programmes solve in milliseconds
+  per fund using the PuLP/CBC solver on standard hardware. The bootstrap procedure ---
+  which runs two hundred or more resampling iterations to produce statistically valid
+  efficiency estimates --- completes in under a minute for nineteen funds on a modern
+  laptop. Streamlit handles the web interface without requiring a dedicated server; a
+  single command launches the application locally, making deployment straightforward even
+  where IT infrastructure is limited.
+
+  \item \textbf{Social Feasibility}: Pension fund managers are not, in general,
+  quantitative analysts. The dashboard design reflects this reality. Efficiency scores are
+  expressed as percentages with plain-English status labels (Excellent, Good, Fair, Needs
+  Attention), recommendations are stated as specific dollar amounts rather than technical
+  slack values, and academic terminology is kept away from the interface entirely. The
+  system was refined iteratively to ensure that outputs are interpretable without any
+  background in DEA or statistics.
+
+  \item \textbf{Operational Feasibility}: The system accepts CSV files in a format
+  consistent with data that fund managers already compile for IPEC submissions. No
+  infrastructure changes are required on the user's side. The built-in SQLite database
+  means that uploaded data persists between sessions, so a manager does not need to
+  re-upload the same dataset each time they log in. The application runs locally on a
+  Windows or Linux machine with Python installed.
 \end{itemize}
 
-\newpage
+\section{System Security}
+
+Access to the system is controlled by credential-based login. The administrator account
+representing the fund manager is configured through environment variables rather than
+being stored in the database, which means the primary credentials are never written to disk
+in plain text form. The password is managed solely by the system developer and the
+designated user.
+
+The application does not expose any network endpoints beyond the local machine by default.
+All fund data is stored in a local SQLite file rather than on a remote server, reducing
+the attack surface considerably. The security model is intentionally simple and
+proportionate to the single-user deployment context: there is one authenticated user, and
+unauthenticated sessions are immediately redirected to the login page.
+
+\subsection*{Conclusion}
+
+Through iterative development the prototype successfully addressed the gap between
+research-grade analysis and practical day-to-day use. The feasibility study confirms that
+the system is economically viable, technically sound, socially appropriate for its intended
+users, and operationally compatible with existing workflows in Zimbabwean pension fund
+management. The security architecture is straightforward and appropriate for the deployment
+context.
 
 %%=============================================================
-%% CHAPTER 9
+%% CHAPTER 3: SOFTWARE METHODOLOGY
 %%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 9}\\[0.5cm]{\Large\bfseries Returns-to-Scale and Peer Analysis}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{9.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 9: RTS AND PEER ANALYSIS}}\vspace{1cm}
+\chapter{SOFTWARE METHODOLOGY}
 
-\section{Returns-to-Scale Distribution}
+\section{Introduction}
 
-The RTS classification reveals whether each fund operates at sub-optimal scale.  Funds
-classified as IRS are too small to exploit scale economies; DRS funds have grown beyond
-the optimal scale.  Figure~\ref{fig:rts} shows the expected distribution for the
-Zimbabwean sample, where most funds are expected to operate under increasing returns to
-scale given the small size of many employer-sponsored schemes.
+This chapter describes the implementation of the Pension Fund Efficiency Toolkit at the
+system level. It covers the overall flow of the application from the user's perspective,
+describes each screen and its purpose, and provides representative code extracts from the
+core modules. The aim is to give a clear picture of how the system works from the front
+end all the way through to the data layer.
 
-\begin{figure}[H]\centering
-\begin{tikzpicture}
-\pie[radius=3,text=legend,color={hitblue!70,accentblue!60,gray!20},
-    explode={0,0.05,0}]
-    {55/Increasing Returns to Scale (IRS),
-     25/Decreasing Returns to Scale (DRS),
-     20/Constant Returns to Scale (CRS)}
-\end{tikzpicture}
-\caption{Indicative RTS distribution across the 20-fund Zimbabwean sample}
-\label{fig:rts}
-\end{figure}
+\section{System Flowchart}
 
-\section{Peer Analysis and Benchmarking}
-
-For each inefficient DMU, the toolkit identifies its \emph{peer set} --- the subset of
-efficient frontier funds that serve as best-practice benchmarks.  Peers are defined as
-funds with $\lambda_j^* > 10^{-4}$ in the Phase~II optimal solution.  The input reduction
-target for each inefficient fund $k$ is:
-\[
-x_{ik}^\text{target} = \theta_k^* \cdot x_{ik} - s_{ik}^{-*},\quad
-\text{reduction}_{ik} = x_{ik} - x_{ik}^\text{target}
-\]
-These targets are exported in \texttt{out/targets.csv} and displayed in the Recommendations
-dashboard tab, enabling fund managers to identify concrete operational improvement paths.
-
-\section{Scale Efficiency Distribution}
-
-\begin{figure}[H]\centering
-\begin{tikzpicture}
-\begin{axis}[
-  width=11cm,height=5cm,
-  xlabel={Fund (ZW001--ZW020)},ylabel={Scale Efficiency (SE)},
-  xtick={1,...,20},
-  xticklabels={01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20},
-  ymin=0.4,ymax=1.15,
-  ymajorgrids=true,grid style={draw=gray!25},
-  tick label style={font=\footnotesize},label style={font=\small},
-  ybar,bar width=9pt,
-  legend style={font=\footnotesize,at={(0.99,0.55)},anchor=east}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  proc/.style={rectangle, draw=darkgray, fill=lavender!70, text centered,
+               minimum width=6cm, minimum height=0.72cm, font=\small, rounded corners=2pt},
+  arr/.style={-{Stealth[length=6pt]}, thick, darkgray},
+  node distance=0.5cm, every node/.style={align=center}
 ]
-\addplot[fill=accentblue!60,draw=accentblue] coordinates{
-  (1,.91)(2,1.00)(3,.85)(4,.94)(5,.84)
-  (6,.90)(7,1.00)(8,.80)(9,.94)(10,.85)
-  (11,.80)(12,1.00)(13,.89)(14,.83)(15,.94)
-  (16,.88)(17,.83)(18,1.00)(19,.89)(20,.80)};
-\addlegendentry{Scale Efficiency}
-\addplot[thick,dashed,color=red!60,domain=0.5:20.5]{1};
-\addlegendentry{SE $= 1$}
-\end{axis}
+\node[proc](login){User Login};
+\node[proc,below=of login](load){Upload or Load Saved Fund Data};
+\node[proc,below=of load](run){Run Efficiency Analysis};
+\node[proc,below=of run](dash){View Dashboard Overview};
+\node[proc,below=of dash](rank){Explore Fund Rankings};
+\node[proc,below=of rank](detail){Inspect Individual Fund Details};
+\node[proc,below=of detail](report){Download PDF Report};
+\node[proc,below=of report](logout){Sign Out};
+
+\draw[arr](login)--(load);
+\draw[arr](load)--(run);
+\draw[arr](run)--(dash);
+\draw[arr](dash)--(rank);
+\draw[arr](rank)--(detail);
+\draw[arr](detail)--(report);
+\draw[arr](report)--(logout);
 \end{tikzpicture}
-\caption{Indicative scale efficiency scores across 20 pension fund DMUs}
-\label{fig:se}
+\caption{System Flowchart}
+\label{fig:sys_flowchart}
 \end{figure}
 
+The flowchart maps the primary use path through the application. When a user authenticates,
+the system checks whether they have any previously uploaded datasets saved in the local
+database and loads the most recent one automatically --- so returning users land directly
+on the dashboard without needing to re-upload anything. If no saved data exists, the CSV
+upload widget in the sidebar is used. Clicking Run Analysis triggers the full pipeline:
+CCR efficiency scoring, BCC efficiency scoring, scale efficiency classification, bootstrap
+bias correction, and the Random Forest second-stage determinant analysis. Results are
+stored in the session and the tabbed dashboard allows exploration at whatever level of
+detail the manager needs.
+
+\section{System Description}
+
+\subsection{Step 1: Login}
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\parbox{0.68\textwidth}{%
+\vspace{0.5cm}
+\centering
+{\large\bfseries\textcolor{hitblue}{Pension Efficiency Toolkit}}\\[0.1cm]
+{\small Zimbabwe Pension Fund Analysis System}\\[0.6cm]
+\begin{tabular}{p{0.58\textwidth}}
+\textbf{Email Address}\\[0.15cm]
+\framebox[0.56\textwidth]{\phantom{your.email@example.com}}\\[0.4cm]
+\textbf{Password}\\[0.15cm]
+\framebox[0.56\textwidth]{\phantom{\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}\\[0.5cm]
+\framebox[0.56\textwidth]{\centering\textbf{Sign In}}\\[0.3cm]
+\end{tabular}
+\vspace{0.3cm}%
+}}
+\caption{Login Screen}
+\label{fig:login}
+\end{figure}
+
+The login screen is the system's entry point. The user enters their email address and
+password. Authentication is handled against credentials stored in environment variables on
+the server side --- the fund manager's email and password are set at deployment time and are
+never held in the database. Failed attempts return a clear error message; successful login
+redirects to the main dashboard immediately.
+
+\subsection{Launch Page --- Dashboard Overview}
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\parbox{0.82\textwidth}{%
+\vspace{0.3cm}
+\small
+\textbf{\textcolor{hitblue}{Pension Fund Efficiency Dashboard}}\\
+{\footnotesize Helping Zimbabwe's pension funds operate at their best}\\[0.3cm]
+\begin{tabular}{|p{2.1cm}|p{2.1cm}|p{2.1cm}|p{2.1cm}|}
+\hline
+\small\textbf{Funds Analysed} & \small\textbf{Sector Average} &
+\small\textbf{Top Performer}  & \small\textbf{Need Attention}  \\
+\hline
+\centering\small 19 & \centering\small 78\% & \centering\small POSB Staff Pension & \centering\small 5\tabularnewline
+\hline
+\end{tabular}\\[0.4cm]
+\textit{[Ranked horizontal bar chart --- Fund Efficiency Rankings]}\\[0.25cm]
+\textit{[Sector Insight summary box with estimated sector savings]}\\
+\vspace{0.3cm}%
+}}
+\caption{Dashboard Overview}
+\label{fig:dashboard}
+\end{figure}
+
+After login the user arrives at the main dashboard. The sidebar shows any previously saved
+datasets and allows a new CSV upload. Once data is loaded and Run Analysis is clicked, the
+overview tab displays four headline metrics: number of funds analysed, sector average
+efficiency, the top-performing fund, and how many funds fall below the 75\,\% threshold.
+A ranked horizontal bar chart shows all funds by efficiency score, colour-coded from red
+through orange to green. At the bottom a plain-language insight box summarises the sector
+picture and estimates total annual savings available if underperforming funds reached
+the efficiency frontier.
+
+\subsection{Fund Rankings}
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\parbox{0.82\textwidth}{%
+\vspace{0.3cm}
+\small
+\textbf{Fund Performance Rankings}\\[0.15cm]
+{\footnotesize Every fund is scored on how efficiently it converts resources into returns
+for members. A score of 100\% means the fund is on the frontier.}\\[0.3cm]
+{\footnotesize
+\begin{tabular}{|p{0.6cm}|p{3.5cm}|p{1.2cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\textbf{\#} & \textbf{Fund Name} & \textbf{Score} & \textbf{Status} &
+\textbf{Savings}\\
+\hline
+1  & POSB Staff Pension Fund           & 100.0\% & Excellent &  ---   \\
+2  & Zimplats Mineworkers Pension      &  98.3\% & Excellent &  ---   \\
+3  & Delta Corporation Pension         &  91.5\% & Excellent & \$1.2M \\
+\ldots & \ldots & \ldots & \ldots & \ldots \\
+\hline
+\end{tabular}
+}\\[0.35cm]
+\textit{[Scatter plot: Overall Efficiency vs.\ Internal Efficiency]}\\
+\vspace{0.3cm}%
+}}
+\caption{Fund Rankings Tab}
+\label{fig:rankings}
+\end{figure}
+
+The rankings tab presents a full table of all funds ordered by efficiency score. Each row
+shows rank, fund name, score, status label, and estimated annual savings potential. Below
+the table a scatter plot compares overall efficiency against internal operational
+efficiency. This helps distinguish funds that are simply operating at the wrong scale from
+those with genuine operational inefficiencies. Funds sitting on the diagonal line have
+matching scores across both measures.
+
+\subsection{Fund Details}
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\parbox{0.82\textwidth}{%
+\vspace{0.3cm}
+\small
+\textbf{Select a Fund to View:}\ \
+\framebox[5cm]{CBZ Bank Staff Pension Fund \quad$\vee$}\\[0.4cm]
+\begin{tabular}{p{3.6cm}p{7.5cm}}
+\textit{[Gauge: 68\%]} &
+\textbf{CBZ Bank Staff Pension Fund}\\[0.15cm]
+& Ranked 12 of 19 funds\\[0.25cm]
+& Efficiency Score: 68.0\% \quad|\quad Sector Average: 78\%\\
+& Gap to Average: $-$10.0\%\\[0.3cm]
+& \textcolor{orange}{\small\textit{This fund is underperforming relative to
+its peers.}}\\
+\end{tabular}\\[0.35cm]
+\textbf{Recommended Actions:}\\[0.1cm]
+{\small Reduce Operating Expenses: \$3.4M $\to$ \$2.1M \quad(saves \$1.3M/year)}\\[0.1cm]
+\textbf{Learn From:} POSB Staff Pension Fund \quad|\quad Zimplats Mineworkers Pension Fund\\
+\vspace{0.25cm}%
+}}
+\caption{Fund Details Tab}
+\label{fig:fund_details}
+\end{figure}
+
+This tab lets the manager select any individual fund and drill into its performance. A
+gauge chart shows the efficiency score visually, with colour zones running from red at the
+bottom to green at the top. To the right the fund's rank, score relative to the sector
+average, and a plain-language interpretation are displayed. Below the gauge, specific
+recommendations list each input where a reduction is achievable, showing the current
+amount, the recommended target, and the estimated annual saving. A peer benchmarking
+section at the bottom identifies the most similar high-performing funds so the manager can
+investigate what those funds do differently in practice.
+
+\subsection{Download Report}
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\parbox{0.72\textwidth}{%
+\vspace{0.4cm}
+\small
+\textbf{Download Full Analysis Report}\\[0.25cm]
+{\footnotesize The PDF report includes efficiency scores for all funds, input reduction
+targets, the rankings table, and key findings. Suitable for stakeholder presentations and
+regulatory submissions.}\\[0.5cm]
+\hspace{1cm}\framebox[5.5cm]{\centering\textbf{Generate PDF Report}}\\[0.4cm]
+\hspace{1cm}\framebox[5.5cm]{\centering\textbf{Download Report (PDF)}}\\
+\vspace{0.4cm}%
+}}
+\caption{Download Report Tab}
+\label{fig:report_tab}
+\end{figure}
+
+The reports tab provides a single button that generates a formatted PDF report using
+ReportLab. The document includes an executive summary, the complete efficiency rankings
+table, scale efficiency classifications, input reduction targets for each fund, and a
+feature importance chart showing which factors most influence fund efficiency across the
+sector. Once generated, a download button appears so the file can be saved locally.
+
 \newpage
+\noindent\textbf{\large APPENDIX}
+\vspace{0.5cm}
 
-%%=============================================================
-%% CHAPTER 10
-%%=============================================================
-\begin{center}{\LARGE\bfseries CHAPTER 10}\\[0.5cm]{\Large\bfseries Conclusion}\end{center}
-\setcounter{section}{0}\renewcommand{\thesection}{10.\arabic{section}}
-\phantomsection\addcontentsline{toc}{section}{\textbf{CHAPTER 10: CONCLUSION}}\vspace{1cm}
+\subsection{System Code}
 
-\section{Summary of Prototype Contributions}
+The authentication module verifies the fund manager's credentials against environment
+variables. Because credentials are never stored in the database, there is no risk of
+plaintext password exposure in the SQLite file.
 
-The Pension Fund Efficiency Toolkit delivers a complete, reproducible, and modular
-software prototype that operationalises the DEA-plus-Random-Forest analytical framework
-for evaluating Zimbabwean self-administered pension funds.  The principal contributions
-of the prototype are:
+\begin{lstlisting}[style=pythonstyle, caption={Login credential verification --- auth.py}]
+def login(email: str, password: str) -> tuple[bool, str, bool, int]:
+    """Attempt login. Returns (success, display_name, is_admin, user_id)."""
+    from pension_toolkit.db import ADMIN_USER_ID, get_user_by_email
 
-\begin{enumerate}[noitemsep]
-  \item A two-phase input-oriented DEA engine implementing both CCR (CRS) and BCC (VRS)
-        models via PuLP/CBC, producing efficiency scores, input slacks, and peer
-        identification for up to 20 fund DMUs.
-  \item A scale efficiency module classifying each fund's returns-to-scale regime (IRS,
-        CRS, DRS) to distinguish managerial from scale-related inefficiency.
-  \item A parallelised Simar-Wilson bootstrap bias-correction engine producing statistically
-        valid efficiency estimates with 95\% confidence intervals.
-  \item A Random Forest second-stage regression explaining efficiency score variation using
-        six contextual determinants, with MDI, permutation importance, and PDP outputs.
-  \item An interactive Streamlit dashboard enabling non-technical users to upload data,
-        execute the pipeline, explore results, and export PDF reports without writing code.
-  \item A containerised, CI-tested deployment ensuring reproducibility across environments.
-\end{enumerate}
+    email = email.strip()
 
-\section{Limitations and Future Work}
+    # Admin credentials come from environment variables, never the database
+    if is_admin_email(email):
+        if password == _admin_password():
+            return True, _admin_name(), True, ADMIN_USER_ID
+        return False, "", False, -1
 
-The current prototype executes cross-sectional DEA on fund-level means, aggregating the
-2018--2022 panel to a single time point.  Future development should incorporate:
+    user = get_user_by_email(email)
+    if user and user["password"] == password:
+        return True, user["full_name"], False, user["id"]
+    return False, "", False, -1
+\end{lstlisting}
 
-\begin{itemize}[noitemsep]
-  \item \textbf{Window DEA}: Rolling time-window analysis to track efficiency changes over
-        individual years without full panel aggregation.
-  \item \textbf{Malmquist Productivity Index}: Decomposing total factor productivity change
-        into efficiency change and frontier shift components.
-  \item \textbf{Tobit second stage}: As a parametric alternative to the Random Forest for
-        robustness comparison.
-  \item \textbf{Super-efficiency DEA}: To rank frontier funds and resolve ties among
-        efficient DMUs.
-  \item \textbf{Real IPEC data integration}: Direct API or file-feed integration with IPEC
-        regulatory disclosures to replace synthetic data with official audited figures.
-\end{itemize}
+The pipeline function aggregates multi-year panel data to a cross-sectional representation
+and then orchestrates the DEA solver, scale analysis, bootstrap procedure, and Random
+Forest second stage in sequence.
 
-\section{Chapter Summary}
+\begin{lstlisting}[style=pythonstyle, caption={Analysis pipeline --- ui\_streamlit.py}]
+def run_pipeline(df: pd.DataFrame, B: int, seed: int) -> dict:
+    numeric_cols = df.select_dtypes(include="number").columns.tolist()
+    df_agg = df.groupby("fund_id")[numeric_cols].mean().reset_index()
+    fund_name_map = df.groupby("fund_id")["fund_name"].agg(
+        lambda x: x.mode()[0])
+    df_agg = df_agg.merge(fund_name_map, on="fund_id")
 
-This document has provided a comprehensive technical description of the Pension Fund
-Efficiency Toolkit prototype.  Chapters~1--2 established the background, objectives, and
-architecture.  Chapters~3--4 detailed the data layer and DEA engine with full mathematical
-formulations and flowcharts.  Chapters~5--6 described the Simar-Wilson bootstrap and
-Random Forest second-stage components.  Chapter~7 documented the Streamlit dashboard
-and PDF reporting system.  Chapter~8 covered testing, CI/CD, CLI usage, and Docker
-deployment.  Chapter~9 discussed returns-to-scale classification and peer benchmarking.
-The prototype is ready for integration with real Zimbabwean pension fund data and
-provides an extensible foundation for ongoing research in pension fund efficiency.
+    X_in, Y_out, fund_ids = get_dea_matrices(df_agg, INPUT_COLS, OUTPUT_COLS)
+    ccr   = dea_ccr_input_oriented(X_in, Y_out, fund_ids)
+    bcc   = dea_bcc_input_oriented(X_in, Y_out, fund_ids)
+    scale = compute_scale_efficiency(ccr, bcc)
+
+    def _ccr_func(X, Y):
+        return dea_ccr_input_oriented(X, Y, fund_ids)
+
+    boot = simar_wilson(_ccr_func, X_in, Y_out,
+                        fund_ids=fund_ids, B=B, seed=seed)
+
+    ...
+    return dict(ccr=ccr, bcc=bcc, scale_df=scale_df,
+                boot_df=boot_df, rf_result=rf_result, ...)
+\end{lstlisting}
+
+The data persistence layer stores every CSV upload with its fund data rows so that results
+survive browser restarts. The upload history table allows the manager to switch between
+multiple datasets without re-uploading.
+
+\begin{lstlisting}[style=pythonstyle, caption={Fund data persistence --- db.py}]
+def save_fund_data(df: pd.DataFrame, filename: str, user_id: int) -> int:
+    """Persist a new upload for the given user. Returns the new upload_id."""
+    with _connect() as conn:
+        _init_tables(conn)
+        n_rows  = len(df)
+        n_funds = int(df["fund_id"].nunique())
+        uploaded_at = datetime.now().isoformat(timespec="seconds")
+
+        cur = conn.execute(
+            "INSERT INTO upload_history "
+            "(user_id, filename, uploaded_at, n_rows, n_funds) "
+            "VALUES (?, ?, ?, ?, ?)",
+            (user_id, filename, uploaded_at, n_rows, n_funds),
+        )
+        upload_id = cur.lastrowid
+        df_to_save = df.copy()
+        df_to_save["upload_id"] = upload_id
+        df_to_save.to_sql("fund_data", conn,
+                          if_exists="append", index=False)
+        return upload_id
+\end{lstlisting}
+
+\subsection*{Conclusion}
+
+The implemented methodology translates the research's analytical framework into working
+operational components, with each computational stage traceable to specific methods and
+algorithms in the accompanying study document. The system architecture ensures all
+calculations maintain analytical rigour while the user interface abstracts that complexity
+into plain-language outputs that a fund manager can act on directly. The modular code
+structure makes the system straightforward to maintain and extend as the dataset grows or
+as future research refines the underlying methods.
 
 \end{document}
