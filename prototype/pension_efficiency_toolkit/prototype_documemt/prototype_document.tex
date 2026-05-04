@@ -639,6 +639,16 @@ table, scale efficiency classifications, input reduction targets for each fund, 
 feature importance chart showing which factors most influence fund efficiency across the
 sector. Once generated, a download button appears so the file can be saved locally.
 
+\subsection*{Conclusion}
+
+The implemented methodology translates the research's analytical framework into working
+operational components, with each computational stage traceable to specific methods and
+algorithms in the accompanying study document. The system architecture ensures all
+calculations maintain analytical rigour while the user interface abstracts that complexity
+into plain-language outputs that a fund manager can act on directly. The modular code
+structure makes the system straightforward to maintain and extend as the dataset grows or
+as future research refines the underlying methods.
+
 \newpage
 \noindent\textbf{\large APPENDIX}
 \vspace{0.5cm}
@@ -722,15 +732,5 @@ def save_fund_data(df: pd.DataFrame, filename: str, user_id: int) -> int:
                           if_exists="append", index=False)
         return upload_id
 \end{lstlisting}
-
-\subsection*{Conclusion}
-
-The implemented methodology translates the research's analytical framework into working
-operational components, with each computational stage traceable to specific methods and
-algorithms in the accompanying study document. The system architecture ensures all
-calculations maintain analytical rigour while the user interface abstracts that complexity
-into plain-language outputs that a fund manager can act on directly. The modular code
-structure makes the system straightforward to maintain and extend as the dataset grows or
-as future research refines the underlying methods.
 
 \end{document}
