@@ -31,9 +31,20 @@
 \onehalfspacing
 
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[R]{\thepage}
 \fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Chapter opening pages use the 'plain' style — override it to also put
+% the page number at bottom centre (report class defaults to bottom centre
+% for plain, but this makes it explicit and consistent).
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
 
 \titleformat{\chapter}[display]
   {\normalfont\huge\bfseries}

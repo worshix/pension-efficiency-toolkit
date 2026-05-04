@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  4 MAY 2026 08:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.22)  4 MAY 2026 09:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -953,7 +953,7 @@ File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
-Package hyperref Info: Option `colorlinks' set `true' on input line 50.
+Package hyperref Info: Option `colorlinks' set `true' on input line 61.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
@@ -963,24 +963,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 (./prototype_document.aux)
 \openout1 = `prototype_document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1043,7 +1043,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 52.
+Package hyperref Info: Link coloring ON on input line 63.
 (./prototype_document.out) (./prototype_document.out)
 \@outlinefile=\write4
 \openout4 = `prototype_document.out'.
@@ -1056,7 +1056,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 <../../../document/hit_logo.png, id=107, 727.96968pt x 406.51875pt>
 File: ../../../document/hit_logo.png Graphic file (type png)
 <use ../../../document/hit_logo.png>
-Package pdftex.def Info: ../../../document/hit_logo.png  used on input line 57.
+Package pdftex.def Info: ../../../document/hit_logo.png  used on input line 68.
 
 (pdftex.def)             Requested size: 333.46758pt x 186.21931pt.
 [1
@@ -1107,7 +1107,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.253 
+l.264 
        [1
 
 ]
@@ -1164,17 +1164,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
 []|\T1/cmr/bx/n/10.95 Funds
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
 []|\T1/cmr/bx/n/10.95 Top Per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--516
+Underfull \hbox (badness 10000) in paragraph at lines 527--527
 []|\T1/cmr/bx/n/10.95 Need At-
  []
 
@@ -1187,12 +1187,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-Underfull \hbox (badness 4254) in paragraph at lines 556--556
+Underfull \hbox (badness 4254) in paragraph at lines 567--567
 []|\T1/cmr/m/n/10 POSB Staff Pen-sion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--556
+Underfull \hbox (badness 10000) in paragraph at lines 567--567
 []|\T1/cmr/m/n/10 Delta Cor-po-ra-tion
  []
 
@@ -1226,15 +1226,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 641.
+nput line 652.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-41.
+52.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 642.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 653.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1271,13 +1271,13 @@ Package rerunfilecheck Info: File `prototype_document.out' has not changed.
 (rerunfilecheck)             Checksum: 0217D10B196DE83D2797E4A78A42583D;3242.
  ) 
 Here is how much of TeX's memory you used:
- 38657 strings out of 474222
- 869347 string characters out of 5748732
+ 38658 strings out of 474222
+ 869373 string characters out of 5748732
  2183975 words of memory out of 5000000
- 60206 multiletter control sequences out of 15000+600000
+ 60207 multiletter control sequences out of 15000+600000
  576878 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,101p,1207b,2085s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,101p,1207b,2087s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-supe
@@ -1288,7 +1288,7 @@ ype1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super
 share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sftt1000.pfb>
-Output written on prototype_document.pdf (26 pages, 478281 bytes).
+Output written on prototype_document.pdf (26 pages, 478383 bytes).
 PDF statistics:
  415 PDF objects out of 1000 (max. 8388607)
  357 compressed objects within 4 object streams
